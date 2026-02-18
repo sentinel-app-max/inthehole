@@ -1,0 +1,35 @@
+{
+  "name": "inthehole · SA Golf Tracker",
+  "short_name": "inthehole",
+  "description": "Free SA golf scorecard and leaderboard by Clean Harry. Stableford & Stroke Play across 15 top South African courses.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f2d18",
+  "theme_color": "#1a5c2a",
+  "lang": "en-ZA",
+  "categories": ["sports", "lifestyle"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='40' fill='%231a5c2a'/><text x='96' y='108' font-family='Arial' font-weight='900' font-size='22' text-anchor='middle' fill='%23c9a84c'>inthehole</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%231a5c2a'/><text x='256' y='285' font-family='Arial' font-weight='900' font-size='58' text-anchor='middle' fill='%23c9a84c'>inthehole</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start New Round",
+      "short_name": "Play",
+      "description": "Start tracking a new golf round",
+      "url": "./index.html?action=new-round"
+    }
+  ]
+}
