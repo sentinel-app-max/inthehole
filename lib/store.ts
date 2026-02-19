@@ -1,9 +1,10 @@
 import { create } from "zustand";
-import type { Course, ScoringType } from "@/types";
+import type { Course, ScoringType, TeeColour } from "@/types";
 
 interface PlayerDraft {
   name: string;
   handicap: number;
+  tee: TeeColour;
 }
 
 interface NewRoundState {
@@ -22,7 +23,7 @@ interface NewRoundState {
   reset: () => void;
 }
 
-const initialPlayers: PlayerDraft[] = [{ name: "", handicap: 18 }];
+const initialPlayers: PlayerDraft[] = [{ name: "", handicap: 18, tee: "white" }];
 
 export const useNewRoundStore = create<NewRoundState>((set) => ({
   step: 1,
@@ -38,7 +39,7 @@ export const useNewRoundStore = create<NewRoundState>((set) => ({
     set((state) => ({
       players:
         state.players.length < 4
-          ? [...state.players, { name: "", handicap: 18 }]
+          ? [...state.players, { name: "", handicap: 18, tee: "white" as const }]
           : state.players,
     })),
   removePlayer: (index) =>
@@ -60,6 +61,6 @@ export const useNewRoundStore = create<NewRoundState>((set) => ({
       course: null,
       scoringType: "stableford",
       holes: 18,
-      players: [...initialPlayers],
+      players: [{ name: "", handicap: 18, tee: "white" as const }],
     }),
 }));

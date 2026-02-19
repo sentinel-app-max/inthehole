@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getRound, saveRound } from "@/lib/firebase/firestore";
 import {
-  playingHcp,
+  courseHcp,
   hcpStrokesOnHole,
   stablefordPoints,
   totalStableford,
@@ -246,8 +246,9 @@ export default function ScorecardPage() {
         <div className="space-y-2">
           {players.map((player, pIdx) => {
             const score = scores[pIdx]?.[currentHole] ?? 0;
-            const phcp = playingHcp(player.handicap);
-            const strokes = hcpStrokesOnHole(phcp, hole.si);
+            const teeData = round.course.tees?.find((t) => t.colour === player.tee) ?? { cr: round.course.rating, slope: round.course.slope };
+            const chcp = courseHcp(player.handicap, teeData.slope, teeData.cr, round.course.par);
+            const strokes = hcpStrokesOnHole(chcp, hole.si);
             const pts = score > 0 ? stablefordPoints(score, hole.par, strokes) : null;
             const ptsClass = pts !== null ? PTS_COLORS[pts] ?? PTS_COLORS[0] : "bg-white/5 text-[#888888]";
 

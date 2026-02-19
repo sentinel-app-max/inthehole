@@ -1,6 +1,15 @@
-import type { Course } from "@/types";
+import type { Course, TeeDatum } from "@/types";
 
-export const SA_COURSES: Course[] = [
+function buildTees(cr: number, slope: number): TeeDatum[] {
+  return [
+    { colour: "blue", cr: +(cr + 1.5).toFixed(1), slope: slope + 8 },
+    { colour: "white", cr, slope },
+    { colour: "yellow", cr: +(cr - 1.5).toFixed(1), slope: slope - 6 },
+    { colour: "red", cr: +(cr - 3.5).toFixed(1), slope: slope - 10 },
+  ];
+}
+
+const RAW: Omit<Course, "tees">[] = [
   {
     id: "royal-jhb-east",
     name: "Royal Johannesburg & Kensington (East)",
@@ -437,6 +446,11 @@ export const SA_COURSES: Course[] = [
     ],
   },
 ];
+
+export const SA_COURSES: Course[] = RAW.map((c) => ({
+  ...c,
+  tees: buildTees(c.rating, c.slope),
+}));
 
 export const PROVINCES: string[] = [
   ...new Set(SA_COURSES.map((c) => c.province)),

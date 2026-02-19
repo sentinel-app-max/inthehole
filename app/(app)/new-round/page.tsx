@@ -6,7 +6,14 @@ import { useAuth } from "@/hooks/useAuth";
 import { useNewRoundStore } from "@/lib/store";
 import { SA_COURSES, PROVINCES } from "@/lib/courses/data";
 import { saveRound } from "@/lib/firebase/firestore";
-import type { Course, Round } from "@/types";
+import type { Course, Round, TeeColour } from "@/types";
+
+const TEE_BG: Record<TeeColour, string> = {
+  blue: "#2563eb",
+  white: "#ffffff",
+  yellow: "#eab308",
+  red: "#dc2626",
+};
 
 const PROVINCE_TABS = ["All", ...PROVINCES];
 
@@ -181,6 +188,7 @@ function PlayersSettings() {
       players: players.map((p) => ({
         name: p.name.trim(),
         handicap: p.handicap,
+        tee: p.tee,
         scores: [],
       })),
       playerResults: [],
@@ -278,47 +286,70 @@ function PlayersSettings() {
             Players
           </p>
           <div className="space-y-2">
-            {players.map((player, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 rounded-2xl bg-[#1e1e1e] p-4"
-              >
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-black bg-[#c9a84c] text-[#0a0a0a]">
-                  {player.name ? player.name[0].toUpperCase() : `P${i + 1}`}
+            {players.map((player, i) => {
+              const teeData = course?.tees?.find((t) => t.colour === player.tee);
+              return (
+                <div key={i} className="rounded-2xl bg-[#1e1e1e] p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-black bg-[#c9a84c] text-[#0a0a0a]">
+                      {player.name ? player.name[0].toUpperCase() : `P${i + 1}`}
+                    </div>
+                    <div className="flex flex-1 gap-2">
+                      <input
+                        type="text"
+                        placeholder={`Player ${i + 1}`}
+                        value={player.name}
+                        onChange={(e) => updatePlayer(i, "name", e.target.value)}
+                        className="min-w-0 flex-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-[#c9a84c]"
+                      />
+                      <input
+                        type="number"
+                        min={0}
+                        max={36}
+                        value={player.handicap}
+                        onChange={(e) =>
+                          updatePlayer(
+                            i,
+                            "handicap",
+                            Math.min(36, Math.max(0, Number(e.target.value)))
+                          )
+                        }
+                        className="w-16 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-center text-sm text-white outline-none focus:border-[#c9a84c]"
+                      />
+                    </div>
+                    {players.length > 1 && (
+                      <button
+                        onClick={() => removePlayer(i)}
+                        className="text-lg text-[#888888] hover:text-[#e63946]"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                  {/* Tee selector */}
+                  <div className="mt-3 flex items-center gap-2">
+                    <p className="text-[10px] font-semibold text-[#888888] mr-1">Tee</p>
+                    {(["blue", "white", "yellow", "red"] as TeeColour[]).map((tee) => (
+                      <button
+                        key={tee}
+                        onClick={() => updatePlayer(i, "tee", tee)}
+                        className={`h-7 w-7 rounded-full border-2 transition-all ${
+                          player.tee === tee
+                            ? "border-[#c9a84c] scale-110"
+                            : "border-white/10 opacity-40"
+                        }`}
+                        style={{ backgroundColor: TEE_BG[tee] }}
+                      />
+                    ))}
+                    {teeData && (
+                      <p className="ml-auto text-[10px] text-[#888888]">
+                        CR {teeData.cr} · Slope {teeData.slope}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="flex flex-1 gap-2">
-                  <input
-                    type="text"
-                    placeholder={`Player ${i + 1}`}
-                    value={player.name}
-                    onChange={(e) => updatePlayer(i, "name", e.target.value)}
-                    className="min-w-0 flex-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-[#c9a84c]"
-                  />
-                  <input
-                    type="number"
-                    min={0}
-                    max={36}
-                    value={player.handicap}
-                    onChange={(e) =>
-                      updatePlayer(
-                        i,
-                        "handicap",
-                        Math.min(36, Math.max(0, Number(e.target.value)))
-                      )
-                    }
-                    className="w-16 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-center text-sm text-white outline-none focus:border-[#c9a84c]"
-                  />
-                </div>
-                {players.length > 1 && (
-                  <button
-                    onClick={() => removePlayer(i)}
-                    className="text-lg text-[#888888] hover:text-[#e63946]"
-                  >
-                    ✕
-                  </button>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {players.length < 4 && (

@@ -1,5 +1,5 @@
 import {
-  playingHcp,
+  courseHcp,
   hcpStrokesOnHole,
   stablefordPoints,
   scoreLabel,
@@ -21,6 +21,12 @@ const makeCourse = (pars: number[], sis: number[]): Course => ({
   rating: 72,
   slope: 113,
   holes: pars.map((par, i) => ({ hole: i + 1, par, si: sis[i] })),
+  tees: [
+    { colour: "blue", cr: 73.5, slope: 121 },
+    { colour: "white", cr: 72, slope: 113 },
+    { colour: "yellow", cr: 70.5, slope: 107 },
+    { colour: "red", cr: 68.5, slope: 103 },
+  ],
 });
 
 const par4x18 = makeCourse(
@@ -28,12 +34,19 @@ const par4x18 = makeCourse(
   Array.from({ length: 18 }, (_, i) => i + 1)
 );
 
-describe("playingHcp", () => {
-  it("applies 95% adjustment and rounds", () => {
-    expect(playingHcp(10)).toBe(10); // 9.5 rounds to 10
-    expect(playingHcp(20)).toBe(19);
-    expect(playingHcp(0)).toBe(0);
-    expect(playingHcp(36)).toBe(34);
+describe("courseHcp", () => {
+  it("returns hi when slope=113 and cr=par", () => {
+    expect(courseHcp(10, 113, 72, 72)).toBe(10);
+    expect(courseHcp(20, 113, 72, 72)).toBe(20);
+    expect(courseHcp(0, 113, 72, 72)).toBe(0);
+    expect(courseHcp(36, 113, 72, 72)).toBe(36);
+  });
+
+  it("adjusts for slope and course rating", () => {
+    // courseHcp(18, 137, 74.2, 72) = round((18*137/113) + 2.2) = round(24.02) = 24
+    expect(courseHcp(18, 137, 74.2, 72)).toBe(24);
+    // courseHcp(10, 140, 74.8, 72) = round((10*140/113) + 2.8) = round(15.19) = 15
+    expect(courseHcp(10, 140, 74.8, 72)).toBe(15);
   });
 });
 
@@ -129,6 +142,7 @@ describe("totalStableford", () => {
     const player: Player = {
       name: "Test",
       handicap: 0,
+      tee: "white",
       scores: Array(18).fill(4), // all pars on par-4 course
     };
     expect(totalStableford(player, par4x18)).toBe(36); // 18 * 2
@@ -137,7 +151,7 @@ describe("totalStableford", () => {
 
 describe("totalGross", () => {
   it("sums all scores", () => {
-    const player: Player = { name: "Test", handicap: 0, scores: [4, 5, 3] };
+    const player: Player = { name: "Test", handicap: 0, tee: "white", scores: [4, 5, 3] };
     expect(totalGross(player)).toBe(12);
   });
 });
@@ -147,13 +161,14 @@ describe("toPar", () => {
     const player: Player = {
       name: "Test",
       handicap: 0,
+      tee: "white",
       scores: Array(18).fill(5), // all bogeys
     };
     expect(toPar(player, par4x18)).toBe(18);
   });
 
   it("returns null for empty scores", () => {
-    const player: Player = { name: "Test", handicap: 0, scores: [] };
+    const player: Player = { name: "Test", handicap: 0, tee: "white", scores: [] };
     expect(toPar(player, par4x18)).toBeNull();
   });
 });
@@ -162,11 +177,12 @@ describe("netScore", () => {
   it("subtracts hcp strokes from gross", () => {
     const player: Player = {
       name: "Test",
-      handicap: 18, // playingHcp = 17
+      handicap: 18,
+      tee: "white",
       scores: Array(18).fill(5),
     };
-    // gross 90, playing hcp 17, so 17 holes get 1 stroke off
-    expect(netScore(player, par4x18)).toBe(90 - 17);
+    // gross 90, courseHcp(18, 113, 72, 72) = 18, so 18 holes get 1 stroke off
+    expect(netScore(player, par4x18)).toBe(90 - 18);
   });
 });
 
@@ -174,11 +190,13 @@ describe("rankPlayers", () => {
   const playerA: Player = {
     name: "A",
     handicap: 0,
+    tee: "white",
     scores: Array(18).fill(4),
   };
   const playerB: Player = {
     name: "B",
     handicap: 0,
+    tee: "white",
     scores: Array(18).fill(3),
   };
 

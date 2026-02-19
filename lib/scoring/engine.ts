@@ -1,7 +1,14 @@
-import type { Player, Course, ScoringType } from "@/types";
+import type { Player, Course, ScoringType, TeeDatum } from "@/types";
 
-export function playingHcp(exactHcp: number): number {
-  return Math.round(exactHcp * 0.95);
+export function courseHcp(hi: number, slope: number, cr: number, par: number): number {
+  return Math.round((hi * slope / 113) + (cr - par));
+}
+
+function getTeeDatum(player: Player, course: Course): TeeDatum {
+  return (
+    course.tees?.find((t) => t.colour === player.tee) ??
+    course.tees?.find((t) => t.colour === "white") ?? { colour: "white", cr: course.rating, slope: course.slope }
+  );
 }
 
 export function hcpStrokesOnHole(playingHcp: number, si: number): number {
@@ -50,11 +57,12 @@ export function scoreClass(gross: number, par: number): string {
 }
 
 export function totalStableford(player: Player, course: Course): number {
-  const phcp = playingHcp(player.handicap);
+  const tee = getTeeDatum(player, course);
+  const chcp = courseHcp(player.handicap, tee.slope, tee.cr, course.par);
   return player.scores.reduce((total, gross, i) => {
     if (i >= course.holes.length) return total;
     const hole = course.holes[i];
-    const strokes = hcpStrokesOnHole(phcp, hole.si);
+    const strokes = hcpStrokesOnHole(chcp, hole.si);
     const pts = stablefordPoints(gross, hole.par, strokes);
     return total + (pts ?? 0);
   }, 0);
@@ -74,10 +82,11 @@ export function toPar(player: Player, course: Course): number | null {
 }
 
 export function netScore(player: Player, course: Course): number {
-  const phcp = playingHcp(player.handicap);
+  const tee = getTeeDatum(player, course);
+  const chcp = courseHcp(player.handicap, tee.slope, tee.cr, course.par);
   return player.scores.reduce((sum, gross, i) => {
     if (i >= course.holes.length) return sum;
-    const strokes = hcpStrokesOnHole(phcp, course.holes[i].si);
+    const strokes = hcpStrokesOnHole(chcp, course.holes[i].si);
     return sum + (gross - strokes);
   }, 0);
 }

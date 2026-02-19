@@ -4,6 +4,14 @@ export interface Hole {
   si: number;
 }
 
+export type TeeColour = "blue" | "white" | "yellow" | "red";
+
+export interface TeeDatum {
+  colour: TeeColour;
+  cr: number;
+  slope: number;
+}
+
 export interface Course {
   id: string;
   name: string;
@@ -13,11 +21,13 @@ export interface Course {
   rating: number;
   slope: number;
   holes: Hole[];
+  tees: TeeDatum[];
 }
 
 export interface Player {
   name: string;
   handicap: number;
+  tee: TeeColour;
   scores: number[];
 }
 
