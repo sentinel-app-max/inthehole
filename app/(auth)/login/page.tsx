@@ -47,24 +47,37 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-6" style={{ background: "#0f2d18" }}>
-      <div className="w-full max-w-sm space-y-8">
+    <div className="relative flex min-h-screen flex-col items-center justify-center px-6 bg-[#0a0a0a] overflow-hidden">
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/videos/V1.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay */}
+      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
+
+      <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <h1 className="text-5xl font-black tracking-tight" style={{ color: "#c9a84c" }}>
+          <h1 className="text-5xl font-black tracking-tight text-[#c9a84c]">
             inthehole
           </h1>
           <p className="mt-2 text-lg font-semibold text-white/80">
             Clean. Score. Perfect.
           </p>
-          <p className="mt-1 text-xs text-white/40">
+          <p className="mt-1 text-xs text-white/30">
             A free tool by Clean Harry
           </p>
         </div>
 
         {/* Error */}
         {error && (
-          <p className="rounded-lg bg-red-500/20 px-4 py-2 text-center text-sm text-red-300">
+          <p className="rounded-lg bg-[#e63946]/20 px-4 py-2 text-center text-sm text-[#e63946]">
             {error}
           </p>
         )}
@@ -73,7 +86,7 @@ export default function LoginPage() {
         <button
           onClick={handleGoogle}
           disabled={loading}
-          className="flex w-full items-center justify-center gap-3 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-gray-800 shadow-lg transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-3 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-[#0a0a0a] shadow-lg transition-opacity hover:opacity-90 disabled:opacity-50"
         >
           <svg className="h-5 w-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
@@ -86,9 +99,9 @@ export default function LoginPage() {
 
         {/* Divider */}
         <div className="flex items-center gap-4">
-          <div className="h-px flex-1 bg-white/20" />
-          <span className="text-xs text-white/40">or</span>
-          <div className="h-px flex-1 bg-white/20" />
+          <div className="h-px flex-1 bg-white/10" />
+          <span className="text-xs text-white/30">or</span>
+          <div className="h-px flex-1 bg-white/10" />
         </div>
 
         {/* Email form */}
@@ -100,7 +113,7 @@ export default function LoginPage() {
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
               required
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
+              className="w-full rounded-xl border border-white/10 bg-[#1e1e1e] px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
             />
           )}
           <input
@@ -109,7 +122,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
+            className="w-full rounded-xl border border-white/10 bg-[#1e1e1e] px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
           />
           <input
             type="password"
@@ -118,20 +131,19 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
             minLength={6}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
+            className="w-full rounded-xl border border-white/10 bg-[#1e1e1e] px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl py-3 text-sm font-bold text-white shadow-lg transition-opacity hover:opacity-90 disabled:opacity-50"
-            style={{ background: "#1a5c2a" }}
+            className="w-full rounded-xl py-3 text-sm font-bold shadow-lg transition-opacity hover:opacity-90 disabled:opacity-50 bg-[#c9a84c] text-[#0a0a0a]"
           >
             {loading ? "..." : isSignUp ? "Create Account" : "Sign In"}
           </button>
         </form>
 
         {/* Toggle */}
-        <p className="text-center text-sm text-white/50">
+        <p className="text-center text-sm text-white/40">
           {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
           <button
             type="button"
@@ -139,20 +151,19 @@ export default function LoginPage() {
               setIsSignUp(!isSignUp);
               setError("");
             }}
-            className="font-semibold underline"
-            style={{ color: "#c9a84c" }}
+            className="font-semibold underline text-[#c9a84c]"
           >
             {isSignUp ? "Sign in" : "Sign up"}
           </button>
         </p>
 
         {/* Footer */}
-        <p className="text-center text-xs text-white/30">
+        <p className="text-center text-xs text-white/20">
           <a
             href="https://cleanharry.world"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-white/50"
+            className="underline hover:text-white/40"
           >
             cleanharry.world
           </a>

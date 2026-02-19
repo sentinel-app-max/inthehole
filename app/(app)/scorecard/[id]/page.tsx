@@ -17,10 +17,10 @@ import type { Round, Player, PlayerResult } from "@/types";
 const PTS_COLORS: Record<number, string> = {
   5: "bg-purple-500 text-white",
   4: "bg-amber-400 text-white",
-  3: "bg-green-600 text-white",
-  2: "bg-gray-300 text-gray-700",
+  3: "bg-[#1a5c2a] text-white",
+  2: "bg-[#888888] text-white",
   1: "bg-orange-400 text-white",
-  0: "bg-red-500 text-white",
+  0: "bg-[#e63946] text-white",
 };
 
 export default function ScorecardPage() {
@@ -48,7 +48,6 @@ export default function ScorecardPage() {
           : Array(holeCount).fill(0)
       );
       setScores(initial);
-      // Resume at first unscored hole
       const firstEmpty = r.players[0]?.scores?.length ?? 0;
       setCurrentHole(Math.min(firstEmpty, holeCount - 1));
       setLoading(false);
@@ -161,8 +160,8 @@ export default function ScorecardPage() {
 
   if (loading || !round) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#f7f7f7]">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#1a5c2a] border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
       </div>
     );
   }
@@ -175,32 +174,32 @@ export default function ScorecardPage() {
   const players = buildPlayers();
 
   return (
-    <div className="min-h-screen bg-[#f7f7f7]">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Top bar */}
       <div
         className="flex items-center justify-between px-4 py-3"
-        style={{ background: "linear-gradient(160deg, #1a5c2a 0%, #0f2d18 100%)" }}
+        style={{ background: "linear-gradient(160deg, #141414 0%, #0a0a0a 100%)" }}
       >
-        <button onClick={handleBack} className="text-sm font-semibold text-white/70 hover:text-white">
+        <button onClick={handleBack} className="text-sm font-semibold text-white/40 hover:text-white">
           ← Back
         </button>
         <div className="text-center">
           <p className="text-sm font-bold text-white truncate max-w-[200px]">
             {round.course.name}
           </p>
-          <p className="text-[10px] uppercase tracking-wider text-white/50">
+          <p className="text-[10px] uppercase tracking-wider text-[#c9a84c]">
             {round.scoringType === "stableford" ? "Stableford" : "Stroke Play"}
           </p>
         </div>
         <div className="w-12 text-right">
           {saving && (
-            <span className="text-[10px] text-white/40">Saving...</span>
+            <span className="text-[10px] text-[#c9a84c]/60">Saving...</span>
           )}
         </div>
       </div>
 
       {/* Hole progress dots */}
-      <div className="flex justify-center gap-1.5 py-3 bg-white border-b border-gray-100">
+      <div className="flex justify-center gap-1.5 py-3 bg-[#141414] border-b border-white/5">
         {Array.from({ length: holeCount }, (_, i) => {
           const hasScore = scores[0]?.[i] > 0;
           const isCurrent = i === currentHole;
@@ -212,8 +211,8 @@ export default function ScorecardPage() {
                 isCurrent
                   ? "bg-[#c9a84c] scale-125 shadow-sm"
                   : hasScore
-                  ? "bg-[#1a5c2a]"
-                  : "bg-gray-200"
+                  ? "bg-white"
+                  : "bg-white/15"
               }`}
             />
           );
@@ -222,21 +221,21 @@ export default function ScorecardPage() {
 
       <div className="mx-auto max-w-lg px-4 pb-28 space-y-4 mt-4">
         {/* Hole card */}
-        <div className="rounded-2xl bg-white p-5 shadow-sm">
+        <div className="rounded-2xl bg-[#1e1e1e] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-3xl font-black text-[#1a5c2a]">Hole {hole.hole}</p>
-              <p className="text-xs font-semibold text-gray-400">SI {hole.si}</p>
+              <p className="text-3xl font-black text-white">Hole {hole.hole}</p>
+              <p className="text-xs font-semibold text-[#888888]">SI {hole.si}</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-black text-gray-800">{hole.par}</p>
-              <p className="text-xs font-semibold text-gray-400">PAR</p>
+              <p className="text-4xl font-black text-[#c9a84c]">{hole.par}</p>
+              <p className="text-xs font-semibold text-[#888888]">PAR</p>
             </div>
             <div className="text-right">
-              <p className="text-sm font-bold text-gray-500">
+              <p className="text-sm font-bold text-[#888888]">
                 {isFront ? "Front 9" : "Back 9"}
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-white/30">
                 {currentHole + 1} of {holeCount}
               </p>
             </div>
@@ -250,18 +249,18 @@ export default function ScorecardPage() {
             const phcp = playingHcp(player.handicap);
             const strokes = hcpStrokesOnHole(phcp, hole.si);
             const pts = score > 0 ? stablefordPoints(score, hole.par, strokes) : null;
-            const ptsClass = pts !== null ? PTS_COLORS[pts] ?? PTS_COLORS[0] : "bg-gray-100 text-gray-400";
+            const ptsClass = pts !== null ? PTS_COLORS[pts] ?? PTS_COLORS[0] : "bg-white/5 text-[#888888]";
 
             return (
               <div
                 key={pIdx}
-                className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm"
+                className="flex items-center gap-3 rounded-2xl bg-[#1e1e1e] p-4"
               >
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold text-gray-800 truncate">
+                  <p className="text-sm font-bold text-white truncate">
                     {player.name}
                   </p>
-                  <p className="text-[10px] text-gray-400">
+                  <p className="text-[10px] text-[#888888]">
                     HCP {player.handicap}{strokes > 0 ? ` (+${strokes})` : ""}
                   </p>
                 </div>
@@ -271,7 +270,7 @@ export default function ScorecardPage() {
                   <button
                     onClick={() => updateScore(pIdx, -1)}
                     disabled={score <= 1}
-                    className="flex h-10 w-10 items-center justify-center rounded-l-xl bg-gray-100 text-lg font-bold text-gray-600 transition-colors hover:bg-gray-200 disabled:opacity-30"
+                    className="flex h-10 w-10 items-center justify-center rounded-l-xl bg-white/5 text-lg font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-30"
                   >
                     −
                   </button>
@@ -281,12 +280,12 @@ export default function ScorecardPage() {
                     max={15}
                     value={score || ""}
                     onChange={(e) => setScore(pIdx, Number(e.target.value))}
-                    className="h-10 w-14 border-y border-gray-100 bg-white text-center text-lg font-black text-gray-800 outline-none"
+                    className="h-10 w-14 border-y border-white/5 bg-[#1e1e1e] text-center text-lg font-black text-white outline-none"
                   />
                   <button
                     onClick={() => updateScore(pIdx, 1)}
                     disabled={score >= 15}
-                    className="flex h-10 w-10 items-center justify-center rounded-r-xl bg-gray-100 text-lg font-bold text-gray-600 transition-colors hover:bg-gray-200 disabled:opacity-30"
+                    className="flex h-10 w-10 items-center justify-center rounded-r-xl bg-white/5 text-lg font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-30"
                   >
                     +
                   </button>
@@ -304,8 +303,8 @@ export default function ScorecardPage() {
         </div>
 
         {/* Live totals */}
-        <div className="rounded-2xl bg-white p-4 shadow-sm">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">
+        <div className="rounded-2xl bg-[#1e1e1e] p-4">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#888888]">
             Running Totals
           </p>
           <div className="space-y-2">
@@ -314,12 +313,12 @@ export default function ScorecardPage() {
               const runGross = totalGross(player);
               return (
                 <div key={pIdx} className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-gray-700">{player.name}</p>
+                  <p className="text-sm font-semibold text-white">{player.name}</p>
                   <div className="flex gap-3">
-                    <span className="rounded-full bg-[#1a5c2a]/10 px-3 py-1 text-xs font-bold text-[#1a5c2a]">
+                    <span className="rounded-full bg-[#c9a84c]/15 px-3 py-1 text-xs font-bold text-[#c9a84c]">
                       {runPts} pts
                     </span>
-                    <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-500">
+                    <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-[#888888]">
                       {runGross} gross
                     </span>
                   </div>
@@ -331,28 +330,26 @@ export default function ScorecardPage() {
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-16 left-0 right-0 bg-[#f7f7f7] px-4 pb-4 pt-2">
+      <div className="fixed bottom-16 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
         <div className="flex gap-3">
           <button
             onClick={() => navigateHole("prev")}
             disabled={isFirst}
-            className="flex-1 rounded-2xl bg-white py-3.5 text-sm font-bold text-gray-600 shadow-sm transition-all disabled:opacity-30"
+            className="flex-1 rounded-2xl bg-white py-3.5 text-sm font-bold text-[#0a0a0a] transition-all disabled:opacity-30"
           >
             ← Prev
           </button>
           {isLast ? (
             <button
               onClick={finishRound}
-              className="flex-1 rounded-2xl py-3.5 text-sm font-black shadow-lg"
-              style={{ background: "#c9a84c", color: "#0f2d18" }}
+              className="flex-1 rounded-2xl py-3.5 text-sm font-black shadow-lg bg-[#c9a84c] text-[#0a0a0a]"
             >
               🏁 Finish Round
             </button>
           ) : (
             <button
               onClick={() => navigateHole("next")}
-              className="flex-1 rounded-2xl py-3.5 text-sm font-black text-white shadow-lg"
-              style={{ background: "#1a5c2a" }}
+              className="flex-1 rounded-2xl py-3.5 text-sm font-black shadow-lg bg-[#c9a84c] text-[#0a0a0a]"
             >
               Next →
             </button>

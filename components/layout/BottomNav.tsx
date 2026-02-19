@@ -15,7 +15,7 @@ export default function BottomNav() {
   if (pathname === "/login") return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-green-900/20 bg-white pb-[env(safe-area-inset-bottom)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#0a0a0a] pb-[env(safe-area-inset-bottom)]">
       <div className="flex items-center justify-around h-16">
         {tabs.map((tab) => {
           const active = pathname === tab.href;
@@ -24,7 +24,7 @@ export default function BottomNav() {
               key={tab.href}
               href={tab.href}
               className={`flex flex-col items-center gap-0.5 text-xs font-semibold transition-colors ${
-                active ? "text-green-700" : "text-gray-400"
+                active ? "text-[#c9a84c]" : "text-[#888888]"
               }`}
             >
               <span className="text-2xl">{tab.icon}</span>
