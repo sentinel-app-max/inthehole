@@ -10,16 +10,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
-import type {
-  Round,
-  UserProfile,
-  LeaderboardEntry,
-  PlayerResult,
-} from "@/types";
-
-// ---------------------------------------------------------------------------
-// Client-side helpers
-// ---------------------------------------------------------------------------
+import type { Round, UserProfile, LeaderboardEntry } from "@/types";
 
 export async function saveRound(round: Round): Promise<string> {
   try {
@@ -93,39 +84,5 @@ export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
   } catch (error) {
     console.error("getLeaderboard failed:", error);
     return [];
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Server-side helper (must only be imported in Route Handlers / Server Actions)
-// ---------------------------------------------------------------------------
-
-export async function updateLeaderboardEntry(
-  result: PlayerResult,
-  uid: string
-): Promise<void> {
-  try {
-    const { adminDb } = await import("@/lib/firebase/admin");
-    const ref = adminDb.collection("leaderboard").doc(uid);
-    const snap = await ref.get();
-    const existing = snap.data() as LeaderboardEntry | undefined;
-
-    const entry: LeaderboardEntry = {
-      uid,
-      displayName: result.name,
-      rounds: (existing?.rounds ?? 0) + 1,
-      totalPts: (existing?.totalPts ?? 0) + result.stableford,
-      bestPts: Math.max(existing?.bestPts ?? 0, result.stableford),
-      bestNet: existing
-        ? Math.min(existing.bestNet, result.net)
-        : result.net,
-      handicap: result.handicap,
-      updatedAt: new Date().toISOString(),
-    };
-
-    await ref.set(entry);
-  } catch (error) {
-    console.error("updateLeaderboardEntry failed:", error);
-    throw error;
   }
 }
