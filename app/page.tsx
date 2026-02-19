@@ -50,7 +50,7 @@ export default function HomePage() {
           Ready to play?
         </h1>
         <Link
-          href="/round/new"
+          href="/new-round"
           className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-black tracking-wide shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
           style={{ background: "#c9a84c", color: "#0f2d18" }}
         >
