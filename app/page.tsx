@@ -26,104 +26,128 @@ export default function HomePage() {
     const pts = r.playerResults?.[0]?.stableford ?? 0;
     return Math.max(best, pts);
   }, 0);
-  const lastCourse = rounds[0]?.course?.name ?? "—";
+  const lastCourse = rounds[0]?.course?.name ?? "\u2014";
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-green-700 border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-[#f7f7f7]">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#1a5c2a] border-t-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-6 space-y-6">
+    <div className="min-h-screen bg-[#f7f7f7]">
       {/* Hero */}
-      <div className="rounded-2xl p-6 text-white" style={{ background: "linear-gradient(135deg, #1a5c2a 0%, #0f2d18 100%)" }}>
-        <p className="text-sm text-white/70">Howzit, {firstName}! 👋</p>
-        <h1 className="mt-1 text-2xl font-bold">Ready to play?</h1>
+      <div
+        className="px-5 pb-8 pt-10"
+        style={{ background: "linear-gradient(160deg, #1a5c2a 0%, #0f2d18 100%)" }}
+      >
+        <p className="text-sm font-medium text-white/60">
+          Howzit, {firstName}! \ud83d\udc4b
+        </p>
+        <h1 className="mt-1 text-3xl font-black tracking-tight text-white">
+          Ready to play?
+        </h1>
         <Link
           href="/round/new"
-          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-[#0f2d18] transition-opacity hover:opacity-90"
-          style={{ background: "#c9a84c" }}
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-black tracking-wide shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
+          style={{ background: "#c9a84c", color: "#0f2d18" }}
         >
-          ⛳ Start New Round
+          \u26f3 Start New Round
         </Link>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-xl bg-gray-50 p-3 text-center">
-          <p className="text-xl font-bold text-green-700">{totalRounds}</p>
-          <p className="text-xs text-gray-500">Rounds</p>
-        </div>
-        <div className="rounded-xl bg-gray-50 p-3 text-center">
-          <p className="text-xl font-bold text-green-700">{bestStableford || "—"}</p>
-          <p className="text-xs text-gray-500">Best Stableford</p>
-        </div>
-        <div className="rounded-xl bg-gray-50 p-3 text-center">
-          <p className="truncate text-sm font-semibold text-green-700">{lastCourse}</p>
-          <p className="text-xs text-gray-500">Last Course</p>
-        </div>
-      </div>
-
-      {/* Recent Rounds */}
-      <div>
-        <h2 className="mb-3 text-sm font-semibold text-gray-500 uppercase tracking-wide">
-          Recent Rounds
-        </h2>
-
-        {loadingRounds ? (
-          <div className="flex justify-center py-8">
-            <div className="h-6 w-6 animate-spin rounded-full border-4 border-green-700 border-t-transparent" />
+      <div className="mx-auto max-w-lg px-4 -mt-1 space-y-5 pb-24">
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-3">
+          <div className="rounded-2xl bg-white p-4 text-center shadow-sm">
+            <p className="text-3xl font-black text-[#1a5c2a]">{totalRounds}</p>
+            <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              Rounds
+            </p>
           </div>
-        ) : rounds.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-gray-200 py-12 text-center">
-            <p className="text-3xl">⛳</p>
-            <p className="mt-2 text-sm font-semibold text-gray-600">No rounds yet</p>
-            <p className="mt-1 text-xs text-gray-400">Start your first round to see it here</p>
+          <div className="rounded-2xl bg-white p-4 text-center shadow-sm">
+            <p className="text-3xl font-black text-[#1a5c2a]">
+              {bestStableford || "\u2014"}
+            </p>
+            <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              Best Pts
+            </p>
           </div>
-        ) : (
-          <div className="space-y-3">
-            {rounds.map((round) => {
-              const result = round.playerResults?.[0];
-              const pts = result?.stableford ?? 0;
-              const gross = result?.gross ?? 0;
-              const date = new Date(round.date).toLocaleDateString("en-ZA", {
-                day: "numeric",
-                month: "short",
-              });
+          <div className="rounded-2xl bg-white p-4 text-center shadow-sm">
+            <p className="truncate text-sm font-bold text-[#1a5c2a]">
+              {lastCourse}
+            </p>
+            <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+              Last Course
+            </p>
+          </div>
+        </div>
 
-              return (
-                <Link
-                  key={round.id}
-                  href={`/round/${round.id}`}
-                  className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm border border-gray-100 transition-shadow hover:shadow-md"
-                >
-                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-green-700 text-sm font-bold text-white">
-                    {pts}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold text-gray-800">
-                      {round.course.name}
-                    </p>
-                    <p className="text-xs text-gray-400">
-                      {date} · {round.players.length} player{round.players.length !== 1 ? "s" : ""}
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700">
-                      {pts} pts
-                    </span>
-                    <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600">
-                      {gross}
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        )}
+        {/* Recent Rounds */}
+        <div>
+          <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-400">
+            Recent Rounds
+          </h2>
+
+          {loadingRounds ? (
+            <div className="flex justify-center py-12">
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#1a5c2a] border-t-transparent" />
+            </div>
+          ) : rounds.length === 0 ? (
+            <div className="rounded-2xl bg-white py-14 text-center shadow-sm">
+              <p className="text-4xl">\u26f3</p>
+              <p className="mt-3 text-base font-bold text-gray-700">
+                No rounds yet
+              </p>
+              <p className="mt-1 text-sm text-gray-400">
+                Tap Start Round to get going
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {rounds.map((round) => {
+                const result = round.playerResults?.[0];
+                const pts = result?.stableford ?? 0;
+                const gross = result?.gross ?? 0;
+                const date = new Date(round.date).toLocaleDateString("en-ZA", {
+                  day: "numeric",
+                  month: "short",
+                });
+
+                return (
+                  <Link
+                    key={round.id}
+                    href={`/round/${round.id}`}
+                    className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md active:scale-[0.99]"
+                  >
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#1a5c2a] text-xl font-black text-white shadow-sm">
+                      {pts}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-bold text-gray-800">
+                        {round.course.name}
+                      </p>
+                      <p className="mt-0.5 text-xs text-gray-400">
+                        {date} \u00b7 {round.players.length} player
+                        {round.players.length !== 1 ? "s" : ""}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-end gap-1.5">
+                      <span className="rounded-full bg-[#1a5c2a]/10 px-3 py-1 text-xs font-bold text-[#1a5c2a]">
+                        {pts} pts
+                      </span>
+                      <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-500">
+                        {gross} gross
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
