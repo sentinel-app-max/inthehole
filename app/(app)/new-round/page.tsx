@@ -344,7 +344,7 @@ function PlayersSettings() {
           className="w-full rounded-2xl py-4 text-base font-black shadow-lg transition-all disabled:opacity-40"
           style={{ background: "#c9a84c", color: "#0f2d18" }}
         >
-          {submitting ? "Creating..." : "⛳ Let\u2019s Play!"}
+          {submitting ? "Creating..." : "⛳ Let's Play!"}
         </button>
       </div>
     </div>

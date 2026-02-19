@@ -132,7 +132,7 @@ export default function LoginPage() {
 
         {/* Toggle */}
         <p className="text-center text-sm text-white/50">
-          {isSignUp ? "Already have an account?" : "Don\u2019t have an account?"}{" "}
+          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
           <button
             type="button"
             onClick={() => {
