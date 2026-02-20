@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithGoogle, signInWithEmail, signUpWithEmail } from "@/lib/firebase/auth";
+import { signInWithGoogle, signInWithEmail, signUpWithEmail, handleRedirectResult } from "@/lib/firebase/auth";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,16 +13,25 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    handleRedirectResult()
+      .then((result) => {
+        if (result) router.push("/");
+      })
+      .catch((err) => {
+        setError("Google sign-in failed. Please try again.");
+        console.error(err);
+      });
+  }, [router]);
+
   const handleGoogle = async () => {
     try {
       setError("");
       setLoading(true);
       await signInWithGoogle();
-      router.push("/");
     } catch (err) {
       setError("Google sign-in failed. Please try again.");
       console.error(err);
-    } finally {
       setLoading(false);
     }
   };

@@ -1,6 +1,7 @@
 import {
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
@@ -9,8 +10,14 @@ import {
 } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
 
-export async function signInWithGoogle(): Promise<UserCredential> {
-  return signInWithPopup(auth, new GoogleAuthProvider());
+const googleProvider = new GoogleAuthProvider();
+
+export async function signInWithGoogle(): Promise<void> {
+  return signInWithRedirect(auth, googleProvider);
+}
+
+export async function handleRedirectResult(): Promise<UserCredential | null> {
+  return getRedirectResult(auth);
 }
 
 export async function signInWithEmail(
