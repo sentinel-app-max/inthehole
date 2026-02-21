@@ -54,7 +54,7 @@ export default function HomePage() {
   }, 0);
   const lastCourse = rounds[0]?.course?.name ?? "—";
 
-  if (loading) {
+  if (loading || !user) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
