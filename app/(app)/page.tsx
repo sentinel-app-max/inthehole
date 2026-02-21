@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="relative z-10 flex flex-col justify-center px-5" style={{ minHeight: "50vh" }}>
           {/* Top bar: logo + avatar */}
           <div className="absolute left-5 top-6">
-            <img src="/images/logo7.png" alt="inthehole" width={48} height={48} />
+            <img src="/images/logo8.svg" alt="inthehole" width={48} height={48} />
           </div>
           {/* Avatar menu */}
           <div ref={menuRef} className="absolute right-5 top-6">

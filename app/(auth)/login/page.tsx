@@ -86,10 +86,10 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center">
           <img
-            src="/images/logo7.png"
+            src="/images/logo8.svg"
             alt="inthehole"
-            width={140}
-            height={140}
+            width={160}
+            height={160}
             className="mx-auto"
           />
           <p className="mt-2 text-lg font-semibold text-white/80">
