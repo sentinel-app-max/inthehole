@@ -85,9 +85,13 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <h1 className="text-5xl font-black tracking-tight text-[#c9a84c]">
-            inthehole
-          </h1>
+          <img
+            src="/images/logo7.png"
+            alt="inthehole"
+            width={140}
+            height={140}
+            className="mx-auto"
+          />
           <p className="mt-2 text-lg font-semibold text-white/80">
             Clean. Score. Perfect.
           </p>

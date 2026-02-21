@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
@@ -9,9 +9,11 @@ import type { Round } from "@/types";
 
 export default function HomePage() {
   const router = useRouter();
-  const { user, loading } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const [rounds, setRounds] = useState<Round[]>([]);
   const [loadingRounds, setLoadingRounds] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -27,7 +29,23 @@ export default function HomePage() {
     });
   }, [user]);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push("/login");
+  };
+
   const firstName = user?.displayName?.split(" ")[0] ?? "Golfer";
+  const initial = (user?.displayName?.[0] ?? user?.email?.[0] ?? "G").toUpperCase();
 
   const totalRounds = rounds.length;
   const bestStableford = rounds.reduce((best, r) => {
@@ -62,6 +80,33 @@ export default function HomePage() {
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
 
         <div className="relative z-10 flex flex-col justify-center px-5" style={{ minHeight: "50vh" }}>
+          {/* Top bar: logo + avatar */}
+          <div className="absolute left-5 top-6">
+            <img src="/images/logo7.png" alt="inthehole" width={48} height={48} />
+          </div>
+          {/* Avatar menu */}
+          <div ref={menuRef} className="absolute right-5 top-6">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c9a84c] text-sm font-bold text-[#0a0a0a] shadow-lg transition-transform active:scale-95"
+            >
+              {initial}
+            </button>
+            {menuOpen && (
+              <div className="absolute right-0 mt-2 w-56 rounded-xl bg-[#1e1e1e] p-3 shadow-2xl border border-white/10">
+                <p className="truncate text-xs text-white/50 px-1">
+                  {user?.email ?? ""}
+                </p>
+                <button
+                  onClick={handleSignOut}
+                  className="mt-2 w-full rounded-lg bg-white/5 px-3 py-2 text-left text-sm font-semibold text-[#e63946] transition-colors hover:bg-white/10"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </div>
+
           <p className="text-sm font-medium text-white/50">
             Howzit, {firstName}! 👋
           </p>

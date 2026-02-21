@@ -20,6 +20,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "inthehole – SA Golf Tracker",
   description: "Track your golf rounds, stableford points, and compete on the leaderboard.",
+  icons: {
+    apple: "/images/logo6.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
