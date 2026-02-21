@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithGoogle, signInWithEmail, signUpWithEmail, handleRedirectResult } from "@/lib/firebase/auth";
+import { signInWithGoogle, signInWithEmail, signUpWithEmail } from "@/lib/firebase/auth";
+import type { AuthError } from "firebase/auth";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,34 +14,32 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    handleRedirectResult()
-      .then((result) => {
-        if (result) router.push("/");
-      })
-      .catch((err) => {
-        setError("Google sign-in failed. Please try again.");
-        console.error(err);
-      });
-  }, [router]);
-
   const handleGoogle = async () => {
+    setLoading(true);
+    setError("");
     try {
-      setError("");
-      setLoading(true);
       await signInWithGoogle();
+      router.push("/");
     } catch (err) {
-      setError("Google sign-in failed. Please try again.");
-      console.error(err);
+      const authErr = err as AuthError;
+      console.error("Google auth error:", authErr);
+      if (authErr.code === "auth/popup-closed-by-user") {
+        setError("");
+      } else if (authErr.code === "auth/popup-blocked") {
+        setError("Popup was blocked. Please allow popups and try again.");
+      } else {
+        setError(authErr.message || "Google sign-in failed.");
+      }
+    } finally {
       setLoading(false);
     }
   };
 
   const handleEmail = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     try {
-      setError("");
-      setLoading(true);
       if (isSignUp) {
         await signUpWithEmail(email, password, displayName);
       } else {
@@ -48,8 +47,21 @@ export default function LoginPage() {
       }
       router.push("/");
     } catch (err) {
-      setError(isSignUp ? "Sign up failed. Please try again." : "Invalid email or password.");
-      console.error(err);
+      const authErr = err as AuthError;
+      console.error("Email auth error:", authErr);
+      if (authErr.code === "auth/wrong-password" || authErr.code === "auth/invalid-credential") {
+        setError("Incorrect password. Please try again.");
+      } else if (authErr.code === "auth/user-not-found") {
+        setError("No account found. Please create one first.");
+      } else if (authErr.code === "auth/email-already-in-use") {
+        setError("Account already exists. Try signing in instead.");
+      } else if (authErr.code === "auth/too-many-requests") {
+        setError("Too many attempts. Please try again later.");
+      } else if (authErr.code === "auth/weak-password") {
+        setError("Password is too weak. Use at least 6 characters.");
+      } else {
+        setError(authErr.message || "Authentication failed.");
+      }
     } finally {
       setLoading(false);
     }
