@@ -169,6 +169,7 @@ function PlayersSettings() {
     reset,
   } = useNewRoundStore();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const canSubmit =
     players.length > 0 &&
@@ -178,6 +179,7 @@ function PlayersSettings() {
   const handleSubmit = async () => {
     if (!course || !user || !canSubmit) return;
     setSubmitting(true);
+    setError("");
 
     const roundId = generateId();
     const round: Round = {
@@ -201,7 +203,9 @@ function PlayersSettings() {
       await saveRound(round);
       reset();
       router.push(`/scorecard/${roundId}`);
-    } catch {
+    } catch (err) {
+      console.error("Create round failed:", err);
+      setError("Failed to create round. Check your connection and try again.");
       setSubmitting(false);
     }
   };
@@ -365,6 +369,11 @@ function PlayersSettings() {
 
       {/* Submit */}
       <div className="fixed bottom-16 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
+        {error && (
+          <p className="mb-2 rounded-lg bg-[#e63946]/20 px-4 py-2 text-center text-sm text-[#e63946]">
+            {error}
+          </p>
+        )}
         <button
           disabled={!canSubmit}
           onClick={handleSubmit}

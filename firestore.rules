@@ -12,7 +12,8 @@ service cloud.firestore {
     }
 
     match /rounds/{roundId} {
-      allow read: if request.auth != null
+      allow list: if request.auth != null;
+      allow get: if request.auth != null
         && (resource.data.userId == request.auth.uid || resource.data.complete == true);
       allow create: if request.auth != null
         && request.resource.data.userId == request.auth.uid;

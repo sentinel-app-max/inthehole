@@ -23,10 +23,16 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!user) return;
-    getUserRounds(user.uid).then((r) => {
-      setRounds(r.slice(0, 8));
-      setLoadingRounds(false);
-    });
+    getUserRounds(user.uid)
+      .then((r) => {
+        setRounds(r.slice(0, 8));
+      })
+      .catch((err) => {
+        console.error("Failed to load rounds:", err);
+      })
+      .finally(() => {
+        setLoadingRounds(false);
+      });
   }, [user]);
 
   useEffect(() => {
