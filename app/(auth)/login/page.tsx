@@ -100,6 +100,16 @@ export default function LoginPage() {
           </p>
         </div>
 
+        {/* Phone mockup */}
+        <div className="flex justify-center">
+          <img
+            src="/images/Phone_App_4.png"
+            alt="App preview"
+            className="h-[340px] w-auto animate-[fadeIn_0.8s_ease-out]"
+            style={{ filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.5))" }}
+          />
+        </div>
+
         {/* Error */}
         {error && (
           <p className="rounded-lg bg-[#e63946]/20 px-4 py-2 text-center text-sm text-[#e63946]">
