@@ -100,7 +100,7 @@ export default function HomePage() {
           <source src="/videos/V2.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay */}
-        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.25)" }} />
 
         <div className="relative z-10 flex flex-col justify-center px-5" style={{ minHeight: "50vh" }}>
           {/* Top bar: logo + avatar */}
