@@ -77,3 +77,11 @@ export interface UserProfile {
   homeClub?: string;
   createdAt: string;
 }
+
+export interface BagClub {
+  name: string;
+  distance: number;
+}
+
+export type WindDirection = "N" | "NE" | "E" | "SE" | "S" | "SW" | "W" | "NW";
+export type WindStrength = "calm" | "light" | "moderate" | "strong";

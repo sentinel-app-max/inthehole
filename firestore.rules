@@ -7,6 +7,10 @@ service cloud.firestore {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
 
+    match /users/{uid}/bag/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
     match /rounds/{roundId} {
       allow read: if request.auth != null
         && (resource.data.userId == request.auth.uid || resource.data.complete == true);

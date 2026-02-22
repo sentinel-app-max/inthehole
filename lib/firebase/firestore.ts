@@ -10,7 +10,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
-import type { Round, UserProfile, LeaderboardEntry } from "@/types";
+import type { Round, UserProfile, LeaderboardEntry, BagClub } from "@/types";
 
 export async function saveRound(round: Round): Promise<string> {
   try {
@@ -68,6 +68,25 @@ export async function getUserProfile(
     return snap.exists() ? (snap.data() as UserProfile) : null;
   } catch (error) {
     console.error("getUserProfile failed:", error);
+    return null;
+  }
+}
+
+export async function saveBag(uid: string, clubs: BagClub[]): Promise<void> {
+  try {
+    await setDoc(doc(db, "users", uid, "bag", "clubs"), { clubs });
+  } catch (error) {
+    console.error("saveBag failed:", error);
+    throw error;
+  }
+}
+
+export async function getBag(uid: string): Promise<BagClub[] | null> {
+  try {
+    const snap = await getDoc(doc(db, "users", uid, "bag", "clubs"));
+    return snap.exists() ? (snap.data().clubs as BagClub[]) : null;
+  } catch (error) {
+    console.error("getBag failed:", error);
     return null;
   }
 }
