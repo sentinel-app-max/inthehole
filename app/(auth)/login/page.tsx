@@ -80,7 +80,7 @@ export default function LoginPage() {
         <source src="/videos/V1.mp4" type="video/mp4" />
       </video>
       {/* Dark overlay */}
-      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.25)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.20)" }} />
 
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
