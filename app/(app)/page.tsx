@@ -211,7 +211,7 @@ export default function HomePage() {
                 return (
                   <Link
                     key={round.id}
-                    href={`/round/${round.id}`}
+                    href={`/scorecard/${round.id}`}
                     className="flex items-center gap-4 rounded-2xl bg-[#1e1e1e] p-4 transition-all hover:bg-[#252525] active:scale-[0.99]"
                   >
                     <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#c9a84c] text-xl font-black text-[#0a0a0a]">
