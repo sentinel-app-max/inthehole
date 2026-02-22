@@ -23,16 +23,33 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!user) return;
+
+    let done = false;
+    const timeout = setTimeout(() => {
+      if (!done) {
+        console.error("getUserRounds timed out after 5 seconds");
+        done = true;
+        setLoadingRounds(false);
+      }
+    }, 5000);
+
     getUserRounds(user.uid)
       .then((r) => {
-        setRounds(r.slice(0, 8));
+        if (!done) {
+          done = true;
+          setRounds(r.slice(0, 8));
+        }
       })
       .catch((err) => {
         console.error("Failed to load rounds:", err);
       })
       .finally(() => {
+        if (!done) done = true;
+        clearTimeout(timeout);
         setLoadingRounds(false);
       });
+
+    return () => clearTimeout(timeout);
   }, [user]);
 
   useEffect(() => {
