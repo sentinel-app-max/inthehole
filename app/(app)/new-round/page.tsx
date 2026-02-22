@@ -170,6 +170,13 @@ function PlayersSettings() {
   } = useNewRoundStore();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [prefilled, setPrefilled] = useState(false);
+
+  // Pre-fill first player name from logged-in user
+  if (!prefilled && user?.displayName && players[0]?.name === "") {
+    updatePlayer(0, "name", user.displayName.split(" ")[0]);
+    setPrefilled(true);
+  }
 
   const canSubmit =
     players.length > 0 &&
