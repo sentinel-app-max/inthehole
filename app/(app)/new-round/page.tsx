@@ -200,7 +200,10 @@ function PlayersSettings() {
     };
 
     try {
-      await saveRound(round);
+      const timeout = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("Save timed out after 10s")), 10000)
+      );
+      await Promise.race([saveRound(round), timeout]);
       reset();
       router.push(`/scorecard/${roundId}`);
     } catch (err) {
