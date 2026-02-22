@@ -296,7 +296,7 @@ export default function ScorecardPage() {
                 <div
                   className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-black ${ptsClass}`}
                 >
-                  {pts !== null ? pts : "–"}
+                  {pts !== null ? pts : "·"}
                 </div>
               </div>
             );
