@@ -201,7 +201,7 @@ function PlayersSettings() {
 
     try {
       const timeout = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error("Save timed out after 10s")), 10000)
+        setTimeout(() => reject(new Error("Save timed out after 30s")), 30000)
       );
       await Promise.race([saveRound(round), timeout]);
       reset();
