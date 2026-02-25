@@ -115,10 +115,10 @@ export default function CoachPage() {
       });
 
       if (!res.ok) {
-        let errorMsg = "Try again.";
+        let errorMsg = "Something went wrong. Try again.";
         try {
           const err = await res.json();
-          errorMsg = err.error || errorMsg;
+          if (err.error) errorMsg = err.error;
         } catch {
           // Response wasn't JSON
         }
@@ -126,7 +126,7 @@ export default function CoachPage() {
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: "assistant",
-            content: `Sorry, something went wrong. ${errorMsg}`,
+            content: errorMsg,
           };
           return updated;
         });

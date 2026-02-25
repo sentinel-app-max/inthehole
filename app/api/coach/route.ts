@@ -10,6 +10,30 @@ interface CoachRequest {
   context: string;
 }
 
+const BUSY_MSG = "Coach is busy right now. Try again in a moment.";
+
+async function callAnthropic(apiKey: string, body: CoachRequest) {
+  return fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 1024,
+      system: body.context,
+      messages: body.messages,
+      stream: true,
+    }),
+  });
+}
+
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export async function POST(req: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -44,27 +68,22 @@ export async function POST(req: NextRequest) {
   );
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1024,
-        system: body.context,
-        messages: body.messages,
-        stream: true,
-      }),
-    });
+    let response = await callAnthropic(apiKey, body);
 
     console.log("[coach] Anthropic response status:", response.status);
     console.log(
       "[coach] Anthropic response headers:",
       Object.fromEntries(response.headers.entries())
     );
+
+    // Retry once on overloaded
+    if (response.status === 529) {
+      const errorBody = await response.text();
+      console.log("[coach] Overloaded, retrying in 2s:", errorBody);
+      await delay(2000);
+      response = await callAnthropic(apiKey, body);
+      console.log("[coach] Retry response status:", response.status);
+    }
 
     if (!response.ok) {
       const errorBody = await response.text();
@@ -73,8 +92,12 @@ export async function POST(req: NextRequest) {
         response.status,
         errorBody
       );
+
+      const isOverloaded =
+        response.status === 529 || errorBody.includes("overloaded");
+
       return NextResponse.json(
-        { error: "AI service error", detail: errorBody },
+        { error: isOverloaded ? BUSY_MSG : "AI service error", detail: errorBody },
         { status: response.status }
       );
     }
