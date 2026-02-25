@@ -152,18 +152,20 @@ export default function CoachPage() {
         const lines = buffer.split("\n");
         buffer = lines.pop() ?? "";
 
-        for (const line of lines) {
+        for (const rawLine of lines) {
+          const line = rawLine.replace(/\r$/, "");
           if (!line.startsWith("data: ")) continue;
           const data = line.slice(6);
           if (data === "[DONE]") continue;
 
           try {
             const parsed = JSON.parse(data);
+            console.log("[coach] SSE event:", parsed.type);
             if (
               parsed.type === "content_block_delta" &&
-              parsed.delta?.text
+              parsed.delta?.type === "text_delta"
             ) {
-              fullText += parsed.delta.text;
+              fullText += parsed.delta.text ?? "";
               setMessages((prev) => {
                 const updated = [...prev];
                 updated[updated.length - 1] = {
@@ -173,8 +175,8 @@ export default function CoachPage() {
                 return updated;
               });
             }
-          } catch {
-            // Skip non-JSON lines
+          } catch (e) {
+            console.log("[coach] Parse skip:", data.slice(0, 80), e);
           }
         }
       }
