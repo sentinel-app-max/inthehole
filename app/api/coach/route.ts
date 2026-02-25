@@ -61,12 +61,20 @@ export async function POST(req: NextRequest) {
     });
 
     console.log("[coach] Anthropic response status:", response.status);
+    console.log(
+      "[coach] Anthropic response headers:",
+      Object.fromEntries(response.headers.entries())
+    );
 
     if (!response.ok) {
-      const error = await response.text();
-      console.error("[coach] Anthropic API error:", response.status, error);
+      const errorBody = await response.text();
+      console.error(
+        "[coach] Anthropic API error body (full):",
+        response.status,
+        errorBody
+      );
       return NextResponse.json(
-        { error: "AI service error" },
+        { error: "AI service error", detail: errorBody },
         { status: response.status }
       );
     }
@@ -81,10 +89,13 @@ export async function POST(req: NextRequest) {
 
     console.log("[coach] Piping stream to client");
 
-    // Transform stream to add logging
+    const decoder = new TextDecoder();
+
+    // Transform stream to log full chunk content
     const transformer = new TransformStream({
       transform(chunk, controller) {
-        console.log("[coach] Chunk size:", chunk.length);
+        const text = decoder.decode(chunk, { stream: true });
+        console.log("[coach] Chunk:", text);
         controller.enqueue(chunk);
       },
     });
