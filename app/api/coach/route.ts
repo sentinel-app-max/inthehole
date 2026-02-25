@@ -13,6 +13,7 @@ interface CoachRequest {
 export async function POST(req: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
+    console.error("[coach] ANTHROPIC_API_KEY not set");
     return NextResponse.json(
       { error: "API key not configured" },
       { status: 500 }
@@ -36,6 +37,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  console.log(
+    "[coach] Calling Anthropic API with",
+    body.messages.length,
+    "messages"
+  );
+
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -53,9 +60,11 @@ export async function POST(req: NextRequest) {
       }),
     });
 
+    console.log("[coach] Anthropic response status:", response.status);
+
     if (!response.ok) {
       const error = await response.text();
-      console.error("Anthropic API error:", response.status, error);
+      console.error("[coach] Anthropic API error:", response.status, error);
       return NextResponse.json(
         { error: "AI service error" },
         { status: response.status }
@@ -63,30 +72,26 @@ export async function POST(req: NextRequest) {
     }
 
     if (!response.body) {
+      console.error("[coach] Response body is null");
       return NextResponse.json(
         { error: "No response stream" },
         { status: 502 }
       );
     }
 
-    const stream = new ReadableStream({
-      async start(controller) {
-        const reader = response.body!.getReader();
-        try {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            controller.enqueue(value);
-          }
-        } catch (err) {
-          console.error("Stream read error:", err);
-        } finally {
-          controller.close();
-        }
+    console.log("[coach] Piping stream to client");
+
+    // Transform stream to add logging
+    const transformer = new TransformStream({
+      transform(chunk, controller) {
+        console.log("[coach] Chunk size:", chunk.length);
+        controller.enqueue(chunk);
       },
     });
 
-    return new Response(stream, {
+    const piped = response.body.pipeThrough(transformer);
+
+    return new Response(piped, {
       headers: {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
@@ -94,7 +99,7 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (err) {
-    console.error("Coach API error:", err);
+    console.error("[coach] Fetch error:", err);
     return NextResponse.json(
       { error: "Failed to reach AI service" },
       { status: 502 }
