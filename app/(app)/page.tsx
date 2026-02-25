@@ -198,6 +198,25 @@ export default function HomePage() {
           <span className="text-white/30 text-lg">›</span>
         </Link>
 
+        {/* AI Golf Coach */}
+        <Link
+          href="/coach"
+          className="flex items-center gap-4 rounded-2xl bg-[#1e1e1e] p-4 border border-[#c9a84c]/20 transition-all hover:bg-[#252525] active:scale-[0.99]"
+        >
+          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#c9a84c]/15">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-bold text-[#c9a84c]">AI Golf Coach</p>
+            <p className="mt-0.5 text-xs text-[#888888]">
+              Ask your coach. Get better.
+            </p>
+          </div>
+          <span className="text-white/30 text-lg">›</span>
+        </Link>
+
         {/* Recent Rounds */}
         <div>
           <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-[#888888]">

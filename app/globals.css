@@ -36,3 +36,17 @@ body {
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   padding-bottom: 4rem;
 }
+
+.prose-coach ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0;
+}
+
+.prose-coach li {
+  margin: 0.15rem 0;
+}
+
+.prose-coach strong {
+  font-weight: 700;
+}

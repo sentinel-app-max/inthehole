@@ -9,7 +9,25 @@ const tabs = [
   { href: "/swing", label: "Swing", icon: "swing" },
   { href: "/leaderboard", label: "Board", icon: "🏆" },
   { href: "/history", label: "History", icon: "📋" },
+  { href: "/coach", label: "Coach", icon: "coach" },
 ] as const;
+
+function CoachIcon({ active }: { active: boolean }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={active ? "#c9a84c" : "#888888"}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
 
 function SwingIcon({ active }: { active: boolean }) {
   return (
@@ -53,6 +71,8 @@ export default function BottomNav() {
             >
               {tab.icon === "swing" ? (
                 <SwingIcon active={active} />
+              ) : tab.icon === "coach" ? (
+                <CoachIcon active={active} />
               ) : (
                 <span className="text-2xl">{tab.icon}</span>
               )}
