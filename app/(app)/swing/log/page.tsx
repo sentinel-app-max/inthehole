@@ -104,7 +104,7 @@ export default function SwingLogPage() {
         shotShape,
         contactQuality: contactQuality!,
         result: result!,
-        notes: notes || undefined,
+        notes: notes || "",
         createdAt: new Date().toISOString(),
       });
 
