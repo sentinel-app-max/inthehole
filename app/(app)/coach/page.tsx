@@ -219,7 +219,7 @@ export default function CoachPage() {
   const showQuickPrompts = messages.length === 0;
 
   return (
-    <div className="flex flex-col h-screen bg-[#0a0a0a]">
+    <div className="flex flex-col h-screen bg-[#0a0a0a] -mt-16 pt-16">
       {/* Header */}
       <div className="flex-shrink-0 px-4 pt-5 pb-3 border-b border-white/5">
         <h1 className="text-xl font-black text-[#c9a84c]">Coach</h1>
@@ -300,7 +300,7 @@ export default function CoachPage() {
       </div>
 
       {/* Input area */}
-      <div className="flex-shrink-0 border-t border-white/5 px-4 py-3 pb-20 bg-[#0a0a0a]">
+      <div className="flex-shrink-0 border-t border-white/5 px-4 py-3 pb-4 bg-[#0a0a0a]">
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
             type="text"

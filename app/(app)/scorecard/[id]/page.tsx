@@ -219,7 +219,7 @@ export default function ScorecardPage() {
         })}
       </div>
 
-      <div className="mx-auto max-w-lg px-4 pb-28 space-y-4 mt-4">
+      <div className="mx-auto max-w-lg px-4 pb-24 space-y-4 mt-4">
         {/* Hole card */}
         <div className="rounded-2xl bg-[#1e1e1e] p-5">
           <div className="flex items-center justify-between">
@@ -331,7 +331,7 @@ export default function ScorecardPage() {
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-16 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
         <div className="flex gap-3">
           <button
             onClick={() => navigateHole("prev")}

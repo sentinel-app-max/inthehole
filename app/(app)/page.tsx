@@ -86,7 +86,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0a0a0a] -mt-16">
       {/* Hero */}
       <div className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
         {/* Background video */}
@@ -150,7 +150,7 @@ export default function HomePage() {
         <div className="h-px bg-[#c9a84c]/20" />
       </div>
 
-      <div className="mx-auto max-w-lg px-4 space-y-5" style={{ paddingBottom: "80px" }}>
+      <div className="mx-auto max-w-lg px-4 space-y-5 pb-8">
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3" style={{ marginTop: "24px" }}>
           <div className="rounded-2xl bg-[#1e1e1e] p-4 text-center">

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Providers from "./providers";
-import BottomNav from "@/components/layout/BottomNav";
+import TopNav from "@/components/layout/TopNav";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "inthehole – SA Golf Tracker",
-  description: "Track your golf rounds, stableford points, and compete on the leaderboard.",
+  description: "Track your golf rounds, stableford points, and improve your game.",
   icons: {
     apple: "/images/logo6.png",
   },
@@ -39,8 +39,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         <Providers>
-          <main className="min-h-screen">{children}</main>
-          <BottomNav />
+          <TopNav />
+          <main className="min-h-screen pt-16">{children}</main>
         </Providers>
       </body>
     </html>

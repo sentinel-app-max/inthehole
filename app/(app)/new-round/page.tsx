@@ -52,7 +52,7 @@ function CourseSelection() {
         <h1 className="mt-1 text-2xl font-black text-white">Choose a Course</h1>
       </div>
 
-      <div className="mx-auto max-w-lg px-4 -mt-1 pb-28 space-y-4">
+      <div className="mx-auto max-w-lg px-4 -mt-1 pb-24 space-y-4">
         {/* Search */}
         <input
           type="text"
@@ -98,7 +98,7 @@ function CourseSelection() {
       </div>
 
       {/* Continue button */}
-      <div className="fixed bottom-16 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
         <button
           disabled={!selected}
           onClick={() => setStep(2)}
@@ -235,7 +235,7 @@ function PlayersSettings() {
         <h1 className="mt-1 text-2xl font-black text-white">Set Up Round</h1>
       </div>
 
-      <div className="mx-auto max-w-lg px-4 -mt-1 pb-28 space-y-4">
+      <div className="mx-auto max-w-lg px-4 -mt-1 pb-24 space-y-4">
         {/* Course summary */}
         {course && (
           <div className="rounded-2xl bg-[#1e1e1e] p-4">
@@ -375,7 +375,7 @@ function PlayersSettings() {
       </div>
 
       {/* Submit */}
-      <div className="fixed bottom-16 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
         {error && (
           <p className="mb-2 rounded-lg bg-[#e63946]/20 px-4 py-2 text-center text-sm text-[#e63946]">
             {error}

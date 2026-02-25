@@ -71,7 +71,7 @@ export default function SwingDashboardPage() {
   // Loading skeleton
   if (fetching) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white pb-28">
+      <div className="min-h-screen bg-[#0a0a0a] text-white pb-8">
         <div className="px-4 pt-6 pb-4">
           <h1 className="text-2xl font-black">Swing Analyser</h1>
           <p className="text-sm text-white/50 mt-1">Loading your data...</p>
@@ -98,7 +98,7 @@ export default function SwingDashboardPage() {
   // Empty / not enough data state
   if (!hasEnoughData) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white pb-28">
+      <div className="min-h-screen bg-[#0a0a0a] text-white pb-8">
         <div className="px-4 pt-6 pb-4">
           <h1 className="text-2xl font-black">Swing Analyser</h1>
         </div>
@@ -147,7 +147,7 @@ export default function SwingDashboardPage() {
 
   // Full dashboard
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pb-36">
+    <div className="min-h-screen bg-[#0a0a0a] text-white pb-24">
       {/* Header */}
       <div className="px-4 pt-6 pb-4">
         <h1 className="text-2xl font-black">Swing Analyser</h1>
@@ -245,7 +245,7 @@ export default function SwingDashboardPage() {
       </div>
 
       {/* Bottom Buttons */}
-      <div className="fixed bottom-16 left-0 right-0 px-4 pb-4 pt-2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent">
+      <div className="fixed bottom-0 left-0 right-0 px-4 pb-4 pt-2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent">
         <div className="flex gap-3">
           <Link
             href="/swing/log"

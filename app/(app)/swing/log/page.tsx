@@ -135,7 +135,7 @@ export default function SwingLogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pb-36">
+    <div className="min-h-screen bg-[#0a0a0a] text-white pb-24">
       {/* Header */}
       <div className="px-4 pt-6 pb-4">
         <h1 className="text-2xl font-black">Log Shot</h1>
@@ -276,7 +276,7 @@ export default function SwingLogPage() {
       </div>
 
       {/* Submit Button */}
-      <div className="fixed bottom-16 left-0 right-0 px-4 pb-4 pt-2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent">
+      <div className="fixed bottom-0 left-0 right-0 px-4 pb-4 pt-2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a] to-transparent">
         <button
           onClick={handleSubmit}
           disabled={!canSubmit}
