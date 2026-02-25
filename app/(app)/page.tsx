@@ -86,23 +86,16 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] -mt-16">
-      {/* Hero */}
-      <div className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/V2.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay */}
-        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.15)" }} />
+    <div className="min-h-screen -mt-16">
+      {/* Background video */}
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Home_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
 
-        <div className="relative z-10 flex flex-col justify-center px-5" style={{ minHeight: "60vh" }}>
+      {/* Hero */}
+      <div className="relative z-10 overflow-hidden" style={{ minHeight: "60vh" }}>
+        <div className="relative flex flex-col justify-center px-5" style={{ minHeight: "60vh" }}>
           {/* Top bar: logo + avatar */}
           <div className="absolute left-5 top-6">
             <img src="/images/logo8.svg" alt="inthehole" width={48} height={48} />

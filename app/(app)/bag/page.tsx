@@ -184,7 +184,12 @@ export default function BagPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] px-4 pt-6" style={{ paddingBottom: "100px" }}>
+    <div className="min-h-screen px-4 pt-6" style={{ paddingBottom: "100px" }}>
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Bag_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10">
       <h1 className="text-2xl font-black text-white">My Bag</h1>
       <p className="mt-1 text-sm text-[#888888]">Club selector &amp; wind calculator</p>
 
@@ -404,6 +409,7 @@ export default function BagPage() {
             <span>No distance change &middot; &#x26A0; warning</span>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

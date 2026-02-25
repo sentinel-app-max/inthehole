@@ -219,7 +219,12 @@ export default function CoachPage() {
   const showQuickPrompts = messages.length === 0;
 
   return (
-    <div className="flex flex-col h-screen bg-[#0a0a0a] -mt-16 pt-16">
+    <div className="h-screen -mt-16">
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Coach.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10 flex flex-col h-full pt-16">
       {/* Header */}
       <div className="flex-shrink-0 px-4 pt-5 pb-3 border-b border-white/5">
         <h1 className="text-xl font-black text-[#c9a84c]">Coach</h1>
@@ -330,6 +335,7 @@ export default function CoachPage() {
             </svg>
           </button>
         </form>
+      </div>
       </div>
     </div>
   );

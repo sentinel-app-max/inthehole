@@ -71,7 +71,12 @@ export default function SwingDashboardPage() {
   // Loading skeleton
   if (fetching) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white pb-8">
+      <div className="min-h-screen text-white pb-8">
+        <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+          <source src="/videos/Swing_1.mp4" type="video/mp4" />
+        </video>
+        <div className="fixed inset-0 bg-black/75" />
+        <div className="relative z-10">
         <div className="px-4 pt-6 pb-4">
           <h1 className="text-2xl font-black">Swing Analyser</h1>
           <p className="text-sm text-white/50 mt-1">Loading your data...</p>
@@ -87,6 +92,7 @@ export default function SwingDashboardPage() {
           <SkeletonClubCard />
           <SkeletonClubCard />
         </div>
+        </div>
       </div>
     );
   }
@@ -98,7 +104,12 @@ export default function SwingDashboardPage() {
   // Empty / not enough data state
   if (!hasEnoughData) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white pb-8">
+      <div className="min-h-screen text-white pb-8">
+        <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+          <source src="/videos/Swing_1.mp4" type="video/mp4" />
+        </video>
+        <div className="fixed inset-0 bg-black/75" />
+        <div className="relative z-10">
         <div className="px-4 pt-6 pb-4">
           <h1 className="text-2xl font-black">Swing Analyser</h1>
         </div>
@@ -141,13 +152,19 @@ export default function SwingDashboardPage() {
             Log Your First Shot
           </Link>
         </div>
+        </div>
       </div>
     );
   }
 
   // Full dashboard
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pb-24">
+    <div className="min-h-screen text-white pb-24">
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Swing_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10">
       {/* Header */}
       <div className="px-4 pt-6 pb-4">
         <h1 className="text-2xl font-black">Swing Analyser</h1>
@@ -260,6 +277,7 @@ export default function SwingDashboardPage() {
             Shot History
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

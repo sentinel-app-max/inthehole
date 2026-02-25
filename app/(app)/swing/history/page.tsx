@@ -203,7 +203,12 @@ export default function SwingHistoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pb-8">
+    <div className="min-h-screen text-white pb-8">
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Swing_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10">
       {/* Header */}
       <div className="px-4 pt-6 pb-2">
         <h1 className="text-2xl font-black">Shot History</h1>
@@ -301,6 +306,7 @@ export default function SwingHistoryPage() {
           </p>
         </div>
       )}
+      </div>
     </div>
   );
 }

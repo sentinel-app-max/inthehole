@@ -135,7 +135,12 @@ export default function SwingLogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pb-24">
+    <div className="min-h-screen text-white pb-24">
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Swing_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10">
       {/* Header */}
       <div className="px-4 pt-6 pb-4">
         <h1 className="text-2xl font-black">Log Shot</h1>
@@ -296,6 +301,7 @@ export default function SwingLogPage() {
           Shot logged
         </div>
       )}
+      </div>
     </div>
   );
 }
