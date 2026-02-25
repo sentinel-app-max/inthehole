@@ -177,6 +177,27 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Swing Analyser */}
+        <Link
+          href="/swing"
+          className="flex items-center gap-4 rounded-2xl bg-[#1e1e1e] p-4 border border-[#c9a84c]/20 transition-all hover:bg-[#252525] active:scale-[0.99]"
+        >
+          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-[#c9a84c]/15">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-bold text-[#c9a84c]">Swing Analyser</p>
+            <p className="mt-0.5 text-xs text-[#888888]">
+              Track your practice, find your patterns.
+            </p>
+          </div>
+          <span className="text-white/30 text-lg">›</span>
+        </Link>
+
         {/* Recent Rounds */}
         <div>
           <h2 className="mb-3 text-xs font-bold uppercase tracking-widest text-[#888888]">

@@ -6,9 +6,29 @@ import { usePathname } from "next/navigation";
 const tabs = [
   { href: "/", label: "Home", icon: "🏌️" },
   { href: "/bag", label: "My Bag", icon: "\uD83C\uDFAF" },
+  { href: "/swing", label: "Swing", icon: "swing" },
   { href: "/leaderboard", label: "Board", icon: "🏆" },
   { href: "/history", label: "History", icon: "📋" },
 ] as const;
+
+function SwingIcon({ active }: { active: boolean }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={active ? "#c9a84c" : "#888888"}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
+}
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -19,7 +39,10 @@ export default function BottomNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#0a0a0a] pb-[env(safe-area-inset-bottom)]">
       <div className="flex items-center justify-around h-16">
         {tabs.map((tab) => {
-          const active = pathname === tab.href;
+          const active =
+            tab.href === "/"
+              ? pathname === "/"
+              : pathname === tab.href || pathname.startsWith(tab.href + "/");
           return (
             <Link
               key={tab.href}
@@ -28,7 +51,11 @@ export default function BottomNav() {
                 active ? "text-[#c9a84c]" : "text-[#888888]"
               }`}
             >
-              <span className="text-2xl">{tab.icon}</span>
+              {tab.icon === "swing" ? (
+                <SwingIcon active={active} />
+              ) : (
+                <span className="text-2xl">{tab.icon}</span>
+              )}
               {tab.label}
             </Link>
           );

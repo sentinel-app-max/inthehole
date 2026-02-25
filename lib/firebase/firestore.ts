@@ -4,13 +4,20 @@ import {
   setDoc,
   getDoc,
   getDocs,
+  deleteDoc,
   query,
   where,
   orderBy,
   limit,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
-import type { Round, UserProfile, LeaderboardEntry, BagClub } from "@/types";
+import type {
+  Round,
+  UserProfile,
+  LeaderboardEntry,
+  BagClub,
+  SwingSession,
+} from "@/types";
 
 export async function saveRound(round: Round): Promise<string> {
   try {
@@ -88,6 +95,50 @@ export async function getBag(uid: string): Promise<BagClub[] | null> {
   } catch (error) {
     console.error("getBag failed:", error);
     return null;
+  }
+}
+
+export async function saveSwingSession(
+  userId: string,
+  session: SwingSession
+): Promise<string> {
+  try {
+    const ref = doc(db, "users", userId, "swingSessions", session.id);
+    await setDoc(ref, session);
+    return session.id;
+  } catch (error) {
+    console.error("saveSwingSession failed:", error);
+    throw error;
+  }
+}
+
+export async function getSwingSessions(
+  userId: string,
+  maxResults?: number
+): Promise<SwingSession[]> {
+  try {
+    const q = query(
+      collection(db, "users", userId, "swingSessions"),
+      orderBy("createdAt", "desc"),
+      ...(maxResults ? [limit(maxResults)] : [])
+    );
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => d.data() as SwingSession);
+  } catch (error) {
+    console.error("getSwingSessions failed:", error);
+    return [];
+  }
+}
+
+export async function deleteSwingSession(
+  userId: string,
+  sessionId: string
+): Promise<void> {
+  try {
+    await deleteDoc(doc(db, "users", userId, "swingSessions", sessionId));
+  } catch (error) {
+    console.error("deleteSwingSession failed:", error);
+    throw error;
   }
 }
 

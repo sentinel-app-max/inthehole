@@ -85,3 +85,46 @@ export interface BagClub {
 
 export type WindDirection = "N" | "NE" | "E" | "SE" | "S" | "SW" | "W" | "NW";
 export type WindStrength = "calm" | "light" | "moderate" | "strong";
+
+export type ShotShape =
+  | "straight"
+  | "fade"
+  | "draw"
+  | "slice"
+  | "hook"
+  | "push"
+  | "pull";
+
+export type ContactQuality =
+  | "thin"
+  | "fat"
+  | "topped"
+  | "pure"
+  | "toe"
+  | "heel";
+
+export type ShotResult = "good" | "ok" | "miss";
+
+export interface SwingSession {
+  id: string;
+  userId: string;
+  date: string;
+  club: string;
+  targetDistance: number;
+  actualDistance: number;
+  shotShape: ShotShape;
+  contactQuality: ContactQuality;
+  result: ShotResult;
+  notes?: string;
+  createdAt: string;
+}
+
+export interface SwingAnalysis {
+  totalShots: number;
+  pureRate: number;
+  mostCommonMiss: string;
+  mostCommonBadContact: string;
+  bestClub: string;
+  worstClub: string;
+  avgDistanceVariance: number;
+}
