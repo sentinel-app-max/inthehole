@@ -17,6 +17,21 @@ const DIRECTIONS: WindDirection[] = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 const STRENGTHS: WindStrength[] = ["calm", "light", "moderate", "strong"];
 const DEFAULT_ZOOM = 18;
 
+/** Bearing in degrees from `from` to `to` (0 = north, 90 = east). */
+function computeBearing(
+  from: { lat: number; lng: number },
+  to: { lat: number; lng: number }
+): number {
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const φ1 = toRad(from.lat);
+  const φ2 = toRad(to.lat);
+  const Δλ = toRad(to.lng - from.lng);
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x =
+    Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
 // ── Google Maps Loader ──────────────────────────────────────────────
 
 let mapsPromise: Promise<void> | null = null;
@@ -231,6 +246,15 @@ export default function RangefinderPage() {
           });
         }
         setDistance(haversineDistance(pPos, target));
+
+        // Rotate to classic golf view: player at bottom, flag at top
+        const bearing = computeBearing(pPos, target);
+        map.setHeading(bearing);
+        map.setTilt(45);
+        map.setCenter({
+          lat: (pPos.lat + target.lat) / 2,
+          lng: (pPos.lng + target.lng) / 2,
+        });
       }
     });
   }, [mapsReady, playerPos]);
@@ -243,6 +267,15 @@ export default function RangefinderPage() {
     if (targetPos && lineRef.current) {
       lineRef.current.setPath([playerPos, targetPos]);
       setDistance(haversineDistance(playerPos, targetPos));
+
+      // Re-rotate to keep golf-hole view aligned
+      if (mapRef.current) {
+        mapRef.current.setHeading(computeBearing(playerPos, targetPos));
+        mapRef.current.setCenter({
+          lat: (playerPos.lat + targetPos.lat) / 2,
+          lng: (playerPos.lng + targetPos.lng) / 2,
+        });
+      }
     }
   }, [playerPos, targetPos]);
 
@@ -283,8 +316,8 @@ export default function RangefinderPage() {
         )}
 
         {/* Map */}
-        <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-          <div ref={mapContainerRef} className="h-[300px] w-full bg-[#1e1e1e]">
+        <div className="mt-4 overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
+          <div ref={mapContainerRef} className="h-[60vh] w-full bg-[#1e1e1e]">
             {!mapsReady && (
               <div className="flex h-full items-center justify-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
