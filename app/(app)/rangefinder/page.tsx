@@ -85,14 +85,24 @@ export default function RangefinderPage() {
   useEffect(() => {
     if (!user) return;
     async function loadData() {
-      const [bag, sessions] = await Promise.all([
-        getBag(user!.uid),
-        getSwingSessions(user!.uid),
-      ]);
-      if (bag && bag.length > 0) {
-        setClubs(enrichBagWithSwingData(bag, sessions));
+      try {
+        console.log("[rangefinder] loading bag for uid:", user!.uid);
+        const [bag, sessions] = await Promise.all([
+          getBag(user!.uid),
+          getSwingSessions(user!.uid),
+        ]);
+        console.log("[rangefinder] getBag result:", bag);
+        console.log("[rangefinder] bag is", bag && bag.length > 0 ? `populated (${bag.length} clubs)` : "empty or null");
+        if (bag && bag.length > 0) {
+          const enriched = enrichBagWithSwingData(bag, sessions);
+          console.log("[rangefinder] enriched clubs:", enriched.length);
+          setClubs(enriched);
+        }
+      } catch (err) {
+        console.error("[rangefinder] loadData failed:", err);
+      } finally {
+        setLoadingData(false);
       }
-      setLoadingData(false);
     }
     loadData();
   }, [user]);
@@ -104,30 +114,46 @@ export default function RangefinderPage() {
       .catch((err) => setGpsError(err.message));
   }, []);
 
-  // Get GPS position
+  // Get GPS position — try high accuracy first, fall back to low accuracy
   useEffect(() => {
     if (!navigator.geolocation) {
       setGpsError("Geolocation not supported by your browser");
       return;
     }
 
-    const watchId = navigator.geolocation.watchPosition(
-      (pos) => {
-        setPlayerPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setGpsError(null);
-      },
-      (err) => {
-        const msgs: Record<number, string> = {
-          1: "Location access denied. Enable GPS in your browser settings.",
-          2: "Location unavailable. Check your GPS signal.",
-          3: "Location request timed out. Try again.",
-        };
-        setGpsError(msgs[err.code] ?? "Could not get your location.");
-      },
+    const watchIds: number[] = [];
+
+    const onSuccess = (pos: GeolocationPosition) => {
+      setPlayerPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      setGpsError(null);
+    };
+
+    const onError = (err: GeolocationPositionError) => {
+      // Permission denied — no fallback will help
+      if (err.code === 1) {
+        setGpsError("Location access denied. Enable GPS in your browser settings.");
+        return;
+      }
+      // Position unavailable or timeout — fall back to low accuracy
+      setGpsError("Getting approximate location...");
+      const fallbackId = navigator.geolocation.watchPosition(
+        onSuccess,
+        () => {
+          setGpsError("Location unavailable. Check your GPS signal.");
+        },
+        { enableHighAccuracy: false, maximumAge: 30000, timeout: 15000 }
+      );
+      watchIds.push(fallbackId);
+    };
+
+    const mainId = navigator.geolocation.watchPosition(
+      onSuccess,
+      onError,
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
     );
+    watchIds.push(mainId);
 
-    return () => navigator.geolocation.clearWatch(watchId);
+    return () => watchIds.forEach((id) => navigator.geolocation.clearWatch(id));
   }, []);
 
   // Initialise map
