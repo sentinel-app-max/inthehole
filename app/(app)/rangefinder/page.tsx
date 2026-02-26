@@ -130,8 +130,9 @@ export default function RangefinderPage() {
       .catch((err) => setGpsError(err.message));
   }, []);
 
-  // Get GPS position — try high accuracy first, fall back to low accuracy
+  // Get GPS position — wait for map to load, then request location
   useEffect(() => {
+    if (!mapsReady) return;
     if (!navigator.geolocation) {
       setGpsError("Geolocation not supported by your browser");
       return;
@@ -173,7 +174,7 @@ export default function RangefinderPage() {
     watchIds.push(mainId);
 
     return () => watchIds.forEach((id) => navigator.geolocation.clearWatch(id));
-  }, []);
+  }, [mapsReady]);
 
   // Initialise map
   useEffect(() => {
