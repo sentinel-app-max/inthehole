@@ -364,7 +364,7 @@ export default function RangefinderPage() {
         )}
 
         {/* Map */}
-        <div className="mt-4 mx-auto max-w-sm overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
+        <div className="mt-4 mx-auto max-w-sm overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a] relative">
           <div ref={mapContainerRef} className="h-[65vh] w-full bg-[#1e1e1e]">
             {!mapsReady && (
               <div className="flex h-full items-center justify-center">
@@ -372,6 +372,7 @@ export default function RangefinderPage() {
               </div>
             )}
           </div>
+          <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
         </div>
 
         {/* Distance Display */}
