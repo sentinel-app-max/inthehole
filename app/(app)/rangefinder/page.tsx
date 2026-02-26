@@ -238,9 +238,9 @@ export default function RangefinderPage() {
         } else {
           lineRef.current = new google.maps.Polyline({
             path: [pPos, target],
-            strokeColor: "#c9a84c",
+            strokeColor: "#ffffff",
             strokeWeight: 2,
-            strokeOpacity: 0.8,
+            strokeOpacity: 1,
             geodesic: true,
             map,
           });
