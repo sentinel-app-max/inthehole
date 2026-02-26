@@ -78,6 +78,7 @@ export default function RangefinderPage() {
   const mapRef = useRef<google.maps.Map | null>(null);
   const playerMarkerRef = useRef<google.maps.Marker | null>(null);
   const targetMarkerRef = useRef<google.maps.Marker | null>(null);
+  const distLabelRef = useRef<google.maps.Marker | null>(null);
   const lineRef = useRef<google.maps.Polyline | null>(null);
 
   const [mapsReady, setMapsReady] = useState(false);
@@ -212,20 +213,22 @@ export default function RangefinderPage() {
       const target = { lat: e.latLng.lat(), lng: e.latLng.lng() };
       setTargetPos(target);
 
+      const crosshairIcon = {
+        path: "M -8 0 L -3 0 M 3 0 L 8 0 M 0 -8 L 0 -3 M 0 3 L 0 8",
+        strokeColor: "#c9a84c",
+        strokeWeight: 2.5,
+        fillOpacity: 0,
+        scale: 1.5,
+        anchor: new google.maps.Point(0, 0),
+      };
+
       if (targetMarkerRef.current) {
         targetMarkerRef.current.setPosition(target);
       } else {
         targetMarkerRef.current = new google.maps.Marker({
           position: target,
           map,
-          icon: {
-            path: "M 0,0 L 0,-30 L 15,-25 L 0,-20 Z",
-            fillColor: "#c9a84c",
-            fillOpacity: 1,
-            strokeColor: "#ffffff",
-            strokeWeight: 1,
-            anchor: new google.maps.Point(0, 0),
-          },
+          icon: crosshairIcon,
           title: "Target",
         });
       }
@@ -245,7 +248,38 @@ export default function RangefinderPage() {
             map,
           });
         }
-        setDistance(haversineDistance(pPos, target));
+        const dist = haversineDistance(pPos, target);
+        setDistance(dist);
+
+        // Floating distance label on map
+        const labelText = `${dist}m`;
+        if (distLabelRef.current) {
+          distLabelRef.current.setPosition(target);
+          distLabelRef.current.setLabel({
+            text: labelText,
+            color: "#ffffff",
+            fontSize: "13px",
+            fontWeight: "700",
+            className: "dist-pill",
+          });
+        } else {
+          distLabelRef.current = new google.maps.Marker({
+            position: target,
+            map,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 0,
+              labelOrigin: new google.maps.Point(0, -20),
+            },
+            label: {
+              text: labelText,
+              color: "#ffffff",
+              fontSize: "13px",
+              fontWeight: "700",
+              className: "dist-pill",
+            },
+          });
+        }
 
         // Rotate to classic golf view: player at bottom, flag at top
         const bearing = computeBearing(pPos, target);
@@ -266,7 +300,19 @@ export default function RangefinderPage() {
 
     if (targetPos && lineRef.current) {
       lineRef.current.setPath([playerPos, targetPos]);
-      setDistance(haversineDistance(playerPos, targetPos));
+      const dist = haversineDistance(playerPos, targetPos);
+      setDistance(dist);
+
+      // Update floating distance label
+      if (distLabelRef.current) {
+        distLabelRef.current.setLabel({
+          text: `${dist}m`,
+          color: "#ffffff",
+          fontSize: "13px",
+          fontWeight: "700",
+          className: "dist-pill",
+        });
+      }
 
       // Re-rotate to keep golf-hole view aligned
       if (mapRef.current) {
@@ -298,6 +344,7 @@ export default function RangefinderPage() {
 
   return (
     <div className="min-h-screen" style={{ paddingBottom: "100px" }}>
+      <style>{`.dist-pill{background:rgba(0,0,0,.85);padding:2px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.2)}`}</style>
       <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover pointer-events-none">
         <source src="/videos/Swing_1.mp4" type="video/mp4" />
       </video>
