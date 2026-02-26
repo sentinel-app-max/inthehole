@@ -221,7 +221,7 @@ export default function CoachPage() {
   return (
     <div className="h-screen -mt-16">
       <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
-        <source src="/videos/Coach_7.mp4" type="video/mp4" />
+        <source src="/videos/Coach_8.mp4" type="video/mp4" />
       </video>
       <div className="fixed inset-0 bg-black/75" />
       <div className="relative z-10 flex flex-col h-full pt-16">
