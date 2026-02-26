@@ -236,10 +236,10 @@ export default function RangefinderPage() {
 
   return (
     <div className="min-h-screen" style={{ paddingBottom: "100px" }}>
-      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover pointer-events-none">
         <source src="/videos/Swing_1.mp4" type="video/mp4" />
       </video>
-      <div className="fixed inset-0 bg-black/75" />
+      <div className="fixed inset-0 bg-black/75 pointer-events-none" />
       <div className="relative z-10 px-4 pt-6">
         <h1 className="text-2xl font-black text-white">Rangefinder</h1>
         <p className="mt-1 text-sm text-[#888888]">
