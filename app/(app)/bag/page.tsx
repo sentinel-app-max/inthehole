@@ -179,7 +179,7 @@ export default function BagPage() {
         {/* Suggest button */}
         <button
           onClick={handleSuggest}
-          className="mt-4 w-full rounded-2xl bg-[#c9a84c] py-3 text-sm font-black text-[#0a0a0a] shadow-lg transition-all hover:brightness-110 active:scale-[0.98]"
+          className="mt-4 mx-auto w-1/4 rounded-2xl bg-[#c9a84c] py-3 text-sm font-black text-[#0a0a0a] shadow-lg transition-all hover:brightness-110 active:scale-[0.98] block"
         >
           Suggest Club
         </button>
