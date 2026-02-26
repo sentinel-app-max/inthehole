@@ -49,8 +49,8 @@ export default function TopNav() {
             <img
               src="/images/logo8.svg"
               alt="inthehole"
-              width={36}
-              height={36}
+              width={40}
+              height={40}
             />
           </Link>
 

@@ -96,10 +96,6 @@ export default function HomePage() {
       {/* Hero */}
       <div className="relative z-10 overflow-hidden" style={{ minHeight: "60vh" }}>
         <div className="relative flex flex-col justify-center px-5" style={{ minHeight: "60vh" }}>
-          {/* Top bar: logo + avatar */}
-          <div className="absolute left-5 top-20">
-            <img src="/images/logo8.svg" alt="inthehole" width={48} height={48} />
-          </div>
           {/* Avatar menu */}
           <div ref={menuRef} className="absolute right-5 top-20">
             <button
