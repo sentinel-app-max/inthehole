@@ -185,18 +185,14 @@ export default function RangefinderPage() {
     const map = new google.maps.Map(mapContainerRef.current, {
       center,
       zoom: DEFAULT_ZOOM,
-      mapTypeId: "hybrid",
+      mapTypeId: "satellite",
       disableDefaultUI: true,
-      zoomControl: true,
+      zoomControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
       gestureHandling: "greedy",
       tilt: 0,
-      styles: [
-        { elementType: "labels", stylers: [{ visibility: "off" }] },
-        { featureType: "road", stylers: [{ visibility: "off" }] },
-        { featureType: "transit", stylers: [{ visibility: "off" }] },
-        { featureType: "poi", stylers: [{ visibility: "off" }] },
-        { featureType: "administrative", stylers: [{ visibility: "off" }] },
-      ],
     });
     mapRef.current = map;
 
