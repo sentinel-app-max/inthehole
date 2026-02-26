@@ -131,7 +131,7 @@ export default function HomePage() {
           </h1>
           <Link
             href="/new-round"
-            className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-black tracking-wide shadow-lg transition-all hover:brightness-110 active:scale-[0.98] bg-[#c9a84c] text-[#0a0a0a]"
+            className="mt-4 mx-auto flex w-full max-w-sm items-center justify-center gap-2 rounded-2xl py-4 text-base font-black tracking-wide shadow-lg transition-all hover:brightness-110 active:scale-[0.98] bg-[#c9a84c] text-[#0a0a0a]"
           >
             ⛳ Start New Round
           </Link>
