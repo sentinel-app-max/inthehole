@@ -97,11 +97,11 @@ export default function HomePage() {
       <div className="relative z-10 overflow-hidden" style={{ minHeight: "60vh" }}>
         <div className="relative flex flex-col justify-center px-5" style={{ minHeight: "60vh" }}>
           {/* Top bar: logo + avatar */}
-          <div className="absolute left-5 top-6">
+          <div className="absolute left-5 top-20">
             <img src="/images/logo8.svg" alt="inthehole" width={48} height={48} />
           </div>
           {/* Avatar menu */}
-          <div ref={menuRef} className="absolute right-5 top-6">
+          <div ref={menuRef} className="absolute right-5 top-20">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c9a84c] text-sm font-bold text-[#0a0a0a] shadow-lg transition-transform active:scale-95"

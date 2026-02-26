@@ -297,7 +297,7 @@ export default function SwingLogPage() {
 
       {/* Toast */}
       {toast && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 bg-[#1e1e1e] border border-[#c9a84c] text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg animate-fade-in z-50">
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 bg-[#1e1e1e] border border-[#c9a84c] text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg animate-fade-in z-50">
           Shot logged
         </div>
       )}
