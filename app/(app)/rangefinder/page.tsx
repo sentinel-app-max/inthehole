@@ -12,10 +12,12 @@ import {
   type Recommendation,
 } from "@/lib/golf/distance";
 import type { BagClub, WindDirection, WindStrength } from "@/types";
+import { SA_COURSES } from "@/lib/courses/data";
 
 const DIRECTIONS: WindDirection[] = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 const STRENGTHS: WindStrength[] = ["calm", "light", "moderate", "strong"];
 const DEFAULT_ZOOM = 18;
+const COURSE_ZOOM = 17;
 
 /** Bearing in degrees from `from` to `to` (0 = north, 90 = east). */
 function computeBearing(
@@ -91,6 +93,7 @@ export default function RangefinderPage() {
   const [windStr, setWindStr] = useState<WindStrength>("calm");
   const [rec, setRec] = useState<Recommendation | null>(null);
   const [loadingData, setLoadingData] = useState(true);
+  const [selectedCourse, setSelectedCourse] = useState("");
 
   // Auth guard
   useEffect(() => {
@@ -358,6 +361,33 @@ export default function RangefinderPage() {
         <p className="mt-1 text-sm text-[#888888]">
           Tap the map to measure distance to the pin
         </p>
+
+        {/* Course Selector */}
+        <div className="mt-3">
+          <select
+            value={selectedCourse}
+            onChange={(e) => {
+              const id = e.target.value;
+              setSelectedCourse(id);
+              if (!id || !mapRef.current) return;
+              const course = SA_COURSES.find((c) => c.id === id);
+              if (course) {
+                mapRef.current.setCenter({ lat: course.lat, lng: course.lng });
+                mapRef.current.setZoom(COURSE_ZOOM);
+                mapRef.current.setHeading(0);
+                mapRef.current.setTilt(0);
+              }
+            }}
+            className="w-full rounded-xl border border-white/10 bg-[#1e1e1e] px-4 py-3 text-sm font-bold text-white outline-none focus:border-[#c9a84c]/50 appearance-none"
+          >
+            <option value="">My Location</option>
+            {SA_COURSES.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {/* GPS Error */}
         {gpsError && (

@@ -18,6 +18,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 74.2,
     slope: 137,
+    lat: -26.1725,
+    lng: 28.0769,
     holes: [
       { hole: 1,  par: 4, si: 7  },
       { hole: 2,  par: 4, si: 1  },
@@ -47,6 +49,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.1,
     slope: 132,
+    lat: -26.1631,
+    lng: 28.1728,
     holes: [
       { hole: 1,  par: 4, si: 9  },
       { hole: 2,  par: 5, si: 3  },
@@ -76,6 +80,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.5,
     slope: 129,
+    lat: -26.1339,
+    lng: 27.9558,
     holes: [
       { hole: 1,  par: 4, si: 11 },
       { hole: 2,  par: 3, si: 15 },
@@ -105,6 +111,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.8,
     slope: 134,
+    lat: -26.1408,
+    lng: 28.0389,
     holes: [
       { hole: 1,  par: 4, si: 5  },
       { hole: 2,  par: 5, si: 1  },
@@ -134,6 +142,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.0,
     slope: 128,
+    lat: -25.8738,
+    lng: 28.2040,
     holes: [
       { hole: 1,  par: 4, si: 8  },
       { hole: 2,  par: 5, si: 4  },
@@ -163,6 +173,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 74.5,
     slope: 139,
+    lat: -26.0453,
+    lng: 28.2907,
     holes: [
       { hole: 1,  par: 4, si: 10 },
       { hole: 2,  par: 4, si: 2  },
@@ -192,6 +204,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 74.8,
     slope: 140,
+    lat: -29.8561,
+    lng: 31.0352,
     holes: [
       { hole: 1,  par: 4, si: 3  },
       { hole: 2,  par: 4, si: 9  },
@@ -221,6 +235,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.6,
     slope: 135,
+    lat: -29.5478,
+    lng: 31.1972,
     holes: [
       { hole: 1,  par: 5, si: 5  },
       { hole: 2,  par: 4, si: 1  },
@@ -250,6 +266,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 76.1,
     slope: 144,
+    lat: -25.3470,
+    lng: 27.1005,
     holes: [
       { hole: 1,  par: 4, si: 4  },
       { hole: 2,  par: 5, si: 2  },
@@ -279,6 +297,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 75.3,
     slope: 141,
+    lat: -33.9540,
+    lng: 22.4050,
     holes: [
       { hole: 1,  par: 4, si: 6  },
       { hole: 2,  par: 4, si: 2  },
@@ -308,6 +328,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.9,
     slope: 136,
+    lat: -33.8210,
+    lng: 18.9800,
     holes: [
       { hole: 1,  par: 4, si: 7  },
       { hole: 2,  par: 5, si: 3  },
@@ -337,6 +359,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 71.8,
     slope: 127,
+    lat: -34.0835,
+    lng: 18.4440,
     holes: [
       { hole: 1,  par: 4, si: 9  },
       { hole: 2,  par: 4, si: 3  },
@@ -366,6 +390,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 75.8,
     slope: 142,
+    lat: -25.4422,
+    lng: 31.5345,
     holes: [
       { hole: 1,  par: 4, si: 5  },
       { hole: 2,  par: 4, si: 1  },
@@ -395,6 +421,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.4,
     slope: 133,
+    lat: -33.9978,
+    lng: 25.6778,
     holes: [
       { hole: 1,  par: 4, si: 8  },
       { hole: 2,  par: 5, si: 4  },
@@ -424,6 +452,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.8,
     slope: 130,
+    lat: -30.3720,
+    lng: 30.6789,
     holes: [
       { hole: 1,  par: 4, si: 6  },
       { hole: 2,  par: 4, si: 2  },
@@ -453,6 +483,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 71.5,
     slope: 125,
+    lat: -26.1089,
+    lng: 28.2264,
     holes: [
       { hole: 1,  par: 5, si: 9  },
       { hole: 2,  par: 4, si: 5  },
@@ -482,6 +514,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.4,
     slope: 135,
+    lat: -26.1853,
+    lng: 28.0714,
     holes: [
       { hole: 1,  par: 4, si: 4  },
       { hole: 2,  par: 5, si: 18 },
@@ -511,6 +545,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.5,
     slope: 133,
+    lat: -26.1639,
+    lng: 28.0478,
     holes: [
       { hole: 1,  par: 4, si: 10 },
       { hole: 2,  par: 4, si: 2  },
@@ -540,6 +576,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.0,
     slope: 130,
+    lat: -26.1565,
+    lng: 28.0200,
     holes: [
       { hole: 1,  par: 5, si: 17 },
       { hole: 2,  par: 4, si: 7  },
@@ -569,6 +607,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 71.5,
     slope: 128,
+    lat: -26.0572,
+    lng: 28.0186,
     holes: [
       { hole: 1,  par: 5, si: 14 },
       { hole: 2,  par: 5, si: 8  },
@@ -598,6 +638,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.0,
     slope: 130,
+    lat: -26.1649,
+    lng: 28.3426,
     holes: [
       { hole: 1,  par: 5, si: 15 },
       { hole: 2,  par: 4, si: 7  },
@@ -627,6 +669,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 71.0,
     slope: 126,
+    lat: -26.1828,
+    lng: 28.2974,
     holes: [
       { hole: 1,  par: 4, si: 7  },
       { hole: 2,  par: 5, si: 3  },
@@ -656,6 +700,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 71,
     rating: 70.0,
     slope: 122,
+    lat: -26.1099,
+    lng: 28.2183,
     holes: [
       { hole: 1,  par: 5, si: 4  },
       { hole: 2,  par: 4, si: 16 },
@@ -685,6 +731,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 71,
     rating: 70.5,
     slope: 124,
+    lat: -26.2653,
+    lng: 28.1072,
     holes: [
       { hole: 1,  par: 4, si: 3  },
       { hole: 2,  par: 4, si: 9  },
@@ -714,6 +762,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.0,
     slope: 128,
+    lat: -25.9782,
+    lng: 28.0582,
     holes: [
       { hole: 1,  par: 4, si: 11 },
       { hole: 2,  par: 4, si: 5  },
@@ -743,6 +793,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 70.0,
     slope: 121,
+    lat: -25.8849,
+    lng: 28.2238,
     holes: [
       { hole: 1,  par: 4, si: 3  },
       { hole: 2,  par: 4, si: 13 },
@@ -772,6 +824,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.5,
     slope: 131,
+    lat: -25.7846,
+    lng: 28.2528,
     holes: [
       { hole: 1,  par: 4, si: 9  },
       { hole: 2,  par: 5, si: 5  },
@@ -801,6 +855,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.0,
     slope: 131,
+    lat: -25.7899,
+    lng: 28.2224,
     holes: [
       { hole: 1,  par: 4, si: 7  },
       { hole: 2,  par: 5, si: 13 },
@@ -830,6 +886,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.5,
     slope: 130,
+    lat: -25.8302,
+    lng: 28.1608,
     holes: [
       { hole: 1,  par: 4, si: 5  },
       { hole: 2,  par: 4, si: 9  },
@@ -859,6 +917,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.5,
     slope: 135,
+    lat: -25.9390,
+    lng: 28.1131,
     holes: [
       { hole: 1,  par: 4, si: 16 },
       { hole: 2,  par: 3, si: 10 },
@@ -888,6 +948,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 72.5,
     slope: 133,
+    lat: -25.9066,
+    lng: 27.9205,
     holes: [
       { hole: 1,  par: 5, si: 8  },
       { hole: 2,  par: 4, si: 4  },
@@ -917,6 +979,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 70.5,
     slope: 124,
+    lat: -25.8241,
+    lng: 28.3061,
     holes: [
       { hole: 1,  par: 4, si: 7  },
       { hole: 2,  par: 4, si: 3  },
@@ -946,6 +1010,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 70.0,
     slope: 120,
+    lat: -25.9840,
+    lng: 27.9968,
     holes: [
       { hole: 1,  par: 4, si: 14 },
       { hole: 2,  par: 5, si: 8  },
@@ -975,6 +1041,8 @@ const RAW: Omit<Course, "tees">[] = [
     par: 72,
     rating: 73.0,
     slope: 137,
+    lat: -25.9724,
+    lng: 27.9959,
     holes: [
       { hole: 1,  par: 4, si: 12 },
       { hole: 2,  par: 4, si: 6  },
@@ -994,6 +1062,37 @@ const RAW: Omit<Course, "tees">[] = [
       { hole: 16, par: 5, si: 13 },
       { hole: 17, par: 4, si: 5  },
       { hole: 18, par: 4, si: 11 },
+    ],
+  },
+  {
+    id: "jackal-creek",
+    name: "Jackal Creek Golf Estate",
+    city: "Honeydew",
+    province: "Gauteng",
+    par: 72,
+    rating: 72.1,
+    slope: 151,
+    lat: -26.0567,
+    lng: 27.9206,
+    holes: [
+      { hole: 1,  par: 5, si: 2  },
+      { hole: 2,  par: 4, si: 6  },
+      { hole: 3,  par: 3, si: 10 },
+      { hole: 4,  par: 4, si: 4  },
+      { hole: 5,  par: 4, si: 8  },
+      { hole: 6,  par: 5, si: 16 },
+      { hole: 7,  par: 3, si: 12 },
+      { hole: 8,  par: 4, si: 14 },
+      { hole: 9,  par: 5, si: 18 },
+      { hole: 10, par: 4, si: 17 },
+      { hole: 11, par: 4, si: 15 },
+      { hole: 12, par: 3, si: 7  },
+      { hole: 13, par: 4, si: 13 },
+      { hole: 14, par: 4, si: 1  },
+      { hole: 15, par: 3, si: 5  },
+      { hole: 16, par: 4, si: 11 },
+      { hole: 17, par: 4, si: 9  },
+      { hole: 18, par: 5, si: 3  },
     ],
   },
 ];

@@ -20,6 +20,8 @@ export interface Course {
   par: number;
   rating: number;
   slope: number;
+  lat: number;
+  lng: number;
   holes: Hole[];
   tees: TeeDatum[];
 }
