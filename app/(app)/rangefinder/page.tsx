@@ -1,0 +1,377 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
+import { getBag, getSwingSessions } from "@/lib/firebase/firestore";
+import {
+  haversineDistance,
+  adjustDistance,
+  recommendClub,
+  enrichBagWithSwingData,
+  type Recommendation,
+} from "@/lib/golf/distance";
+import type { BagClub, WindDirection, WindStrength } from "@/types";
+
+const DIRECTIONS: WindDirection[] = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+const STRENGTHS: WindStrength[] = ["calm", "light", "moderate", "strong"];
+const DEFAULT_ZOOM = 18;
+
+// ── Google Maps Loader ──────────────────────────────────────────────
+
+let mapsPromise: Promise<void> | null = null;
+
+function loadGoogleMaps(): Promise<void> {
+  if (mapsPromise) return mapsPromise;
+
+  mapsPromise = new Promise<void>((resolve, reject) => {
+    if (typeof google !== "undefined" && google.maps) {
+      resolve();
+      return;
+    }
+
+    const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
+    if (!key) {
+      reject(new Error("Google Maps API key not configured"));
+      return;
+    }
+
+    const callbackName = "__initGoogleMaps";
+    (window as unknown as Record<string, unknown>)[callbackName] = () => {
+      resolve();
+      delete (window as unknown as Record<string, unknown>)[callbackName];
+    };
+
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=${callbackName}`;
+    script.async = true;
+    script.defer = true;
+    script.onerror = () => reject(new Error("Failed to load Google Maps"));
+    document.head.appendChild(script);
+  });
+
+  return mapsPromise;
+}
+
+// ── Component ───────────────────────────────────────────────────────
+
+export default function RangefinderPage() {
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const playerMarkerRef = useRef<google.maps.Marker | null>(null);
+  const targetMarkerRef = useRef<google.maps.Marker | null>(null);
+  const lineRef = useRef<google.maps.Polyline | null>(null);
+
+  const [mapsReady, setMapsReady] = useState(false);
+  const [gpsError, setGpsError] = useState<string | null>(null);
+  const [playerPos, setPlayerPos] = useState<{ lat: number; lng: number } | null>(null);
+  const [targetPos, setTargetPos] = useState<{ lat: number; lng: number } | null>(null);
+  const [distance, setDistance] = useState<number | null>(null);
+  const [clubs, setClubs] = useState<BagClub[]>([]);
+  const [windDir, setWindDir] = useState<WindDirection>("N");
+  const [windStr, setWindStr] = useState<WindStrength>("calm");
+  const [rec, setRec] = useState<Recommendation | null>(null);
+  const [loadingData, setLoadingData] = useState(true);
+
+  // Auth guard
+  useEffect(() => {
+    if (!loading && !user) router.push("/login");
+  }, [user, loading, router]);
+
+  // Load bag + swing data
+  useEffect(() => {
+    if (!user) return;
+    async function loadData() {
+      const [bag, sessions] = await Promise.all([
+        getBag(user!.uid),
+        getSwingSessions(user!.uid),
+      ]);
+      if (bag && bag.length > 0) {
+        setClubs(enrichBagWithSwingData(bag, sessions));
+      }
+      setLoadingData(false);
+    }
+    loadData();
+  }, [user]);
+
+  // Load Google Maps
+  useEffect(() => {
+    loadGoogleMaps()
+      .then(() => setMapsReady(true))
+      .catch((err) => setGpsError(err.message));
+  }, []);
+
+  // Get GPS position
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setGpsError("Geolocation not supported by your browser");
+      return;
+    }
+
+    const watchId = navigator.geolocation.watchPosition(
+      (pos) => {
+        setPlayerPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setGpsError(null);
+      },
+      (err) => {
+        const msgs: Record<number, string> = {
+          1: "Location access denied. Enable GPS in your browser settings.",
+          2: "Location unavailable. Check your GPS signal.",
+          3: "Location request timed out. Try again.",
+        };
+        setGpsError(msgs[err.code] ?? "Could not get your location.");
+      },
+      { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
+    );
+
+    return () => navigator.geolocation.clearWatch(watchId);
+  }, []);
+
+  // Initialise map
+  useEffect(() => {
+    if (!mapsReady || !mapContainerRef.current || mapRef.current) return;
+
+    const center = playerPos ?? { lat: -26.2, lng: 28.0 };
+
+    const map = new google.maps.Map(mapContainerRef.current, {
+      center,
+      zoom: DEFAULT_ZOOM,
+      mapTypeId: "satellite",
+      disableDefaultUI: true,
+      zoomControl: true,
+      gestureHandling: "greedy",
+      tilt: 0,
+    });
+    mapRef.current = map;
+
+    if (playerPos) {
+      playerMarkerRef.current = new google.maps.Marker({
+        position: playerPos,
+        map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: "#4285F4",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 2,
+        },
+        title: "You",
+      });
+    }
+
+    map.addListener("click", (e: google.maps.MapMouseEvent) => {
+      if (!e.latLng) return;
+      const target = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+      setTargetPos(target);
+
+      if (targetMarkerRef.current) {
+        targetMarkerRef.current.setPosition(target);
+      } else {
+        targetMarkerRef.current = new google.maps.Marker({
+          position: target,
+          map,
+          icon: {
+            path: "M 0,0 L 0,-30 L 15,-25 L 0,-20 Z",
+            fillColor: "#c9a84c",
+            fillOpacity: 1,
+            strokeColor: "#ffffff",
+            strokeWeight: 1,
+            anchor: new google.maps.Point(0, 0),
+          },
+          title: "Target",
+        });
+      }
+
+      const currentPlayer = playerMarkerRef.current?.getPosition();
+      if (currentPlayer) {
+        const pPos = { lat: currentPlayer.lat(), lng: currentPlayer.lng() };
+        if (lineRef.current) {
+          lineRef.current.setPath([pPos, target]);
+        } else {
+          lineRef.current = new google.maps.Polyline({
+            path: [pPos, target],
+            strokeColor: "#c9a84c",
+            strokeWeight: 2,
+            strokeOpacity: 0.8,
+            geodesic: true,
+            map,
+          });
+        }
+        setDistance(haversineDistance(pPos, target));
+      }
+    });
+  }, [mapsReady, playerPos]);
+
+  // Update player marker on GPS change
+  useEffect(() => {
+    if (!playerPos || !playerMarkerRef.current) return;
+    playerMarkerRef.current.setPosition(playerPos);
+
+    if (targetPos && lineRef.current) {
+      lineRef.current.setPath([playerPos, targetPos]);
+      setDistance(haversineDistance(playerPos, targetPos));
+    }
+  }, [playerPos, targetPos]);
+
+  // Update recommendation reactively
+  useEffect(() => {
+    if (distance === null || clubs.length === 0) {
+      setRec(null);
+      return;
+    }
+    setRec(recommendClub(distance, clubs, windStr, windDir));
+  }, [distance, clubs, windStr, windDir]);
+
+  if (loading || !user) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen" style={{ paddingBottom: "100px" }}>
+      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
+        <source src="/videos/Swing_1.mp4" type="video/mp4" />
+      </video>
+      <div className="fixed inset-0 bg-black/75" />
+      <div className="relative z-10 px-4 pt-6">
+        <h1 className="text-2xl font-black text-white">Rangefinder</h1>
+        <p className="mt-1 text-sm text-[#888888]">
+          Tap the map to measure distance to the pin
+        </p>
+
+        {/* GPS Error */}
+        {gpsError && (
+          <div className="mt-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3">
+            <p className="text-sm text-red-400">{gpsError}</p>
+          </div>
+        )}
+
+        {/* Map */}
+        <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+          <div ref={mapContainerRef} className="h-[300px] w-full bg-[#1e1e1e]">
+            {!mapsReady && (
+              <div className="flex h-full items-center justify-center">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Distance Display */}
+        <div className="mt-4 rounded-2xl bg-[#1e1e1e] p-5 text-center">
+          {distance !== null ? (
+            <>
+              <p className="text-xs font-bold uppercase tracking-widest text-[#888888]">
+                Distance to target
+              </p>
+              <p className="mt-2 text-5xl font-black text-[#c9a84c]">
+                {distance}<span className="text-2xl">m</span>
+              </p>
+            </>
+          ) : (
+            <p className="text-sm text-[#888888]">
+              Tap a point on the map to measure distance
+            </p>
+          )}
+        </div>
+
+        {/* Club Recommendation */}
+        {rec && (
+          <div className="mt-4 rounded-2xl border border-[#c9a84c]/30 bg-[#c9a84c]/10 p-4">
+            {rec.between && rec.secondary ? (
+              <>
+                <p className="text-base font-black text-white">Between two clubs</p>
+                <div className="mt-2 flex gap-3">
+                  <div className="flex-1 rounded-lg bg-[#0a0a0a] p-3 text-center">
+                    <p className="text-lg font-black text-[#c9a84c]">{rec.primary.name}</p>
+                    <p className="text-xs text-[#888888]">Base: {rec.primary.base}m</p>
+                    <p className="text-xs text-white">Adjusted: {rec.primary.adjusted}m</p>
+                  </div>
+                  <div className="flex-1 rounded-lg bg-[#0a0a0a] p-3 text-center">
+                    <p className="text-lg font-black text-[#c9a84c]">{rec.secondary.name}</p>
+                    <p className="text-xs text-[#888888]">Base: {rec.secondary.base}m</p>
+                    <p className="text-xs text-white">Adjusted: {rec.secondary.adjusted}m</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-xs text-[#c9a84c]">{rec.message}</p>
+              </>
+            ) : (
+              <>
+                <p className="text-xs text-[#888888]">Recommended</p>
+                <p className="mt-1 text-2xl font-black text-[#c9a84c]">{rec.primary.name}</p>
+                <div className="mt-2 flex gap-4 text-sm text-white/70">
+                  <span>Base: <span className="font-bold text-white">{rec.primary.base}m</span></span>
+                  <span>Adjusted: <span className="font-bold text-[#c9a84c]">{rec.primary.adjusted}m</span></span>
+                </div>
+                <p className="mt-2 text-xs text-[#c9a84c]">{rec.message}</p>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* Wind Controls */}
+        <div className="mt-4 rounded-2xl bg-[#1e1e1e] p-4">
+          <label className="text-xs font-bold uppercase tracking-widest text-[#888888]">
+            Wind direction
+          </label>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            {DIRECTIONS.map((dir) => (
+              <button
+                key={dir}
+                onClick={() => setWindDir(dir)}
+                className={`flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold transition-all ${
+                  windDir === dir
+                    ? "bg-[#c9a84c] text-[#0a0a0a] scale-110"
+                    : "bg-[#0a0a0a] text-[#888888] hover:bg-[#252525]"
+                }`}
+              >
+                {dir}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-4">
+            <label className="text-xs font-bold uppercase tracking-widest text-[#888888]">
+              Strength
+            </label>
+            <div className="mt-2 flex gap-2">
+              {STRENGTHS.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setWindStr(s)}
+                  className={`flex-1 rounded-full py-2 text-xs font-bold capitalize transition-all ${
+                    windStr === s
+                      ? "bg-[#c9a84c] text-[#0a0a0a]"
+                      : "bg-[#0a0a0a] text-[#888888] hover:bg-[#252525]"
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* No Bag Warning */}
+        {!loadingData && clubs.length === 0 && (
+          <div className="mt-4 rounded-xl border border-[#c9a84c]/30 bg-[#c9a84c]/5 p-4 text-center">
+            <p className="text-sm text-[#888888]">
+              No clubs in your bag yet.{" "}
+              <a href="/bag" className="font-bold text-[#c9a84c] underline">
+                Set up your bag
+              </a>{" "}
+              to get club recommendations.
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

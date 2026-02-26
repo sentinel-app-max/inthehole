@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { getBag, saveBag } from "@/lib/firebase/firestore";
+import {
+  adjustDistance,
+  recommendClub,
+  type Recommendation,
+} from "@/lib/golf/distance";
 import type { BagClub, WindDirection, WindStrength } from "@/types";
 
 const DEFAULT_BAG: BagClub[] = [
@@ -23,94 +28,6 @@ const STRENGTHS: WindStrength[] = ["calm", "light", "moderate", "strong"];
 const DIRECTION_ANGLES: Record<WindDirection, number> = {
   N: 0, NE: 45, E: 90, SE: 135, S: 180, SW: 225, W: 270, NW: 315,
 };
-
-function getWindEffect(
-  wind: WindDirection
-): "head" | "tail" | "cross" {
-  if (wind === "N") return "head";
-  if (wind === "S") return "tail";
-  return "cross";
-}
-
-function adjustDistance(
-  base: number,
-  strength: WindStrength,
-  wind: WindDirection
-): { distance: number; type: "head" | "tail" | "cross" | "calm" } {
-  if (strength === "calm") return { distance: base, type: "calm" };
-
-  const effect = getWindEffect(wind);
-  if (effect === "cross") return { distance: base, type: "cross" };
-
-  const headPct: Record<string, number> = { light: 0.05, moderate: 0.10, strong: 0.15 };
-  const tailPct: Record<string, number> = { light: 0.05, moderate: 0.08, strong: 0.12 };
-
-  if (effect === "head") {
-    return { distance: Math.round(base * (1 - headPct[strength])), type: "head" };
-  }
-  return { distance: Math.round(base * (1 + tailPct[strength])), type: "tail" };
-}
-
-interface Recommendation {
-  primary: { name: string; base: number; adjusted: number };
-  secondary?: { name: string; base: number; adjusted: number };
-  between: boolean;
-  message: string;
-}
-
-function recommendClub(
-  target: number,
-  clubs: BagClub[],
-  strength: WindStrength,
-  wind: WindDirection
-): Recommendation | null {
-  if (clubs.length === 0) return null;
-
-  const adjusted = clubs.map((c) => ({
-    ...c,
-    adjusted: adjustDistance(c.distance, strength, wind).distance,
-  }));
-
-  const sorted = [...adjusted].sort(
-    (a, b) => Math.abs(a.adjusted - target) - Math.abs(b.adjusted - target)
-  );
-
-  const best = sorted[0];
-  const diff = Math.abs(best.adjusted - target);
-
-  if (diff <= 5) {
-    return {
-      primary: { name: best.name, base: best.distance, adjusted: best.adjusted },
-      between: false,
-      message: "Perfect club for this shot",
-    };
-  }
-
-  if (sorted.length >= 2) {
-    const second = sorted[1];
-    const bestOver = best.adjusted >= target;
-    const secondOver = second.adjusted >= target;
-
-    if (bestOver !== secondOver) {
-      const shorter = best.adjusted < second.adjusted ? best : second;
-      const longer = best.adjusted < second.adjusted ? second : best;
-      return {
-        primary: { name: shorter.name, base: shorter.distance, adjusted: shorter.adjusted },
-        secondary: { name: longer.name, base: longer.distance, adjusted: longer.adjusted },
-        between: true,
-        message: `Between ${shorter.name} (${shorter.adjusted}m) and ${longer.name} (${longer.adjusted}m) \u2014 take ${shorter.name} and swing full`,
-      };
-    }
-  }
-
-  return {
-    primary: { name: best.name, base: best.distance, adjusted: best.adjusted },
-    between: false,
-    message: best.adjusted > target
-      ? "Ease off a touch"
-      : "Give it a bit extra",
-  };
-}
 
 export default function BagPage() {
   const router = useRouter();

@@ -1,0 +1,7556 @@
+[
+  {
+    "id": 290409917,
+    "type": "node",
+    "name": "Unknown",
+    "lat": -25.71541,
+    "lng": 28.27089,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 319267973,
+    "type": "node",
+    "name": "Midrange",
+    "lat": -25.94616,
+    "lng": 28.10225,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Midrange"
+    }
+  },
+  {
+    "id": 339065237,
+    "type": "node",
+    "name": "Brits Golf Club",
+    "lat": -25.6983805,
+    "lng": 27.8531842,
+    "hole": null,
+    "tags": {
+      "created_by": "Potlatch 0.10f",
+      "leisure": "golf_course",
+      "name": "Brits Golf Club"
+    }
+  },
+  {
+    "id": 339065380,
+    "type": "node",
+    "name": "Unknown",
+    "lat": -26.0823744,
+    "lng": 27.8665309,
+    "hole": null,
+    "tags": {
+      "created_by": "Potlatch 0.10f",
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 386204109,
+    "type": "node",
+    "name": "Services",
+    "lat": -25.78235,
+    "lng": 28.16578,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Services"
+    }
+  },
+  {
+    "id": 4721919392,
+    "type": "node",
+    "name": "Jim & Jerry's Driving Range",
+    "lat": -26.0728952,
+    "lng": 27.8575306,
+    "hole": null,
+    "tags": {
+      "addr:city": "Roodepoort",
+      "addr:street": "Hole In One Avenue",
+      "facebook": "https://www.facebook.com/jimandjerrysdrivingrange/",
+      "leisure": "golf_course",
+      "name": "Jim & Jerry's Driving Range",
+      "name:en": "Jim & Jerry's Driving Range",
+      "phone": "+27 11 662 1603"
+    }
+  },
+  {
+    "id": 5377703636,
+    "type": "node",
+    "name": "Vodacom World of Golf",
+    "lat": -26.0432036,
+    "lng": 28.0940738,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Vodacom World of Golf"
+    }
+  },
+  {
+    "id": 5936785758,
+    "type": "node",
+    "name": "Wedge Golf Driving Range",
+    "lat": -26.0377623,
+    "lng": 27.8805221,
+    "hole": null,
+    "tags": {
+      "addr:city": "Muldersdrift",
+      "addr:postcode": "1747",
+      "addr:street": "Beyers Naudé Drive",
+      "email": "info@thewedgeoutdoorpark.co.za",
+      "leisure": "golf_course",
+      "name": "Wedge Golf Driving Range",
+      "operator": "The Wedge",
+      "phone": "+27 82 570 7336",
+      "website": "https://www.thewedgeoutdoorpark.co.za/"
+    }
+  },
+  {
+    "id": 4075670,
+    "type": "way",
+    "name": "World of Golf",
+    "lat": -26.0412938,
+    "lng": 28.0932081,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "World of Golf"
+    }
+  },
+  {
+    "id": 4253235,
+    "type": "way",
+    "name": "Waterkloof Golf Estate",
+    "lat": -25.7911692,
+    "lng": 28.2192308,
+    "hole": null,
+    "tags": {
+      "addr:city": "Pretoria",
+      "addr:street": "Johann Rissik Drive",
+      "leisure": "golf_course",
+      "name": "Waterkloof Golf Estate"
+    }
+  },
+  {
+    "id": 4253236,
+    "type": "way",
+    "name": "Pretoria Country Club",
+    "lat": -25.7824923,
+    "lng": 28.2540354,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Pretoria Country Club",
+      "wikidata": "Q15406555",
+      "wikimedia_commons": "Category:Pretoria Country Club"
+    }
+  },
+  {
+    "id": 4261725,
+    "type": "way",
+    "name": "Wingatepark Country Club",
+    "lat": -25.8308181,
+    "lng": 28.2804156,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Wingatepark Country Club",
+      "wikidata": "Q17127320"
+    }
+  },
+  {
+    "id": 4302215,
+    "type": "way",
+    "name": "Hillside Golf Course",
+    "lat": -25.681312,
+    "lng": 28.1538687,
+    "hole": null,
+    "tags": {
+      "addr:street": "Rachel de Beer Street",
+      "contact:email": "admin@hillsidegolfcourse.co.za",
+      "contact:phone": "+27125461764",
+      "leisure": "golf_course",
+      "name": "Hillside Golf Course"
+    }
+  },
+  {
+    "id": 4303211,
+    "type": "way",
+    "name": "Akasia Golf Course",
+    "lat": -25.6603767,
+    "lng": 28.1413687,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Akasia Golf Course"
+    }
+  },
+  {
+    "id": 4342175,
+    "type": "way",
+    "name": "Country Club Johannesburg - Woodmead",
+    "lat": -26.0515138,
+    "lng": 28.0777393,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Country Club Johannesburg - Woodmead"
+    }
+  },
+  {
+    "id": 4348033,
+    "type": "way",
+    "name": "Benoni Country Club",
+    "lat": -26.1649307,
+    "lng": 28.3426119,
+    "hole": null,
+    "tags": {
+      "addr:city": "Benoni",
+      "addr:postcode": "1501",
+      "addr:street": "Morris Avenue",
+      "leisure": "golf_course",
+      "name": "Benoni Country Club",
+      "phone": "+27 11 849 8821",
+      "sport": "golf",
+      "website": "http://www.benonicc.co.za"
+    }
+  },
+  {
+    "id": 4350489,
+    "type": "way",
+    "name": "Benoni Lake Club",
+    "lat": -26.1832565,
+    "lng": 28.2964916,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Benoni Lake Club"
+    }
+  },
+  {
+    "id": 12785152,
+    "type": "way",
+    "name": "Glendower",
+    "lat": -26.1558238,
+    "lng": 28.1396382,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Glendower",
+      "wikidata": "Q15374388",
+      "wikipedia": "en:Glendower Golf Club"
+    }
+  },
+  {
+    "id": 12785290,
+    "type": "way",
+    "name": "Blue Course",
+    "lat": -26.1504128,
+    "lng": 28.1150625,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "addr:housenumber": "121",
+      "addr:street": "Club Street",
+      "email": "greens@huddlepark.com",
+      "golf:course": "18_hole",
+      "golf:par": "72",
+      "leisure": "golf_course",
+      "name": "Blue Course",
+      "operator": "Huddle Park Golf & Recreation",
+      "phone": "+27 11 640 4456",
+      "start_date": "2013/11/01"
+    }
+  },
+  {
+    "id": 13738869,
+    "type": "way",
+    "name": "ERPM Golf Course",
+    "lat": -26.1981258,
+    "lng": 28.2326183,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "ERPM Golf Course"
+    }
+  },
+  {
+    "id": 18826619,
+    "type": "way",
+    "name": "Wanderers Golf Course",
+    "lat": -26.129455,
+    "lng": 28.0575059,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Wanderers Golf Course",
+      "wikidata": "Q15395242"
+    }
+  },
+  {
+    "id": 22653100,
+    "type": "way",
+    "name": "Randpark Club",
+    "lat": -26.1130659,
+    "lng": 27.9655034,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Randpark Club",
+      "name:en": "Randpark Golf Club",
+      "sport": "golf",
+      "wikidata": "Q15613557",
+      "wikipedia": "Randpark Golf Club"
+    }
+  },
+  {
+    "id": 23300327,
+    "type": "way",
+    "name": "Glenvista Country Club",
+    "lat": -26.2804374,
+    "lng": 28.0587699,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Glenvista Country Club",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 23500250,
+    "type": "way",
+    "name": "Parkview Golf Club",
+    "lat": -26.1564813,
+    "lng": 28.0200132,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "addr:postcode": "2193",
+      "contact:facebook": "https://www.facebook.com/ParkviewGolfClubSouthAfrica/",
+      "contact:twitter": "https://twitter.com/ParkviewGolfClu",
+      "email": "info@parkviewgolf.co.za",
+      "fixme": "Both golf courses = Parkview Golf Club?",
+      "leisure": "golf_course",
+      "name": "Parkview Golf Club",
+      "phone": "+27 11 646 5400",
+      "website": "https://www.parkviewgolf.co.za",
+      "wikidata": "Q15627653"
+    }
+  },
+  {
+    "id": 23500251,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1486972,
+    "lng": 28.0207837,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 23516661,
+    "type": "way",
+    "name": "River Club",
+    "lat": -26.0796685,
+    "lng": 28.035277,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "River Club",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 23680577,
+    "type": "way",
+    "name": "Leewukop Golf Course (Abandoned)",
+    "lat": -26.0121226,
+    "lng": 28.0670157,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Leewukop Golf Course (Abandoned)",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 23802298,
+    "type": "way",
+    "name": "CMR",
+    "lat": -26.188642,
+    "lng": 27.9407243,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "CMR"
+    }
+  },
+  {
+    "id": 23802692,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1866722,
+    "lng": 27.9359966,
+    "hole": null,
+    "tags": {
+      "created_by": "Potlatch 0.8a",
+      "leisure": "golf_course",
+      "note": "driving range"
+    }
+  },
+  {
+    "id": 23904366,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.6613921,
+    "lng": 28.3315275,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 24380301,
+    "type": "way",
+    "name": "Parkview Golf Club",
+    "lat": -26.1663661,
+    "lng": 28.0165943,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "addr:postcode": "2193",
+      "addr:street": "Emmarentia Avenue",
+      "leisure": "golf_course",
+      "name": "Parkview Golf Club"
+    }
+  },
+  {
+    "id": 24382469,
+    "type": "way",
+    "name": "Krugersdorp Golf Course",
+    "lat": -26.0821276,
+    "lng": 27.7852902,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Krugersdorp Golf Course",
+      "wikidata": "Q15613334"
+    }
+  },
+  {
+    "id": 24635193,
+    "type": "way",
+    "name": "Modderfontein Golf Club",
+    "lat": -26.1047063,
+    "lng": 28.1656837,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Modderfontein Golf Club",
+      "name:en": "Moderfontein Golf Club",
+      "sport": "golf",
+      "wikipedia": "en:Modderfontein Golf Club"
+    }
+  },
+  {
+    "id": 26350159,
+    "type": "way",
+    "name": "Observatory Golf Course",
+    "lat": -26.1775894,
+    "lng": 28.0854017,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Observatory Golf Course",
+      "wikidata": "Q15613444"
+    }
+  },
+  {
+    "id": 26548404,
+    "type": "way",
+    "name": "Royal Oak Country Club",
+    "lat": -26.2230756,
+    "lng": 28.3529474,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Royal Oak Country Club",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 26711803,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.20408,
+    "lng": 28.3745205,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 28768782,
+    "type": "way",
+    "name": "Kyalami Country Club",
+    "lat": -25.9758999,
+    "lng": 28.0592799,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Kyalami Country Club"
+    }
+  },
+  {
+    "id": 31151943,
+    "type": "way",
+    "name": "Kempton Park Golf Course",
+    "lat": -26.1056342,
+    "lng": 28.216705,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Kempton Park Golf Course",
+      "wikidata": "Q15605234"
+    }
+  },
+  {
+    "id": 37774167,
+    "type": "way",
+    "name": "Reading Country Club",
+    "lat": -26.2637943,
+    "lng": 28.1052916,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Reading Country Club",
+      "source": "Yahoo",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 41492633,
+    "type": "way",
+    "name": "Kimiad",
+    "lat": -25.8196129,
+    "lng": 28.298689,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Kimiad"
+    }
+  },
+  {
+    "id": 47183590,
+    "type": "way",
+    "name": "Driving Range",
+    "lat": -25.8245967,
+    "lng": 28.1664345,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Driving Range"
+    }
+  },
+  {
+    "id": 52916300,
+    "type": "way",
+    "name": "Southdowns Country Club",
+    "lat": -26.3177676,
+    "lng": 28.0146417,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Southdowns Country Club"
+    }
+  },
+  {
+    "id": 53004480,
+    "type": "way",
+    "name": "Crown Mines Country Club",
+    "lat": -26.2390376,
+    "lng": 27.9912915,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Crown Mines Country Club"
+    }
+  },
+  {
+    "id": 61900020,
+    "type": "way",
+    "name": "Dainfern Golf Course",
+    "lat": -25.9847518,
+    "lng": 27.9998203,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Dainfern Golf Course",
+      "wikidata": "Q15601597"
+    }
+  },
+  {
+    "id": 73545958,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9237288,
+    "lng": 28.1956431,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "note": "Approximate area (using Midrand Estates published map)"
+    }
+  },
+  {
+    "id": 87780856,
+    "type": "way",
+    "name": "Driving Range",
+    "lat": -26.1812753,
+    "lng": 27.9690162,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Driving Range"
+    }
+  },
+  {
+    "id": 107756097,
+    "type": "way",
+    "name": "Magalies Park",
+    "lat": -25.7542914,
+    "lng": 27.7809952,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Magalies Park",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 135762950,
+    "type": "way",
+    "name": "Irene Golf Course",
+    "lat": -25.8837323,
+    "lng": 28.2184009,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Irene Golf Course"
+    }
+  },
+  {
+    "id": 155192936,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9782735,
+    "lng": 28.2491696,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 168203867,
+    "type": "way",
+    "name": "Pretoria Golf Club",
+    "lat": -25.7391999,
+    "lng": 28.1456669,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Pretoria Golf Club"
+    }
+  },
+  {
+    "id": 172033092,
+    "type": "way",
+    "name": "Mooipoort Gholf Club",
+    "lat": -25.6499394,
+    "lng": 28.3194192,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Mooipoort Gholf Club"
+    }
+  },
+  {
+    "id": 176940677,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7549135,
+    "lng": 27.5666922,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 208076367,
+    "type": "way",
+    "name": "Seasons Eco Golf Estate",
+    "lat": -25.6980381,
+    "lng": 27.8473313,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Seasons Eco Golf Estate",
+      "website": "http://www.seasonsestate.co.za/golf.html"
+    }
+  },
+  {
+    "id": 208197104,
+    "type": "way",
+    "name": "Venterspost Golf Course (Abandoned)",
+    "lat": -26.3043483,
+    "lng": 27.6466647,
+    "hole": null,
+    "tags": {
+      "disused:leisure": "golf_course",
+      "leisure": "golf_course",
+      "name": "Venterspost Golf Course (Abandoned)"
+    }
+  },
+  {
+    "id": 213730086,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.156273,
+    "lng": 27.710358,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 219691996,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2680907,
+    "lng": 28.445551,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 219693674,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.273257,
+    "lng": 28.422289,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 302906986,
+    "type": "way",
+    "name": "Pretoria West Golf",
+    "lat": -25.7462099,
+    "lng": 28.1430825,
+    "hole": null,
+    "tags": {
+      "addr:city": "Pretoria West",
+      "addr:postcode": "0183",
+      "addr:street": "Lievaart Street",
+      "leisure": "golf_course",
+      "name": "Pretoria West Golf"
+    }
+  },
+  {
+    "id": 302908089,
+    "type": "way",
+    "name": "Montana Bowls Club",
+    "lat": -25.6877966,
+    "lng": 28.2578408,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "Montana Bowls Club",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 353523546,
+    "type": "way",
+    "name": "Wits Golf Academy Driving Range",
+    "lat": -26.189832,
+    "lng": 28.0228231,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "leisure": "golf_course",
+      "name": "Wits Golf Academy Driving Range",
+      "operator": "Wits University"
+    }
+  },
+  {
+    "id": 395459414,
+    "type": "way",
+    "name": "Bryanston Country Club",
+    "lat": -26.0601029,
+    "lng": 28.0071906,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Bryanston Country Club"
+    }
+  },
+  {
+    "id": 396276112,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8775901,
+    "lng": 28.0503256,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396276122,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8728377,
+    "lng": 28.0533765,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396294029,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8721879,
+    "lng": 28.0519908,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396294033,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8708518,
+    "lng": 28.0521519,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396294035,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8695238,
+    "lng": 28.0519348,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396294036,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8690899,
+    "lng": 28.0505706,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396300322,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.870274,
+    "lng": 28.0464765,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396300331,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8775395,
+    "lng": 28.048722,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396300336,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8789568,
+    "lng": 28.0439499,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396305895,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.880488,
+    "lng": 28.0382135,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396305914,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.877381,
+    "lng": 28.0422341,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396305919,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8740021,
+    "lng": 28.0430601,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396333007,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8766616,
+    "lng": 28.0376462,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396333008,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8749241,
+    "lng": 28.0398334,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396333009,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8733402,
+    "lng": 28.0407069,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 396384277,
+    "type": "way",
+    "name": "Golf Village Momentum",
+    "lat": -25.866622,
+    "lng": 28.2021275,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Golf Village Momentum"
+    }
+  },
+  {
+    "id": 410677982,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3603894,
+    "lng": 28.0218209,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677983,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3624049,
+    "lng": 28.0198829,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677984,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3633872,
+    "lng": 28.0183858,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677985,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3674577,
+    "lng": 28.0145359,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677986,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3686445,
+    "lng": 28.0236283,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677987,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3670787,
+    "lng": 28.025314,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677988,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3639553,
+    "lng": 28.0239587,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677990,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3710891,
+    "lng": 28.0210968,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677993,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3728586,
+    "lng": 28.0176307,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677995,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3742701,
+    "lng": 28.018954,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677997,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3760158,
+    "lng": 28.0163279,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677998,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3734003,
+    "lng": 28.0131414,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410677999,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.374505,
+    "lng": 28.0225925,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410678000,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3771875,
+    "lng": 28.025936,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 410678001,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3767505,
+    "lng": 28.0239354,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 414599733,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3779335,
+    "lng": 28.0202911,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 414599735,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3805264,
+    "lng": 28.0240487,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 414599736,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3793588,
+    "lng": 28.0239531,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 414599737,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3809652,
+    "lng": 28.0209481,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 433032771,
+    "type": "way",
+    "name": "Waterpan Golf Club",
+    "lat": -26.3539075,
+    "lng": 27.7021596,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Waterpan Golf Club"
+    }
+  },
+  {
+    "id": 433820430,
+    "type": "way",
+    "name": "Bryntirion Golf Course",
+    "lat": -25.7411906,
+    "lng": 28.2335367,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Bryntirion Golf Course"
+    }
+  },
+  {
+    "id": 434887154,
+    "type": "way",
+    "name": "Eagle Canyon Golf Course",
+    "lat": -26.0896406,
+    "lng": 27.9161964,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Eagle Canyon Golf Course"
+    }
+  },
+  {
+    "id": 438538444,
+    "type": "way",
+    "name": "Daveyton Golf Club",
+    "lat": -26.1268983,
+    "lng": 28.441542,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Daveyton Golf Club"
+    }
+  },
+  {
+    "id": 440473016,
+    "type": "way",
+    "name": "Soweto Country Club",
+    "lat": -26.2789487,
+    "lng": 27.9044077,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Soweto Country Club"
+    }
+  },
+  {
+    "id": 468516195,
+    "type": "way",
+    "name": "Silver Lakes golf course",
+    "lat": -25.7738092,
+    "lng": 28.3676747,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Silver Lakes golf course",
+      "wikidata": "Q15614294"
+    }
+  },
+  {
+    "id": 468516196,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7716286,
+    "lng": 28.3781165,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 468516197,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7678174,
+    "lng": 28.3757066,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 483921537,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1652893,
+    "lng": 28.0703765,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483922110,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1657346,
+    "lng": 28.0703008,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483922111,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1659097,
+    "lng": 28.0698253,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483922610,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1660536,
+    "lng": 28.0693365,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928009,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1664544,
+    "lng": 28.0722212,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928010,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1657153,
+    "lng": 28.0733933,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928011,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1641842,
+    "lng": 28.0727791,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928012,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1635763,
+    "lng": 28.0700473,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928013,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1635703,
+    "lng": 28.0703262,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928014,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1636498,
+    "lng": 28.0706628,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928015,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1638219,
+    "lng": 28.0709565,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928110,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1620886,
+    "lng": 28.070451,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928862,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1616107,
+    "lng": 28.0671558,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928863,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1626616,
+    "lng": 28.0688644,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928864,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1629408,
+    "lng": 28.0692935,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 483928865,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.158824,
+    "lng": 28.0663726,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231030,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2323719,
+    "lng": 28.1438551,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231031,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2327196,
+    "lng": 28.1433697,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231032,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2323947,
+    "lng": 28.1477081,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231569,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2345878,
+    "lng": 28.144012,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231574,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.235425,
+    "lng": 28.1406525,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484231739,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2372668,
+    "lng": 28.1431591,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484232018,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2380282,
+    "lng": 28.1442467,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484232022,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2350666,
+    "lng": 28.1458761,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484232097,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2343171,
+    "lng": 28.1469692,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484234002,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2325422,
+    "lng": 28.1528147,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484235761,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2312113,
+    "lng": 28.1500723,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484236122,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2290074,
+    "lng": 28.1542069,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484236476,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2300366,
+    "lng": 28.1498087,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484236914,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.233343,
+    "lng": 28.1489162,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 484236965,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2343667,
+    "lng": 28.1481638,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 485380851,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3927057,
+    "lng": 28.4579394,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 565804894,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.499409,
+    "lng": 28.0526508,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 607706487,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1510763,
+    "lng": 27.9921608,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 630629421,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1587873,
+    "lng": 28.1000135,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 630629424,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1588202,
+    "lng": 28.099274,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 630629427,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1606339,
+    "lng": 28.1000596,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 630629430,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.161328,
+    "lng": 28.1030441,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 630629434,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1615052,
+    "lng": 28.0980705,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 630629439,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1573336,
+    "lng": 28.1019471,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 630629441,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1589778,
+    "lng": 28.1031749,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 658989252,
+    "type": "way",
+    "name": "Jackal Creek Golf Estate",
+    "lat": -26.0566886,
+    "lng": 27.9205446,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Jackal Creek Golf Estate"
+    }
+  },
+  {
+    "id": 698301579,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8136176,
+    "lng": 28.3239101,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698318014,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8195196,
+    "lng": 28.3176614,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698321309,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8182372,
+    "lng": 28.3202472,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698327656,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8112991,
+    "lng": 28.3214099,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698334412,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8149091,
+    "lng": 28.3168742,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698335374,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8120804,
+    "lng": 28.3124423,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 698336979,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8161492,
+    "lng": 28.3125186,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698340177,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8198709,
+    "lng": 28.3142385,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698343391,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8189481,
+    "lng": 28.3173508,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698346553,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8164115,
+    "lng": 28.3134532,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698347873,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.817732,
+    "lng": 28.3115428,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698351343,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8177021,
+    "lng": 28.3070146,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698353710,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8142981,
+    "lng": 28.3043615,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 698354528,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8123454,
+    "lng": 28.3065355,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698355396,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8142197,
+    "lng": 28.3074784,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698357017,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8172968,
+    "lng": 28.3109327,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 698358133,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8202682,
+    "lng": 28.3135122,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "lit": "no"
+    }
+  },
+  {
+    "id": 721837174,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.972847,
+    "lng": 27.9882044,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 721913281,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9682202,
+    "lng": 27.9931707,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 722150940,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9733766,
+    "lng": 27.9965475,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 722150941,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9739559,
+    "lng": 27.996031,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 722150942,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9742652,
+    "lng": 27.9942082,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 732625398,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1773933,
+    "lng": 28.0842015,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 732625728,
+    "type": "way",
+    "name": "1st Green",
+    "lat": -26.1653909,
+    "lng": 28.0180742,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "1st Green",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 732625729,
+    "type": "way",
+    "name": "2nd Green",
+    "lat": -26.1683904,
+    "lng": 28.0174372,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "2nd Green",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820676,
+    "type": "way",
+    "name": "3rd Green",
+    "lat": -26.1693535,
+    "lng": 28.016678,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "3rd Green",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820680,
+    "type": "way",
+    "name": "4th Green",
+    "lat": -26.1716438,
+    "lng": 28.0148348,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "4th Green",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820685,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1700535,
+    "lng": 28.014434,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820689,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1679812,
+    "lng": 28.0164269,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820692,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1644628,
+    "lng": 28.017641,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734820694,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1611347,
+    "lng": 28.0181935,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 734821018,
+    "type": "way",
+    "name": "Golf green",
+    "lat": -26.176939,
+    "lng": 28.0540553,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "name": "Golf green",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 739799713,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1667649,
+    "lng": 28.0725947,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "leisure": "pitch",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 757302501,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1592774,
+    "lng": 28.1424522,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757304735,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.159742,
+    "lng": 28.1424703,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757304740,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1594194,
+    "lng": 28.1440541,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757304742,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1602903,
+    "lng": 28.1453724,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757305902,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1557731,
+    "lng": 28.1412598,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757311151,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1565053,
+    "lng": 28.1395616,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757311153,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1568126,
+    "lng": 28.1375094,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757311161,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1545134,
+    "lng": 28.1350592,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757859825,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.155974,
+    "lng": 28.1375968,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757860064,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1531355,
+    "lng": 28.1352082,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757863613,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1507334,
+    "lng": 28.1326585,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757865466,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1498634,
+    "lng": 28.1326698,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757866494,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1569139,
+    "lng": 28.1425361,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757867456,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1596082,
+    "lng": 28.1420917,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757867460,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1613283,
+    "lng": 28.1463792,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757869914,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1566006,
+    "lng": 28.1426528,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 757871913,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1572578,
+    "lng": 28.1446754,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 758486776,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1587892,
+    "lng": 28.1467148,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 758488023,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1552403,
+    "lng": 28.1448726,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 758488201,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1538461,
+    "lng": 28.1444616,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777240464,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7808495,
+    "lng": 28.1605917,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777250051,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7817494,
+    "lng": 28.1562052,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777258944,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7825344,
+    "lng": 28.1599041,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777258950,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.783012,
+    "lng": 28.1566822,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777258955,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7852174,
+    "lng": 28.1539025,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777261453,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.783893,
+    "lng": 28.1532111,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777261461,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7808936,
+    "lng": 28.1553593,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777261465,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7828516,
+    "lng": 28.1558866,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777261473,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7836396,
+    "lng": 28.160094,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777265596,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7833471,
+    "lng": 28.1661547,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267777,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7846263,
+    "lng": 28.1661624,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267786,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7807159,
+    "lng": 28.1667802,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267791,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7812948,
+    "lng": 28.1636961,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267800,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7811597,
+    "lng": 28.1662562,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267806,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7824556,
+    "lng": 28.1667192,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267812,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7823114,
+    "lng": 28.163016,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267816,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7795461,
+    "lng": 28.1638265,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 777267821,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7828429,
+    "lng": 28.1613689,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530091,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8315138,
+    "lng": 28.1664823,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530092,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8350998,
+    "lng": 28.1675943,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530093,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8340028,
+    "lng": 28.1667882,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530094,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8382727,
+    "lng": 28.1686931,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530095,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.835079,
+    "lng": 28.1682756,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530096,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8315355,
+    "lng": 28.1673307,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530097,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8305902,
+    "lng": 28.1669548,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530098,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8283235,
+    "lng": 28.1646799,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530099,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8294114,
+    "lng": 28.1616111,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530100,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8268307,
+    "lng": 28.1585885,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530101,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8280043,
+    "lng": 28.1629683,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530102,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8269404,
+    "lng": 28.1625752,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530103,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8259945,
+    "lng": 28.159184,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530104,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8270791,
+    "lng": 28.1640024,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530105,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8267077,
+    "lng": 28.1653616,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530106,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8256544,
+    "lng": 28.1599127,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530107,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8264166,
+    "lng": 28.1580478,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778530108,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8291797,
+    "lng": 28.1611192,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778535900,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.829592,
+    "lng": 28.161163,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607823,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7883851,
+    "lng": 28.2177312,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607827,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7867685,
+    "lng": 28.2127542,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607835,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7919122,
+    "lng": 28.2171461,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607840,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7881536,
+    "lng": 28.2155548,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607846,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7872645,
+    "lng": 28.2140488,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778607850,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7895832,
+    "lng": 28.2178318,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611864,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7906057,
+    "lng": 28.2176201,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611869,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7898755,
+    "lng": 28.2211099,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611870,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7897231,
+    "lng": 28.2213985,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611871,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7899255,
+    "lng": 28.2217441,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611876,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7938925,
+    "lng": 28.2234969,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611880,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7957709,
+    "lng": 28.2260206,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611887,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7941122,
+    "lng": 28.2227927,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611892,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.791085,
+    "lng": 28.2212793,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611896,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7952611,
+    "lng": 28.2220752,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611902,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7949859,
+    "lng": 28.2204585,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611907,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7917531,
+    "lng": 28.220154,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778611913,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7922811,
+    "lng": 28.2187924,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 778612666,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7903799,
+    "lng": 28.2213568,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035529,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8298696,
+    "lng": 28.1647001,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035530,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8297064,
+    "lng": 28.1643003,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035531,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8293901,
+    "lng": 28.1638574,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035533,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8289051,
+    "lng": 28.1616864,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035534,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.828781,
+    "lng": 28.1621844,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035536,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8286715,
+    "lng": 28.1619795,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 779035540,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8285602,
+    "lng": 28.1627432,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052505,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8923541,
+    "lng": 28.1201747,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052509,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8911906,
+    "lng": 28.1200408,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052513,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8916916,
+    "lng": 28.1198378,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052515,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8925912,
+    "lng": 28.1199208,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052518,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8929642,
+    "lng": 28.1196726,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052520,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8938819,
+    "lng": 28.11941,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052523,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8949699,
+    "lng": 28.1192248,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052527,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8955562,
+    "lng": 28.1199306,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 781052533,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8950027,
+    "lng": 28.1199527,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 784980188,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0156742,
+    "lng": 28.002348,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 791713507,
+    "type": "way",
+    "name": "Randpark Golf Club",
+    "lat": -26.1143256,
+    "lng": 27.9651281,
+    "hole": null,
+    "tags": {
+      "addr:city": "Randburg",
+      "addr:postcode": "2194",
+      "addr:street": "Setperk Rd",
+      "building": "yes",
+      "golf": "clubhouse",
+      "leisure": "golf_course",
+      "name": "Randpark Golf Club",
+      "operator": "Randpark Golf Club",
+      "sport": "golf"
+    }
+  },
+  {
+    "id": 794843999,
+    "type": "way",
+    "name": "Green #1",
+    "lat": -26.2262743,
+    "lng": 28.3559966,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "name": "Green #1"
+    }
+  },
+  {
+    "id": 794851189,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2238945,
+    "lng": 28.3548295,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794865141,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2220141,
+    "lng": 28.3518145,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794901737,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2195923,
+    "lng": 28.3478194,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794901987,
+    "type": "way",
+    "name": "Green",
+    "lat": -25.8304228,
+    "lng": 28.2792272,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "name": "Green"
+    }
+  },
+  {
+    "id": 794912789,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2167808,
+    "lng": 28.3509577,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794912800,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2209734,
+    "lng": 28.3511363,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794914328,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2209263,
+    "lng": 28.3554236,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794917593,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2234367,
+    "lng": 28.3569494,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 794917599,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2249901,
+    "lng": 28.3586697,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795125067,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2216875,
+    "lng": 28.3558924,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795137982,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.219932,
+    "lng": 28.355029,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795137990,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2166785,
+    "lng": 28.3515451,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795152539,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2193725,
+    "lng": 28.3470757,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795152550,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2220856,
+    "lng": 28.3512623,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795152558,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2243736,
+    "lng": 28.3545972,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795167682,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.226971,
+    "lng": 28.3561919,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795167686,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2280222,
+    "lng": 28.3565515,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795167693,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2261619,
+    "lng": 28.3584859,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795207856,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2266501,
+    "lng": 28.3585996,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 795809278,
+    "type": "way",
+    "name": "Green",
+    "lat": -25.8345488,
+    "lng": 28.2801858,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "name": "Green"
+    }
+  },
+  {
+    "id": 795809283,
+    "type": "way",
+    "name": "Green",
+    "lat": -25.8344866,
+    "lng": 28.2827446,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass",
+      "name": "Green"
+    }
+  },
+  {
+    "id": 796254239,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2064879,
+    "lng": 28.3775933,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254240,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2040182,
+    "lng": 28.3788006,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254241,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2007329,
+    "lng": 28.3768727,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254242,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2019359,
+    "lng": 28.3799863,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254243,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2005227,
+    "lng": 28.3796179,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254244,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1997352,
+    "lng": 28.376011,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254245,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2032836,
+    "lng": 28.3781351,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254247,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2041069,
+    "lng": 28.378189,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254248,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2068401,
+    "lng": 28.3761713,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254249,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1994276,
+    "lng": 28.3746082,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254252,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1992431,
+    "lng": 28.3725175,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254253,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1998794,
+    "lng": 28.368627,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254254,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2028205,
+    "lng": 28.3731449,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254255,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2032271,
+    "lng": 28.3738503,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254256,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2038261,
+    "lng": 28.3754134,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254257,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2069526,
+    "lng": 28.3725821,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254258,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2079099,
+    "lng": 28.3752936,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 796254259,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2034209,
+    "lng": 28.3767348,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831576,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0890016,
+    "lng": 27.9187135,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831577,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0887713,
+    "lng": 27.9132542,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831578,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0888412,
+    "lng": 27.9081659,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831579,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0882749,
+    "lng": 27.9102306,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831580,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0868149,
+    "lng": 27.9151504,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831581,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0841936,
+    "lng": 27.9158797,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831582,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0875699,
+    "lng": 27.9167561,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831583,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0852647,
+    "lng": 27.9200472,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831584,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0873157,
+    "lng": 27.9223624,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831585,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0880127,
+    "lng": 27.9236156,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831586,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0878076,
+    "lng": 27.9228439,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831587,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0893103,
+    "lng": 27.9223538,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831588,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0917911,
+    "lng": 27.9236996,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831589,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0927358,
+    "lng": 27.9223712,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831590,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0940954,
+    "lng": 27.9243399,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831591,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0932105,
+    "lng": 27.9237662,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831592,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.092941,
+    "lng": 27.9245161,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831593,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0929473,
+    "lng": 27.920705,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831594,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0896318,
+    "lng": 27.9178453,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 797831595,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.087789,
+    "lng": 27.9210723,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 801706855,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.3446574,
+    "lng": 28.491324,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 854508009,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0732177,
+    "lng": 27.8570434,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508014,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0721079,
+    "lng": 27.8560492,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508020,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0716961,
+    "lng": 27.8561752,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508023,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0714086,
+    "lng": 27.8566504,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508028,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0710308,
+    "lng": 27.8574178,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508033,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.070302,
+    "lng": 27.85787,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508038,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0708846,
+    "lng": 27.8582239,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854508045,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0715296,
+    "lng": 27.8573702,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854510718,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.072399,
+    "lng": 27.8568402,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854513962,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.874842,
+    "lng": 28.0464013,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854513976,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8755915,
+    "lng": 28.0473876,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854942941,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.878143,
+    "lng": 28.0460547,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854944690,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8805555,
+    "lng": 28.0416149,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854944692,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8847939,
+    "lng": 28.0433593,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 854946133,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8838306,
+    "lng": 28.0406094,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932140,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.701747,
+    "lng": 28.0855031,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932142,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7019774,
+    "lng": 28.0853887,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932144,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7022924,
+    "lng": 28.0852565,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932146,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7021289,
+    "lng": 28.0851944,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932148,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.70209,
+    "lng": 28.0850234,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932150,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7019856,
+    "lng": 28.085154,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932152,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.702005,
+    "lng": 28.0852944,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932154,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7016433,
+    "lng": 28.0855472,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932156,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7015517,
+    "lng": 28.0853226,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932157,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7015915,
+    "lng": 28.0852092,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932159,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7016003,
+    "lng": 28.085002,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932161,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7020118,
+    "lng": 28.0849098,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932163,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7021341,
+    "lng": 28.0850471,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932165,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7021852,
+    "lng": 28.0851071,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932167,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7021326,
+    "lng": 28.0853071,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932169,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7020148,
+    "lng": 28.0853689,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932171,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7015946,
+    "lng": 28.0855096,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 858932172,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7016202,
+    "lng": 28.0853477,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864552974,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0809514,
+    "lng": 27.8708196,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864552981,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0782378,
+    "lng": 27.8741682,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864552990,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.081729,
+    "lng": 27.8732402,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864554656,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0827862,
+    "lng": 27.8684891,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864554663,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0839996,
+    "lng": 27.8686734,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864554677,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0840851,
+    "lng": 27.8726024,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864554681,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0851337,
+    "lng": 27.8694489,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864556756,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0879411,
+    "lng": 27.8696076,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864556767,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0841989,
+    "lng": 27.8673375,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864556780,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0786183,
+    "lng": 27.8627046,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864558743,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0771866,
+    "lng": 27.8647239,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864558752,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0805911,
+    "lng": 27.8665727,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864558766,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0794928,
+    "lng": 27.8693183,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864558775,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0752369,
+    "lng": 27.8683463,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864561681,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0784241,
+    "lng": 27.8703695,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864561696,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0749645,
+    "lng": 27.8726006,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864561701,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0778042,
+    "lng": 27.8718726,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864561713,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0815342,
+    "lng": 27.8674759,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864570501,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0816125,
+    "lng": 27.8668605,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 864570503,
+    "type": "way",
+    "name": "Ruimsig Country Club",
+    "lat": -26.0816277,
+    "lng": 27.8683707,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Ruimsig Country Club"
+    }
+  },
+  {
+    "id": 872186608,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8939107,
+    "lng": 28.1207208,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 872204349,
+    "type": "way",
+    "name": "Thatchfield",
+    "lat": -25.8933227,
+    "lng": 28.1213561,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Thatchfield"
+    }
+  },
+  {
+    "id": 875285889,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.782451,
+    "lng": 28.1602925,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 876140943,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.770976,
+    "lng": 28.3741087,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 876140949,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7723463,
+    "lng": 28.3800169,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881491153,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.055869,
+    "lng": 28.0102364,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881491160,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0552438,
+    "lng": 28.0060341,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881492861,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0594179,
+    "lng": 28.01252,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881492865,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0608464,
+    "lng": 28.0117133,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881495137,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0606406,
+    "lng": 28.0111153,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881500351,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0573898,
+    "lng": 28.0055653,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881500359,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0582641,
+    "lng": 28.007862,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881500363,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0575228,
+    "lng": 28.0061862,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881503960,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0614933,
+    "lng": 28.0097722,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 881506091,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0592666,
+    "lng": 28.0054144,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 966807848,
+    "type": "way",
+    "name": "Zwartkops Country Club",
+    "lat": -25.8325847,
+    "lng": 28.1636792,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Zwartkops Country Club",
+      "wikidata": "Q15614588",
+      "wikipedia": "nl:Zwartkop Country Club"
+    }
+  },
+  {
+    "id": 967811810,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2647055,
+    "lng": 28.1053346,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967811815,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2630835,
+    "lng": 28.102738,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967811819,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2651335,
+    "lng": 28.1045779,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854519,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2651836,
+    "lng": 28.0991933,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854522,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2647288,
+    "lng": 28.1012535,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854526,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2647169,
+    "lng": 28.0978243,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854529,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2660739,
+    "lng": 28.0992008,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854533,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2653767,
+    "lng": 28.1041822,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854538,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.262862,
+    "lng": 28.1079272,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854542,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2620377,
+    "lng": 28.1108353,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854545,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2626301,
+    "lng": 28.1088471,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854549,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2625311,
+    "lng": 28.103758,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854553,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2621242,
+    "lng": 28.1076184,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854557,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2613849,
+    "lng": 28.1113457,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854560,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2614964,
+    "lng": 28.1120535,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854564,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2645638,
+    "lng": 28.1107136,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854568,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2620287,
+    "lng": 28.1118015,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 967854572,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.2644019,
+    "lng": 28.1086486,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "landuse": "grass"
+    }
+  },
+  {
+    "id": 1102243571,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9817126,
+    "lng": 28.001384,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102840881,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1329217,
+    "lng": 28.0525301,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102840882,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1330596,
+    "lng": 28.0530056,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102840883,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1326983,
+    "lng": 28.0531676,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102840886,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1300356,
+    "lng": 28.0512775,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102840890,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1318795,
+    "lng": 28.0528163,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102842977,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1323143,
+    "lng": 28.0535599,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102844048,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1301594,
+    "lng": 28.05516,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102848813,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1286257,
+    "lng": 28.0555176,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102852732,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1296673,
+    "lng": 28.057132,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102852733,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.129288,
+    "lng": 28.0562643,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102852741,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1286004,
+    "lng": 28.0540881,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102852744,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1279251,
+    "lng": 28.0558821,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102852750,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1285182,
+    "lng": 28.0562325,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102854773,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1281534,
+    "lng": 28.0595501,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102856398,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1274843,
+    "lng": 28.0596872,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102859520,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1288926,
+    "lng": 28.0616431,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102859523,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1289282,
+    "lng": 28.0605195,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102868732,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1420112,
+    "lng": 28.0623967,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102868740,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1426212,
+    "lng": 28.0598365,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102868745,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1459803,
+    "lng": 28.0572818,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102875252,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1285317,
+    "lng": 28.0599645,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102879777,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1256574,
+    "lng": 28.0637631,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1102879783,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1266731,
+    "lng": 28.0602618,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103106643,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1426244,
+    "lng": 28.0587104,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103106648,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1432849,
+    "lng": 28.0598624,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103112486,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1483971,
+    "lng": 28.0557767,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131472,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.149633,
+    "lng": 28.0547995,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131473,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1479571,
+    "lng": 28.0569288,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131475,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1510893,
+    "lng": 28.0552595,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131480,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1516707,
+    "lng": 28.0549953,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131481,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1518965,
+    "lng": 28.0551551,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131487,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1520037,
+    "lng": 28.0557278,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103131494,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1552683,
+    "lng": 28.0559007,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103142519,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1562571,
+    "lng": 28.0560521,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103142530,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1606515,
+    "lng": 28.0555792,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103142537,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1626323,
+    "lng": 28.0561905,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103142539,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1630518,
+    "lng": 28.055972,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103146608,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1586519,
+    "lng": 28.0560192,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103146617,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1588041,
+    "lng": 28.0569798,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1103146627,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1650024,
+    "lng": 28.055092,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1128391036,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.741365,
+    "lng": 28.2484356,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1174247845,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0366141,
+    "lng": 27.5863649,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1253538939,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1257745,
+    "lng": 27.9738293,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253538940,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1219373,
+    "lng": 27.9678001,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253538941,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1213989,
+    "lng": 27.9682363,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253538942,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1207672,
+    "lng": 27.9683424,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869561,
+    "type": "way",
+    "name": "Hole 13",
+    "lat": -26.1005923,
+    "lng": 27.9658029,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 13"
+    }
+  },
+  {
+    "id": 1253869562,
+    "type": "way",
+    "name": "Hole 12",
+    "lat": -26.1034466,
+    "lng": 27.9644678,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 12"
+    }
+  },
+  {
+    "id": 1253869563,
+    "type": "way",
+    "name": "Hole 15",
+    "lat": -26.1033068,
+    "lng": 27.9653738,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 15"
+    }
+  },
+  {
+    "id": 1253869564,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1041643,
+    "lng": 27.9643545,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869565,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1042842,
+    "lng": 27.9646905,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869566,
+    "type": "way",
+    "name": "Hole 14",
+    "lat": -26.1048489,
+    "lng": 27.9654441,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 14"
+    }
+  },
+  {
+    "id": 1253869567,
+    "type": "way",
+    "name": "Hole 2",
+    "lat": -26.1051964,
+    "lng": 27.9650144,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 2"
+    }
+  },
+  {
+    "id": 1253869568,
+    "type": "way",
+    "name": "Hole 16",
+    "lat": -26.1078323,
+    "lng": 27.9637191,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 16"
+    }
+  },
+  {
+    "id": 1253869569,
+    "type": "way",
+    "name": "Hole 11",
+    "lat": -26.1071924,
+    "lng": 27.9631099,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 11"
+    }
+  },
+  {
+    "id": 1253869570,
+    "type": "way",
+    "name": "Hole 3",
+    "lat": -26.1068756,
+    "lng": 27.9627425,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 3"
+    }
+  },
+  {
+    "id": 1253869574,
+    "type": "way",
+    "name": "Hole 10",
+    "lat": -26.1101819,
+    "lng": 27.9635051,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 10"
+    }
+  },
+  {
+    "id": 1253869575,
+    "type": "way",
+    "name": "Hole 4",
+    "lat": -26.1117257,
+    "lng": 27.9621609,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 4"
+    }
+  },
+  {
+    "id": 1253869576,
+    "type": "way",
+    "name": "Hole 8",
+    "lat": -26.1127001,
+    "lng": 27.962107,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 8"
+    }
+  },
+  {
+    "id": 1253869577,
+    "type": "way",
+    "name": "Hole 5",
+    "lat": -26.1129214,
+    "lng": 27.960384,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 5"
+    }
+  },
+  {
+    "id": 1253869578,
+    "type": "way",
+    "name": "Hole 7",
+    "lat": -26.1134305,
+    "lng": 27.960558,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 7"
+    }
+  },
+  {
+    "id": 1253869582,
+    "type": "way",
+    "name": "Hole 6",
+    "lat": -26.1151035,
+    "lng": 27.9575255,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 6"
+    }
+  },
+  {
+    "id": 1253869583,
+    "type": "way",
+    "name": "Hole 1",
+    "lat": -26.1101453,
+    "lng": 27.9648253,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 1"
+    }
+  },
+  {
+    "id": 1253869585,
+    "type": "way",
+    "name": "Hole 17",
+    "lat": -26.1094891,
+    "lng": 27.9643648,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 17"
+    }
+  },
+  {
+    "id": 1253869590,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1133657,
+    "lng": 27.9653791,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869591,
+    "type": "way",
+    "name": "Hole 18",
+    "lat": -26.1136779,
+    "lng": 27.9645747,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 18"
+    }
+  },
+  {
+    "id": 1253869592,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1138265,
+    "lng": 27.9652269,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869593,
+    "type": "way",
+    "name": "Hole 9",
+    "lat": -26.1142826,
+    "lng": 27.9642006,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Hole 9"
+    }
+  },
+  {
+    "id": 1253869594,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.115107,
+    "lng": 27.9649364,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869595,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1150817,
+    "lng": 27.9653307,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869597,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1150137,
+    "lng": 27.9666422,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869600,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.118598,
+    "lng": 27.9669964,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869602,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1190676,
+    "lng": 27.9678738,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869603,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1194667,
+    "lng": 27.9683806,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869604,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1184369,
+    "lng": 27.9660705,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869609,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1191478,
+    "lng": 27.9661059,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869610,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1196596,
+    "lng": 27.9652987,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869611,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1216417,
+    "lng": 27.9708061,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869612,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1244763,
+    "lng": 27.9737085,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869613,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.124257,
+    "lng": 27.9729538,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869614,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1238201,
+    "lng": 27.9725361,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869617,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.121027,
+    "lng": 27.9721443,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869618,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1206242,
+    "lng": 27.971724,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869619,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1211001,
+    "lng": 27.9714409,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869620,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.125196,
+    "lng": 27.9737728,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869622,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1237167,
+    "lng": 27.9718191,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1253869623,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.122889,
+    "lng": 27.9705084,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1273301235,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8116162,
+    "lng": 28.3150134,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1273303166,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8206919,
+    "lng": 28.3135988,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1273303167,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8205692,
+    "lng": 28.3132619,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1273303168,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.8204201,
+    "lng": 28.3129579,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352937,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1190617,
+    "lng": 27.9678624,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352938,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1192462,
+    "lng": 27.967042,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352939,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1186053,
+    "lng": 27.9669877,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352940,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1184386,
+    "lng": 27.9660718,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352941,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.121647,
+    "lng": 27.9708094,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352942,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1196598,
+    "lng": 27.9653042,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352943,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1238279,
+    "lng": 27.972533,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352945,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1244848,
+    "lng": 27.9737159,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352946,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1206154,
+    "lng": 27.9717174,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352947,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1210433,
+    "lng": 27.9721433,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352948,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1257796,
+    "lng": 27.9738233,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352949,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1219485,
+    "lng": 27.9677936,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352950,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1229014,
+    "lng": 27.9705128,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352951,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1214135,
+    "lng": 27.9682342,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352952,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1207707,
+    "lng": 27.9683425,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352954,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1142763,
+    "lng": 27.9641968,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1318352956,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1154182,
+    "lng": 27.9659794,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1332886382,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7566504,
+    "lng": 28.2460601,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1332886383,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7571763,
+    "lng": 28.2462771,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742871,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7830606,
+    "lng": 28.2530391,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742872,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7828317,
+    "lng": 28.2528009,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742873,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7840536,
+    "lng": 28.253385,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742874,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7812934,
+    "lng": 28.2498805,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742875,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7798018,
+    "lng": 28.2523586,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742876,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7814752,
+    "lng": 28.2549165,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742877,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7814856,
+    "lng": 28.2560421,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742878,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7819731,
+    "lng": 28.2572025,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742879,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7826313,
+    "lng": 28.2579574,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742880,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7866089,
+    "lng": 28.25461,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742881,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7858162,
+    "lng": 28.2560622,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742882,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7851344,
+    "lng": 28.2556363,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742883,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7838887,
+    "lng": 28.2559119,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742884,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7784024,
+    "lng": 28.2530382,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742885,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7784886,
+    "lng": 28.2536494,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742886,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7787733,
+    "lng": 28.2546764,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742887,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7780882,
+    "lng": 28.2554635,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1364742888,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.7780398,
+    "lng": 28.2550306,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1413519965,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.4211524,
+    "lng": 28.0265053,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1422478038,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.061881,
+    "lng": 28.0795354,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422481570,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0533213,
+    "lng": 28.0740858,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422481571,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0451412,
+    "lng": 28.0708212,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422481581,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0410532,
+    "lng": 28.0713324,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422481587,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0422827,
+    "lng": 28.0792563,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485117,
+    "type": "way",
+    "name": "Putting Green",
+    "lat": -26.049488,
+    "lng": 28.0787956,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Putting Green"
+    }
+  },
+  {
+    "id": 1422485118,
+    "type": "way",
+    "name": "Chipping Green",
+    "lat": -26.0492348,
+    "lng": 28.078294,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Chipping Green"
+    }
+  },
+  {
+    "id": 1422485123,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0497701,
+    "lng": 28.0781747,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485126,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0484066,
+    "lng": 28.0814206,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485128,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0490786,
+    "lng": 28.080798,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485133,
+    "type": "way",
+    "name": "Putting Green",
+    "lat": -26.0506887,
+    "lng": 28.0781668,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "name": "Putting Green"
+    }
+  },
+  {
+    "id": 1422485134,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0511183,
+    "lng": 28.0778795,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485156,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0495067,
+    "lng": 28.079424,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485165,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0463608,
+    "lng": 28.0766601,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422485168,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0459155,
+    "lng": 28.077744,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422488950,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0493438,
+    "lng": 28.0770537,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422488959,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0505829,
+    "lng": 28.074695,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422488967,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.049667,
+    "lng": 28.0733463,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422488970,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0521087,
+    "lng": 28.074661,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422491148,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0424468,
+    "lng": 28.0718915,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422491156,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0437514,
+    "lng": 28.073274,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422491161,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.043938,
+    "lng": 28.0760476,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422494526,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0540252,
+    "lng": 28.0785902,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422494534,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0423641,
+    "lng": 28.0738603,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422494539,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0426205,
+    "lng": 28.074876,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422494547,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0439041,
+    "lng": 28.0775381,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422494557,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0449988,
+    "lng": 28.0780362,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422495783,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.045685,
+    "lng": 28.0731459,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422495787,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0464142,
+    "lng": 28.0731596,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422495797,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0486646,
+    "lng": 28.0727897,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422495802,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0481551,
+    "lng": 28.0739808,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508221,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0530031,
+    "lng": 28.0755295,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508225,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0549357,
+    "lng": 28.0746303,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508231,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0549612,
+    "lng": 28.0778538,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508235,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0559553,
+    "lng": 28.0776678,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508242,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0552312,
+    "lng": 28.0790144,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508251,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0562363,
+    "lng": 28.0818469,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422508261,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0596491,
+    "lng": 28.0814648,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422517674,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.060495,
+    "lng": 28.0805217,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422517683,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.059123,
+    "lng": 28.0804983,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422517703,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0590611,
+    "lng": 28.0784518,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422654995,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0473261,
+    "lng": 28.0799781,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422654997,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0479299,
+    "lng": 28.0799326,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422654999,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0489178,
+    "lng": 28.0801174,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422797095,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.048471,
+    "lng": 28.0807086,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422797100,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0490463,
+    "lng": 28.0813959,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422797105,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0478168,
+    "lng": 28.0810196,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1422797107,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.0481872,
+    "lng": 28.0805394,
+    "hole": null,
+    "tags": {
+      "golf": "green"
+    }
+  },
+  {
+    "id": 1424672225,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9404507,
+    "lng": 28.1146313,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1424672226,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9396559,
+    "lng": 28.1213806,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1424672236,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9365229,
+    "lng": 28.1278222,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1424672237,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -25.9333163,
+    "lng": 28.1241616,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course"
+    }
+  },
+  {
+    "id": 1449648116,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1529914,
+    "lng": 28.1128327,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449648125,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1514767,
+    "lng": 28.1143503,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449648135,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1479379,
+    "lng": 28.1155647,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449652537,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1514957,
+    "lng": 28.1131219,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449655778,
+    "type": "way",
+    "name": "West Course",
+    "lat": -26.1563205,
+    "lng": 28.103501,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "addr:housenumber": "1",
+      "addr:postcode": "2192",
+      "addr:street": "Fairway Avenue",
+      "golf:course": "18_hole",
+      "golf:par": "72",
+      "leisure": "golf_course",
+      "name": "West Course",
+      "operator": "Royal Johannesburg & Kensington Golf Club"
+    }
+  },
+  {
+    "id": 1449668084,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1507077,
+    "lng": 28.1133233,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668089,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.146092,
+    "lng": 28.115912,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668095,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1487867,
+    "lng": 28.1132777,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668096,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1527784,
+    "lng": 28.1115405,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668097,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1544659,
+    "lng": 28.108706,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668098,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1547802,
+    "lng": 28.1077774,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668099,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1545061,
+    "lng": 28.107882,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668102,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.154684,
+    "lng": 28.1071179,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668111,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1512145,
+    "lng": 28.111396,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668112,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1471193,
+    "lng": 28.1133866,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668113,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1476853,
+    "lng": 28.1120832,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668114,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.149578,
+    "lng": 28.1088642,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668115,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1494746,
+    "lng": 28.1103649,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668116,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1488215,
+    "lng": 28.1117431,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668117,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.1517453,
+    "lng": 28.1062436,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 1449668118,
+    "type": "way",
+    "name": "Unknown",
+    "lat": -26.151558,
+    "lng": 28.1093675,
+    "hole": null,
+    "tags": {
+      "golf": "green",
+      "surface": "grass"
+    }
+  },
+  {
+    "id": 6947401,
+    "type": "relation",
+    "name": "Germiston Golf Course",
+    "lat": -26.2336257,
+    "lng": 28.1475187,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Germiston Golf Course",
+      "sport": "golf",
+      "type": "multipolygon",
+      "wikidata": "Q15394855",
+      "wikipedia": "nl:Germiston Golf Club"
+    }
+  },
+  {
+    "id": 10701236,
+    "type": "relation",
+    "name": "Pecanwood",
+    "lat": -25.7640602,
+    "lng": 27.8560542,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Pecanwood",
+      "sport": "golf",
+      "type": "multipolygon"
+    }
+  },
+  {
+    "id": 11078020,
+    "type": "relation",
+    "name": "Killarney Country Club",
+    "lat": -26.1535238,
+    "lng": 28.0585544,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Killarney Country Club",
+      "type": "multipolygon",
+      "wikidata": "Q15605337"
+    }
+  },
+  {
+    "id": 18390021,
+    "type": "relation",
+    "name": "SAPS Mechanical School Golf Course",
+    "lat": -26.1588198,
+    "lng": 28.3083856,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "SAPS Mechanical School Golf Course",
+      "type": "multipolygon"
+    }
+  },
+  {
+    "id": 19693512,
+    "type": "relation",
+    "name": "Houghton Golf Course",
+    "lat": -26.1630806,
+    "lng": 28.069411,
+    "hole": null,
+    "tags": {
+      "leisure": "golf_course",
+      "name": "Houghton Golf Course",
+      "type": "multipolygon"
+    }
+  },
+  {
+    "id": 19820891,
+    "type": "relation",
+    "name": "East Championship Course",
+    "lat": -26.1499326,
+    "lng": 28.1110841,
+    "hole": null,
+    "tags": {
+      "addr:city": "Johannesburg",
+      "addr:housenumber": "1",
+      "addr:postcode": "2192",
+      "addr:street": "Fairway Avenue",
+      "golf:course": "18_hole",
+      "golf:par": "72",
+      "leisure": "golf_course",
+      "name": "East Championship Course",
+      "operator": "Royal Johannesburg & Kensington Golf Club",
+      "type": "multipolygon"
+    }
+  }
+]
