@@ -122,6 +122,7 @@ export default function RangefinderPage() {
     }
 
     const watchIds: number[] = [];
+    let fellBack = false;
 
     const onSuccess = (pos: GeolocationPosition) => {
       setPlayerPos({ lat: pos.coords.latitude, lng: pos.coords.longitude });
@@ -129,12 +130,14 @@ export default function RangefinderPage() {
     };
 
     const onError = (err: GeolocationPositionError) => {
+      if (fellBack) return;
       // Permission denied — no fallback will help
       if (err.code === 1) {
         setGpsError("Location access denied. Enable GPS in your browser settings.");
         return;
       }
       // Position unavailable or timeout — fall back to low accuracy
+      fellBack = true;
       setGpsError("Getting approximate location...");
       const fallbackId = navigator.geolocation.watchPosition(
         onSuccess,
