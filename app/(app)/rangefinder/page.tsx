@@ -316,8 +316,8 @@ export default function RangefinderPage() {
         )}
 
         {/* Map */}
-        <div className="mt-4 overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
-          <div ref={mapContainerRef} className="h-[60vh] w-full bg-[#1e1e1e]">
+        <div className="mt-4 mx-auto max-w-sm overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
+          <div ref={mapContainerRef} className="h-[65vh] w-full bg-[#1e1e1e]">
             {!mapsReady && (
               <div className="flex h-full items-center justify-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
