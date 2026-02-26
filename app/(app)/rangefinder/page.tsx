@@ -349,17 +349,22 @@ export default function RangefinderPage() {
         <source src="/videos/Swing_1.mp4" type="video/mp4" />
       </video>
       <div className="fixed inset-0 bg-black/75 pointer-events-none" />
-      <div className="relative z-10 px-3 pt-1">
+      <div className="relative z-10 px-4 pt-6">
+        <h1 className="text-2xl font-black text-white">Rangefinder</h1>
+        <p className="mt-1 text-sm text-[#888888]">
+          Tap the map to measure distance to the pin
+        </p>
+
         {/* GPS Error */}
         {gpsError && (
-          <div className="mb-1 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2">
-            <p className="text-xs text-red-400">{gpsError}</p>
+          <div className="mt-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3">
+            <p className="text-sm text-red-400">{gpsError}</p>
           </div>
         )}
 
         {/* Map */}
-        <div className="overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
-          <div ref={mapContainerRef} className="h-[75vh] w-full bg-[#1e1e1e]">
+        <div className="mt-4 mx-auto max-w-sm overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a]">
+          <div ref={mapContainerRef} className="h-[65vh] w-full bg-[#1e1e1e]">
             {!mapsReady && (
               <div className="flex h-full items-center justify-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
