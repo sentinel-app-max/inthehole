@@ -9,6 +9,8 @@ const TEST_COURSE: Course = {
   par: 72,
   rating: 71,
   slope: 128,
+  lat: -26.17,
+  lng: 28.08,
   holes: [
     { hole: 1, par: 4, si: 7 },
     { hole: 2, par: 3, si: 15 },

@@ -121,6 +121,12 @@ export interface SwingSession {
   createdAt: string;
 }
 
+export interface HoleCoordinate {
+  hole: number;
+  tee: { lat: number; lng: number };
+  green: { lat: number; lng: number };
+}
+
 export interface SwingAnalysis {
   totalShots: number;
   pureRate: number;

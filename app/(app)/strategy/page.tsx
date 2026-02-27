@@ -2,11 +2,13 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { getBag, getSwingSessions } from "@/lib/firebase/firestore";
 import { enrichBagWithSwingData } from "@/lib/golf/distance";
 import { getClubBreakdown } from "@/lib/swing/analyser";
 import { SA_COURSES, PROVINCES } from "@/lib/courses/data";
+import { hasHoleCoordinates } from "@/lib/courses/holes";
 import {
   buildStrategy,
   type CourseStrategy,
@@ -94,30 +96,39 @@ function SetupStep({
         {/* Course list */}
         <div className="space-y-2">
           {filtered.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setSelected(c)}
-              className={`flex w-full items-center gap-3 rounded-2xl bg-[#1e1e1e] p-4 text-left transition-all ${
-                selected?.id === c.id
-                  ? "border-2 border-[#c9a84c] ring-2 ring-[#c9a84c]/20"
-                  : "border border-white/5"
-              }`}
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold text-white">{c.name}</p>
-                <p className="mt-0.5 text-xs text-[#888888]">
-                  {c.city}, {c.province}
-                </p>
-              </div>
-              <span className="rounded-lg bg-[#c9a84c]/15 px-2 py-1 text-xs font-bold text-[#c9a84c]">
-                Par {c.par}
-              </span>
-              {selected?.id === c.id && (
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c9a84c] text-xs text-[#0a0a0a] font-bold">
-                  ✓
+            <div key={c.id}>
+              <button
+                onClick={() => setSelected(c)}
+                className={`flex w-full items-center gap-3 rounded-2xl bg-[#1e1e1e] p-4 text-left transition-all ${
+                  selected?.id === c.id
+                    ? "border-2 border-[#c9a84c] ring-2 ring-[#c9a84c]/20"
+                    : "border border-white/5"
+                }`}
+              >
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-white">{c.name}</p>
+                  <p className="mt-0.5 text-xs text-[#888888]">
+                    {c.city}, {c.province}
+                  </p>
+                </div>
+                <span className="rounded-lg bg-[#c9a84c]/15 px-2 py-1 text-xs font-bold text-[#c9a84c]">
+                  Par {c.par}
                 </span>
+                {selected?.id === c.id && (
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c9a84c] text-xs text-[#0a0a0a] font-bold">
+                    ✓
+                  </span>
+                )}
+              </button>
+              {hasHoleCoordinates(c.id) && (
+                <Link
+                  href={`/strategy/${c.id}`}
+                  className="mt-1 block rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-4 py-2 text-center text-xs font-bold text-[#c9a84c] transition-colors hover:bg-[#c9a84c]/20"
+                >
+                  Visual Shot Planner →
+                </Link>
               )}
-            </button>
+            </div>
           ))}
           {filtered.length === 0 && (
             <p className="py-8 text-center text-sm text-[#888888]">
