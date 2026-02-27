@@ -85,7 +85,7 @@ function HoleMap({
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    // Bearing from tee to green
+    // Bearing from tee to green (used for map heading)
     const toRad = (d: number) => (d * Math.PI) / 180;
     const φ1 = toRad(plan.tee.lat);
     const φ2 = toRad(plan.green.lat);
@@ -96,9 +96,12 @@ function HoleMap({
       Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
     const headingDeg = ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
 
+    // Include dogleg in center calculation
+    const pts = [plan.tee, plan.green];
+    if (plan.dogleg) pts.push(plan.dogleg);
     const center = {
-      lat: (plan.tee.lat + plan.green.lat) / 2,
-      lng: (plan.tee.lng + plan.green.lng) / 2,
+      lat: pts.reduce((s, p) => s + p.lat, 0) / pts.length,
+      lng: pts.reduce((s, p) => s + p.lng, 0) / pts.length,
     };
 
     if (!mapRef.current) {
@@ -471,16 +474,21 @@ export default function VisualStrategyPage() {
     }
   }, [holeCoords]);
 
+  // Build ordered list of all 18 holes — mapped or not
+  const allHoles = (course?.holes ?? []).map((h) => {
+    const coord = holeCoords?.find((hc) => hc.hole === h.hole) ?? null;
+    return { holeInfo: h, coord };
+  });
+
   // Swipe handling
   const touchStartRef = useRef<number>(0);
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartRef.current = e.touches[0].clientX;
   };
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!holeCoords) return;
     const diff = touchStartRef.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0 && holeIndex < holeCoords.length - 1) {
+      if (diff > 0 && holeIndex < allHoles.length - 1) {
         setHoleIndex((i) => i + 1);
       } else if (diff < 0 && holeIndex > 0) {
         setHoleIndex((i) => i - 1);
@@ -558,13 +566,12 @@ export default function VisualStrategyPage() {
     );
   }
 
-  // Visual shot planner
-  const currentCoord = holeCoords[holeIndex];
-  const currentHoleInfo = course.holes.find(
-    (h) => h.hole === currentCoord.hole
-  );
+  // Current hole
+  const current = allHoles[holeIndex];
+  const currentCoord = current?.coord ?? null;
+  const currentHoleInfo = current?.holeInfo ?? null;
 
-  if (!currentHoleInfo || !mapsReady) {
+  if (!mapsReady || !currentHoleInfo) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
@@ -572,14 +579,21 @@ export default function VisualStrategyPage() {
     );
   }
 
-  const plan = buildVisualHolePlan({
-    holeCoord: currentCoord,
-    holeInfo: currentHoleInfo,
-    clubs,
-    sessions,
-    windDir: "N",
-    windStr: "calm",
-  });
+  const plan =
+    currentCoord
+      ? buildVisualHolePlan({
+          holeCoord: currentCoord,
+          holeInfo: currentHoleInfo,
+          clubs,
+          sessions,
+          windDir: "N",
+          windStr: "calm",
+        })
+      : null;
+
+  const holeStrategy = strategy?.holes.find(
+    (h) => h.hole === currentHoleInfo.hole
+  );
 
   return (
     <div className="min-h-screen" style={{ paddingBottom: "100px" }}>
@@ -610,37 +624,114 @@ export default function VisualStrategyPage() {
           </p>
         </div>
 
-        {/* Hole dots navigation */}
+        {/* Hole dots navigation — all 18 */}
         <div className="flex justify-center gap-1.5 mb-4 flex-wrap">
-          {holeCoords.map((hc, i) => (
+          {allHoles.map((h, i) => (
             <button
-              key={hc.hole}
+              key={h.holeInfo.hole}
               onClick={() => setHoleIndex(i)}
               className={`h-7 w-7 rounded-full text-[10px] font-bold transition-all ${
                 i === holeIndex
                   ? "bg-[#c9a84c] text-[#0a0a0a] scale-110"
-                  : "bg-[#1e1e1e] text-[#888888]"
+                  : h.coord
+                    ? "bg-[#1e1e1e] text-[#888888]"
+                    : "bg-[#1e1e1e] text-[#888888]/40"
               }`}
             >
-              {hc.hole}
+              {h.holeInfo.hole}
             </button>
           ))}
         </div>
 
-        <div
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <HoleMap
-            plan={plan}
-            holeIndex={holeIndex}
-            totalHoles={holeCoords.length}
-            onPrev={() => setHoleIndex((i) => Math.max(0, i - 1))}
-            onNext={() =>
-              setHoleIndex((i) => Math.min(holeCoords.length - 1, i + 1))
-            }
-            strategy={strategy}
-          />
+        <div onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+          {plan ? (
+            <HoleMap
+              plan={plan}
+              holeIndex={holeIndex}
+              totalHoles={allHoles.length}
+              onPrev={() => setHoleIndex((i) => Math.max(0, i - 1))}
+              onNext={() =>
+                setHoleIndex((i) => Math.min(allHoles.length - 1, i + 1))
+              }
+              strategy={strategy}
+            />
+          ) : (
+            /* Unmapped hole — show text card */
+            <div>
+              <div className="flex items-center justify-between px-1 mb-3">
+                <button
+                  onClick={() =>
+                    setHoleIndex((i) => Math.max(0, i - 1))
+                  }
+                  disabled={holeIndex === 0}
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1e1e1e] text-white/60 disabled:opacity-20"
+                >
+                  ‹
+                </button>
+                <div className="text-center">
+                  <span className="text-lg font-black text-white">
+                    Hole {currentHoleInfo.hole}
+                  </span>
+                  <span className="ml-2 text-sm text-[#888888]">
+                    Par {currentHoleInfo.par}
+                  </span>
+                </div>
+                <button
+                  onClick={() =>
+                    setHoleIndex((i) =>
+                      Math.min(allHoles.length - 1, i + 1)
+                    )
+                  }
+                  disabled={holeIndex === allHoles.length - 1}
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1e1e1e] text-white/60 disabled:opacity-20"
+                >
+                  ›
+                </button>
+              </div>
+
+              <div className="mx-auto max-w-sm rounded-xl border-2 border-[#c9a84c]/30 bg-[#1e1e1e] p-8 text-center">
+                <p className="text-sm text-[#888888]">
+                  Visual shot plan data coming soon
+                </p>
+              </div>
+
+              {/* Show text strategy for unmapped holes */}
+              {holeStrategy && (
+                <div className="mt-3 mx-auto max-w-sm rounded-2xl bg-[#1e1e1e] p-4">
+                  {holeStrategy.strokes > 0 && (
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className="h-2 w-2 rounded-full bg-[#c9a84c]" />
+                      <span className="text-xs font-bold text-[#c9a84c]">
+                        You get {holeStrategy.strokes} stroke
+                        {holeStrategy.strokes > 1 ? "s" : ""}
+                      </span>
+                    </div>
+                  )}
+                  {holeStrategy.shots.map((shot, i) => (
+                    <div key={i} className="mt-2">
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[#888888]">
+                        {shot.label}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-black text-[#c9a84c]">
+                          {shot.club}
+                        </span>
+                        <span className="text-xs text-[#888888]">—</span>
+                        <span className="text-sm font-bold text-white">
+                          {shot.distance}m
+                        </span>
+                      </div>
+                      {shot.missWarning && (
+                        <p className="text-[10px] text-[#e63946]">
+                          &#x26A0; {shot.missWarning}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

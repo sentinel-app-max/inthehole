@@ -25,6 +25,7 @@ export interface VisualHolePlan {
   par: number;
   tee: { lat: number; lng: number };
   green: { lat: number; lng: number };
+  dogleg?: { lat: number; lng: number };
   dots: ShotDot[];
   totalDistance: number;
 }
@@ -141,7 +142,8 @@ function pickClubForDistance(
 
 /**
  * Build a visual shot plan for a single hole.
- * Places landing-zone dots along the tee→green bearing at expected carry distances.
+ * For dogleg holes: tee shot aims at the dogleg, remaining shots follow dogleg→green.
+ * For straight holes: all shots follow tee→green bearing.
  */
 export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
   const { holeCoord, holeInfo, clubs, sessions, windDir, windStr } = input;
@@ -151,8 +153,17 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
   const driver = sorted[0] ?? null;
   const longestNonDriver = sorted[1] ?? null;
 
-  const teeToGreenBearing = bearing(holeCoord.tee, holeCoord.green);
-  const totalDistance = Math.round(haversine(holeCoord.tee, holeCoord.green));
+  const hasDogleg = !!holeCoord.dogleg;
+  const leg1Target = hasDogleg ? holeCoord.dogleg! : holeCoord.green;
+  const leg1Bearing = bearing(holeCoord.tee, leg1Target);
+  const leg1Dist = haversine(holeCoord.tee, leg1Target);
+  const leg2Bearing = hasDogleg
+    ? bearing(holeCoord.dogleg!, holeCoord.green)
+    : leg1Bearing;
+  const leg2Dist = hasDogleg
+    ? haversine(holeCoord.dogleg!, holeCoord.green)
+    : 0;
+  const totalDistance = Math.round(leg1Dist + leg2Dist);
 
   const dots: ShotDot[] = [];
 
@@ -162,9 +173,23 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
       par: holeInfo.par,
       tee: holeCoord.tee,
       green: holeCoord.green,
+      dogleg: holeCoord.dogleg,
       dots: [],
       totalDistance,
     };
+  }
+
+  /**
+   * Place a dot at `distFromTee` metres along the hole.
+   * Handles the dogleg turn: first `leg1Dist` metres along leg1,
+   * then remaining along leg2.
+   */
+  function placeDot(distFromTee: number): { lat: number; lng: number } {
+    if (!hasDogleg || distFromTee <= leg1Dist) {
+      return moveAlongBearing(holeCoord.tee, leg1Bearing, distFromTee);
+    }
+    const remainder = distFromTee - leg1Dist;
+    return moveAlongBearing(holeCoord.dogleg!, leg2Bearing, remainder);
   }
 
   let cumulative = 0;
@@ -172,11 +197,7 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
   if (holeInfo.par === 3) {
     const pick = pickClubForDistance(totalDistance, enriched, windStr, windDir);
     if (pick) {
-      const landing = moveAlongBearing(
-        holeCoord.tee,
-        teeToGreenBearing,
-        pick.adjusted
-      );
+      const landing = placeDot(pick.adjusted);
       dots.push({
         label: "Tee shot",
         club: pick.club.name,
@@ -188,17 +209,9 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
     }
   } else if (holeInfo.par === 4) {
     if (driver) {
-      const driverAdj = adjustDistance(
-        driver.distance,
-        windStr,
-        windDir
-      ).distance;
+      const driverAdj = adjustDistance(driver.distance, windStr, windDir).distance;
       cumulative += driverAdj;
-      const landing = moveAlongBearing(
-        holeCoord.tee,
-        teeToGreenBearing,
-        cumulative
-      );
+      const landing = placeDot(cumulative);
       dots.push({
         label: "Tee shot",
         club: driver.name,
@@ -210,19 +223,10 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
 
       const remaining = totalDistance - cumulative;
       if (remaining > 0) {
-        const approach = pickClubForDistance(
-          remaining,
-          enriched,
-          windStr,
-          windDir
-        );
+        const approach = pickClubForDistance(remaining, enriched, windStr, windDir);
         if (approach) {
           cumulative += approach.adjusted;
-          const approachLanding = moveAlongBearing(
-            holeCoord.tee,
-            teeToGreenBearing,
-            cumulative
-          );
+          const approachLanding = placeDot(cumulative);
           dots.push({
             label: "Approach",
             club: approach.club.name,
@@ -236,17 +240,9 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
     }
   } else if (holeInfo.par === 5) {
     if (driver) {
-      const driverAdj = adjustDistance(
-        driver.distance,
-        windStr,
-        windDir
-      ).distance;
+      const driverAdj = adjustDistance(driver.distance, windStr, windDir).distance;
       cumulative += driverAdj;
-      const landing = moveAlongBearing(
-        holeCoord.tee,
-        teeToGreenBearing,
-        cumulative
-      );
+      const landing = placeDot(cumulative);
       dots.push({
         label: "Tee shot",
         club: driver.name,
@@ -258,17 +254,9 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
 
       const afterTee = totalDistance - cumulative;
       if (afterTee > 0 && longestNonDriver) {
-        const secondAdj = adjustDistance(
-          longestNonDriver.distance,
-          windStr,
-          windDir
-        ).distance;
+        const secondAdj = adjustDistance(longestNonDriver.distance, windStr, windDir).distance;
         cumulative += secondAdj;
-        const secondLanding = moveAlongBearing(
-          holeCoord.tee,
-          teeToGreenBearing,
-          cumulative
-        );
+        const secondLanding = placeDot(cumulative);
         dots.push({
           label: "Second shot",
           club: longestNonDriver.name,
@@ -280,19 +268,10 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
 
         const remaining = totalDistance - cumulative;
         if (remaining > 0) {
-          const approach = pickClubForDistance(
-            remaining,
-            enriched,
-            windStr,
-            windDir
-          );
+          const approach = pickClubForDistance(remaining, enriched, windStr, windDir);
           if (approach) {
             cumulative += approach.adjusted;
-            const approachLanding = moveAlongBearing(
-              holeCoord.tee,
-              teeToGreenBearing,
-              cumulative
-            );
+            const approachLanding = placeDot(cumulative);
             dots.push({
               label: "Approach",
               club: approach.club.name,
@@ -312,6 +291,7 @@ export function buildVisualHolePlan(input: ShotPlanInput): VisualHolePlan {
     par: holeInfo.par,
     tee: holeCoord.tee,
     green: holeCoord.green,
+    dogleg: holeCoord.dogleg,
     dots,
     totalDistance,
   };

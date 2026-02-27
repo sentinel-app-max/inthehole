@@ -125,6 +125,7 @@ export interface HoleCoordinate {
   hole: number;
   tee: { lat: number; lng: number };
   green: { lat: number; lng: number };
+  dogleg?: { lat: number; lng: number };
 }
 
 export interface SwingAnalysis {
