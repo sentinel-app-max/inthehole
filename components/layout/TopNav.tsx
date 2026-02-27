@@ -9,6 +9,7 @@ const links = [
   { href: "/bag", label: "Bag" },
   { href: "/swing", label: "Swing" },
   { href: "/rangefinder", label: "Range" },
+  { href: "/strategy", label: "Strategy" },
   { href: "/coach", label: "Coach" },
 ];
 
