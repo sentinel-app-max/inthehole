@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { getRound, saveRound } from "@/lib/firebase/firestore";
+import { useAuth } from "@/hooks/useAuth";
+import { getRound, saveRound, getMantra, getBag, getSwingSessions } from "@/lib/firebase/firestore";
+import { getCourseById } from "@/lib/courses/data";
+import { getHoleCoordinates } from "@/lib/courses/holes";
+import { loadGoogleMaps } from "@/lib/maps/loader";
+import { buildVisualHolePlan } from "@/lib/strategy/shotplan";
+import MantraOverlay from "@/components/scorecard/MantraOverlay";
+import HoleMapPreview from "@/components/scorecard/HoleMapPreview";
 import {
   courseHcp,
   hcpStrokesOnHole,
@@ -12,7 +19,7 @@ import {
   toPar,
   netScore,
 } from "@/lib/scoring/engine";
-import type { Round, Player, PlayerResult } from "@/types";
+import type { Round, Player, PlayerResult, BagClub, SwingSession, HoleCoordinate } from "@/types";
 
 const PTS_COLORS: Record<number, string> = {
   5: "bg-purple-500 text-white",
@@ -26,6 +33,7 @@ const PTS_COLORS: Record<number, string> = {
 export default function ScorecardPage() {
   const params = useParams();
   const router = useRouter();
+  const { user } = useAuth();
   const roundId = params.id as string;
 
   const [round, setRound] = useState<Round | null>(null);
@@ -33,6 +41,13 @@ export default function ScorecardPage() {
   const [currentHole, setCurrentHole] = useState(0);
   const [scores, setScores] = useState<number[][]>([]);
   const [saving, setSaving] = useState(false);
+  const [mantra, setMantra] = useState<string | null>(null);
+  const [showMantra, setShowMantra] = useState(false);
+  const mantraFetched = useRef(false);
+  const [clubs, setClubs] = useState<BagClub[]>([]);
+  const [sessions, setSessions] = useState<SwingSession[]>([]);
+  const [holeCoords, setHoleCoords] = useState<HoleCoordinate[] | null>(null);
+  const [mapsReady, setMapsReady] = useState(false);
 
   useEffect(() => {
     getRound(roundId).then((r) => {
@@ -53,6 +68,38 @@ export default function ScorecardPage() {
       setLoading(false);
     });
   }, [roundId, router]);
+
+  // Fetch mantra once on mount
+  useEffect(() => {
+    if (!user || mantraFetched.current) return;
+    mantraFetched.current = true;
+    getMantra(user.uid).then((m) => {
+      if (m) {
+        setMantra(m);
+      }
+    });
+  }, [user]);
+
+  // Fetch bag, sessions, hole coordinates for map preview
+  useEffect(() => {
+    if (!round || !user) return;
+
+    const coords = getHoleCoordinates(round.course.id);
+    setHoleCoords(coords);
+
+    if (coords && coords.length > 0) {
+      loadGoogleMaps()
+        .then(() => setMapsReady(true))
+        .catch(() => {});
+    }
+
+    Promise.all([getBag(user.uid), getSwingSessions(user.uid)]).then(
+      ([bag, sess]) => {
+        if (bag && bag.length > 0) setClubs(bag);
+        setSessions(sess);
+      }
+    );
+  }, [round, user]);
 
   const updateScore = useCallback(
     (playerIdx: number, delta: number) => {
@@ -173,8 +220,35 @@ export default function ScorecardPage() {
   const isFront = currentHole < 9;
   const players = buildPlayers();
 
+  // Use static course data for distances and tips (Firestore round may predate distance data)
+  const staticCourse = getCourseById(round.course.id);
+  const staticHole = staticCourse?.holes[currentHole] ?? hole;
+  const playerTee = players[0]?.tee ?? "white";
+  const holeDistance = staticHole.distances?.[playerTee] ?? hole.distances?.[playerTee];
+
+  // Build visual plan for current hole (if coordinates exist)
+  const currentHoleCoord = holeCoords?.find((hc) => hc.hole === hole.hole) ?? null;
+  const visualPlan = mapsReady && currentHoleCoord
+    ? buildVisualHolePlan({
+        holeCoord: currentHoleCoord,
+        holeInfo: staticHole,
+        clubs,
+        sessions,
+        windDir: "N",
+        windStr: "calm",
+        tee: playerTee,
+        handicap: players[0]?.handicap ?? 18,
+      })
+    : null;
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      <style>{`.shot-pill{background:rgba(0,0,0,.85);padding:2px 8px;border-radius:8px;border:1px solid rgba(201,168,76,.3)}`}</style>
+      {/* Mantra overlay — round start only */}
+      {showMantra && mantra && (
+        <MantraOverlay mantra={mantra} onDismiss={() => setShowMantra(false)} onUse={() => setShowMantra(false)} />
+      )}
+
       {/* Top bar */}
       <div
         className="flex items-center justify-between px-4 py-3"
@@ -191,9 +265,21 @@ export default function ScorecardPage() {
             {round.scoringType === "stableford" ? "Stableford" : "Stroke Play"}
           </p>
         </div>
-        <div className="w-12 text-right">
+        <div className="w-12 flex items-center justify-end gap-1.5">
+          {mantra && (
+            <button
+              onClick={() => setShowMantra(true)}
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-[#c9a84c]/15 text-[#c9a84c] transition-colors active:bg-[#c9a84c]/30"
+              aria-label="Show mantra"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          )}
           {saving && (
-            <span className="text-[10px] text-[#c9a84c]/60">Saving...</span>
+            <span className="text-[10px] text-[#c9a84c]/60">...</span>
           )}
         </div>
       </div>
@@ -225,7 +311,9 @@ export default function ScorecardPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-3xl font-black text-white">Hole {hole.hole}</p>
-              <p className="text-xs font-semibold text-[#888888]">SI {hole.si}</p>
+              <p className="text-xs font-semibold text-[#888888]">
+                Par {hole.par}{holeDistance ? ` · ${holeDistance}m` : ""} · SI {hole.si}
+              </p>
             </div>
             <div className="text-center">
               <p className="text-4xl font-black text-[#c9a84c]">{hole.par}</p>
@@ -241,6 +329,10 @@ export default function ScorecardPage() {
             </div>
           </div>
         </div>
+
+        {mantra && (
+          <p className="text-xs font-thin uppercase tracking-[0.15em] text-[#c9a84c] text-center py-1 animate-mantra-glow">{mantra}</p>
+        )}
 
         {/* Player scoring rows */}
         <div className="space-y-2">
@@ -328,11 +420,26 @@ export default function ScorecardPage() {
             })}
           </div>
         </div>
+
+        {/* Satellite map preview */}
+        {visualPlan && <HoleMapPreview plan={visualPlan} />}
+
+        {/* Coaching tip */}
+        {staticHole.tip && (
+          <div className="rounded-2xl bg-[#1e1e1e] border-t-2 border-[#c9a84c] px-5 py-4">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#c9a84c] mb-2">
+              Tip
+            </p>
+            <p className="font-thin uppercase tracking-[0.25em] text-sm text-white/60 leading-relaxed">
+              {staticHole.tip}
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a] px-4 pb-4 pt-2">
-        <div className="flex gap-3">
+        <div className="mx-auto max-w-lg flex gap-3">
           <button
             onClick={() => navigateHole("prev")}
             disabled={isFirst}
