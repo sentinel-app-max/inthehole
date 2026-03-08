@@ -49,6 +49,7 @@ export default function RangefinderPage() {
   const lineRef = useRef<google.maps.Polyline | null>(null);
 
   const [mapsReady, setMapsReady] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
   const [gpsError, setGpsError] = useState<string | null>(null);
   const [playerPos, setPlayerPos] = useState<{ lat: number; lng: number } | null>(null);
   const [targetPos, setTargetPos] = useState<{ lat: number; lng: number } | null>(null);
@@ -163,6 +164,7 @@ export default function RangefinderPage() {
       tilt: 0,
     });
     mapRef.current = map;
+    setMapReady(true);
 
     if (playerPos) {
       playerMarkerRef.current = new google.maps.Marker({
@@ -363,6 +365,16 @@ export default function RangefinderPage() {
 
         {/* Map */}
         <div className="mt-4 mx-auto max-w-sm overflow-hidden rounded-xl border-2 border-[#c9a84c] bg-[#0a0a0a] relative">
+          {!mapReady && (
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#0a0a0a] rounded-xl">
+              <img
+                src="/images/logo8.svg"
+                alt="Loading"
+                className="h-16 w-16 animate-spin"
+                style={{ animationDuration: '2s' }}
+              />
+            </div>
+          )}
           <div ref={mapContainerRef} className="h-[65vh] w-full bg-[#1e1e1e]">
             {!mapsReady && (
               <div className="flex h-full items-center justify-center">
