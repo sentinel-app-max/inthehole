@@ -57,7 +57,7 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         zIndex: 1,
         icon: plan.hole === 1
           ? {
-              url: '/images/icons/Ball_Tee.svg',
+              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><line x1="12" y1="10" x2="12" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/><line x1="7" y1="34" x2="17" y2="34" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="7" fill="#ffffff" stroke="#c9a84c" stroke-width="1.5"/><circle cx="9" cy="6" r="1.2" fill="#c9a84c"/><circle cx="13" cy="5" r="1.2" fill="#c9a84c"/><circle cx="15" cy="9" r="1.2" fill="#c9a84c"/><circle cx="10" cy="10" r="1.2" fill="#c9a84c"/></svg>`),
               scaledSize: new google.maps.Size(24, 36),
               anchor: new google.maps.Point(12, 34),
             }
@@ -85,9 +85,9 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         zIndex: 1,
         icon: plan.hole === 1
           ? {
-              url: '/images/icons/Flag.svg',
-              scaledSize: new google.maps.Size(28, 40),
-              anchor: new google.maps.Point(4, 40),
+              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><line x1="8" y1="2" x2="8" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/><path d="M8 2 L26 9 L8 16 Z" fill="#c9a84c" stroke="#ffffff" stroke-width="1"/><circle cx="8" cy="34" r="3" fill="#c9a84c" stroke="#ffffff" stroke-width="1.5"/></svg>`),
+              scaledSize: new google.maps.Size(28, 36),
+              anchor: new google.maps.Point(8, 34),
             }
           : {
               url:
