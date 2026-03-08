@@ -55,18 +55,24 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         position: plan.tee,
         map,
         zIndex: 1,
-        icon: {
-          url:
-            "data:image/svg+xml," +
-            encodeURIComponent(
-              `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 20 28">` +
-                `<line x1="10" y1="6" x2="10" y2="26" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
-                `<circle cx="10" cy="6" r="4" fill="#ffffff" stroke="#c9a84c" stroke-width="1.5"/>` +
-                `</svg>`
-            ),
-          scaledSize: new google.maps.Size(20, 28),
-          anchor: new google.maps.Point(10, 26),
-        },
+        icon: plan.hole === 1
+          ? {
+              url: '/images/icons/Ball_Tee.svg',
+              scaledSize: new google.maps.Size(24, 36),
+              anchor: new google.maps.Point(12, 34),
+            }
+          : {
+              url:
+                "data:image/svg+xml," +
+                encodeURIComponent(
+                  `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 20 28">` +
+                    `<line x1="10" y1="6" x2="10" y2="26" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
+                    `<circle cx="10" cy="6" r="4" fill="#ffffff" stroke="#c9a84c" stroke-width="1.5"/>` +
+                    `</svg>`
+                ),
+              scaledSize: new google.maps.Size(20, 28),
+              anchor: new google.maps.Point(10, 26),
+            },
         title: "Tee",
       })
     );
@@ -77,19 +83,25 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         position: plan.green,
         map,
         zIndex: 1,
-        icon: {
-          url:
-            "data:image/svg+xml," +
-            encodeURIComponent(
-              `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">` +
-                `<line x1="8" y1="4" x2="8" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
-                `<path d="M8 4 L24 10 L8 16 Z" fill="#1a5c2a" stroke="#ffffff" stroke-width="1"/>` +
-                `<circle cx="8" cy="34" r="3" fill="#1a5c2a" stroke="#ffffff" stroke-width="1.5"/>` +
-                `</svg>`
-            ),
-          scaledSize: new google.maps.Size(28, 36),
-          anchor: new google.maps.Point(8, 34),
-        },
+        icon: plan.hole === 1
+          ? {
+              url: '/images/icons/Flag.svg',
+              scaledSize: new google.maps.Size(28, 40),
+              anchor: new google.maps.Point(4, 40),
+            }
+          : {
+              url:
+                "data:image/svg+xml," +
+                encodeURIComponent(
+                  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">` +
+                    `<line x1="8" y1="4" x2="8" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
+                    `<path d="M8 4 L24 10 L8 16 Z" fill="#1a5c2a" stroke="#ffffff" stroke-width="1"/>` +
+                    `<circle cx="8" cy="34" r="3" fill="#1a5c2a" stroke="#ffffff" stroke-width="1.5"/>` +
+                    `</svg>`
+                ),
+              scaledSize: new google.maps.Size(28, 36),
+              anchor: new google.maps.Point(8, 34),
+            },
         title: "Green",
       })
     );
