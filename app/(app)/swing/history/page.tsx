@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
@@ -46,101 +46,46 @@ interface ShotCardProps {
 }
 
 function ShotCard({ session, onDelete }: ShotCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const startX = useRef(0);
-  const currentX = useRef(0);
-  const [offset, setOffset] = useState(0);
-  const [swiping, setSwiping] = useState(false);
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    startX.current = e.touches[0].clientX;
-    currentX.current = startX.current;
-    setSwiping(true);
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (!swiping) return;
-      currentX.current = e.touches[0].clientX;
-      const dx = currentX.current - startX.current;
-      // Only allow swipe left
-      const clamped = Math.min(0, Math.max(-80, dx));
-      setOffset(clamped);
-    },
-    [swiping]
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    setSwiping(false);
-    // Snap open if swiped past halfway, otherwise snap shut
-    setOffset(offset < -40 ? -80 : 0);
-  }, [offset]);
-
   return (
-    <div className="relative overflow-hidden rounded-xl">
-      {/* Delete button behind the card */}
+    <div className="relative bg-[#1e1e1e] border border-white/5 rounded-xl p-4">
+      {/* Delete button */}
       <button
         onClick={() => onDelete(session.id)}
-        className="absolute right-0 top-0 bottom-0 w-20 bg-red-500 flex items-center justify-center"
+        className="absolute top-2 right-2 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-500/80 transition-colors"
       >
-        <svg
-          className="w-5 h-5 text-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-          />
-        </svg>
+        <span className="text-white/60 text-xs hover:text-white">×</span>
       </button>
 
-      {/* Card content */}
-      <div
-        ref={cardRef}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        className="relative bg-[#1e1e1e] border border-white/5 p-4 z-10"
-        style={{
-          transform: `translateX(${offset}px)`,
-          transition: swiping ? "none" : "transform 0.2s ease-out",
-        }}
-      >
-        {/* Top row: club + date + result dot */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <p className="font-bold text-white">{session.club}</p>
-            <span
-              className={`w-2.5 h-2.5 rounded-full ${RESULT_DOT[session.result]}`}
-            />
-          </div>
-          <p className="text-xs text-white/40">{timeAgo(session.createdAt)}</p>
+      {/* Top row: club + date + result dot */}
+      <div className="flex items-center justify-between mb-2 pr-6">
+        <div className="flex items-center gap-2">
+          <p className="font-bold text-white">{session.club}</p>
+          <span
+            className={`w-2.5 h-2.5 rounded-full ${RESULT_DOT[session.result]}`}
+          />
         </div>
+        <p className="text-xs text-white/40">{timeAgo(session.createdAt)}</p>
+      </div>
 
-        {/* Distance */}
-        <p className="text-sm text-white/70 mb-2">
-          {session.targetDistance}m{" "}
-          <span className="text-white/30">→</span>{" "}
-          {session.actualDistance}m
-          <span className="text-white/40 ml-1">
-            ({session.actualDistance >= session.targetDistance ? "+" : ""}
-            {session.actualDistance - session.targetDistance}m)
-          </span>
-        </p>
+      {/* Distance */}
+      <p className="text-sm text-white/70 mb-2">
+        {session.targetDistance}m{" "}
+        <span className="text-white/30">→</span>{" "}
+        {session.actualDistance}m
+        <span className="text-white/40 ml-1">
+          ({session.actualDistance >= session.targetDistance ? "+" : ""}
+          {session.actualDistance - session.targetDistance}m)
+        </span>
+      </p>
 
-        {/* Badges */}
-        <div className="flex gap-2">
-          <span className="text-xs bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded-full capitalize">
-            {session.shotShape}
-          </span>
-          <span className="text-xs bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded-full capitalize">
-            {session.contactQuality}
-          </span>
-        </div>
+      {/* Badges */}
+      <div className="flex gap-2">
+        <span className="text-xs bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded-full capitalize">
+          {session.shotShape}
+        </span>
+        <span className="text-xs bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded-full capitalize">
+          {session.contactQuality}
+        </span>
       </div>
     </div>
   );

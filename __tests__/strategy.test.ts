@@ -140,26 +140,31 @@ describe("buildStrategy", () => {
     expect(par5.shots[2].label).toBe("Approach");
   });
 
-  it("uses driver + second longest for par 5", () => {
+  it("par 5 backward plans to leave ideal approach", () => {
     const result = buildStrategy(makeInput());
     const par5 = result.holes.find((h) => h.par === 5)!;
     expect(par5.shots[0].club).toBe("Driver");
-    expect(par5.shots[1].club).toBe("3 Wood");
+    // Remaining after Driver (230m) from 480m = 250m
+    // Backward planning picks layup that leaves approach in ideal zone (80-130m)
+    // 7i (150m) leaves 100m approach — best score
+    expect(par5.shots[1].club).toBe("7i");
+    expect(par5.shots[2].label).toBe("Approach");
   });
 
   it("flags goForIt when par 5 reachable in 2", () => {
-    // Driver 230 + 3 Wood 200 = 430 < 480, so NOT reachable
+    // MID tier: par5GoForItMax = 420, default par 5 = 480m → NOT reachable
     const result = buildStrategy(makeInput());
     const par5 = result.holes.find((h) => h.par === 5)!;
     expect(par5.goForIt).toBe(false);
 
-    // Big hitter: Driver 280 + 3 Wood 240 = 520 >= 480
+    // LOW tier (handicap 5): par5GoForItMax = 500, maxApproach = 200
+    // Big hitter: Driver 280, afterTee = 480-280 = 200 ≤ 200 → go for it
     const bigBag: BagClub[] = [
       { name: "Driver", distance: 280 },
       { name: "3 Wood", distance: 240 },
       { name: "7i", distance: 150 },
     ];
-    const big = buildStrategy(makeInput({ clubs: bigBag }));
+    const big = buildStrategy(makeInput({ clubs: bigBag, handicap: 5 }));
     const bigPar5 = big.holes.find((h) => h.par === 5)!;
     expect(bigPar5.goForIt).toBe(true);
   });
@@ -242,5 +247,13 @@ describe("buildStrategy", () => {
     const result = buildStrategy(makeInput({ sessions }));
     const par4 = result.holes.find((h) => h.par === 4)!;
     expect(par4.shots[0].missWarning).toBeNull();
+  });
+
+  // ── Tier output ──────────────────────────────────────────────────
+
+  it("returns tier in output", () => {
+    expect(buildStrategy(makeInput({ handicap: 5 })).tier).toBe("LOW");
+    expect(buildStrategy(makeInput({ handicap: 18 })).tier).toBe("MID");
+    expect(buildStrategy(makeInput({ handicap: 25 })).tier).toBe("HIGH");
   });
 });

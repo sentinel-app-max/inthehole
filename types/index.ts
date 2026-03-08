@@ -1,10 +1,14 @@
+export type TeeColour = "blue" | "white" | "yellow" | "red";
+
 export interface Hole {
   hole: number;
   par: number;
   si: number;
+  /** Per-tee distances in metres (optional — not all courses have this data). */
+  distances?: Partial<Record<TeeColour, number>>;
+  /** Short coaching tip shown on the scorecard for this hole. */
+  tip?: string;
 }
-
-export type TeeColour = "blue" | "white" | "yellow" | "red";
 
 export interface TeeDatum {
   colour: TeeColour;
@@ -77,6 +81,7 @@ export interface UserProfile {
   email: string;
   handicap: number;
   homeClub?: string;
+  mantra?: string;
   createdAt: string;
 }
 
@@ -123,6 +128,8 @@ export interface SwingSession {
 
 export interface HoleCoordinate {
   hole: number;
+  par: number;
+  si: number;
   tee: { lat: number; lng: number };
   green: { lat: number; lng: number };
   dogleg?: { lat: number; lng: number };

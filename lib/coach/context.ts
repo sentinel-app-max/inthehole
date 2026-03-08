@@ -57,5 +57,7 @@ CLUB BREAKDOWN:
 ${clubLines || "No club data yet"}
 
 LAST ${recentShots.length} SHOTS:
-${shotLines || "No shots logged yet"}`;
+${shotLines || "No shots logged yet"}
+
+`;
 }

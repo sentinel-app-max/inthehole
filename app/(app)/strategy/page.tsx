@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
-import { getBag, getSwingSessions } from "@/lib/firebase/firestore";
+import { getBag, getSwingSessions, getUserProfile } from "@/lib/firebase/firestore";
 import { enrichBagWithSwingData } from "@/lib/golf/distance";
 import { getClubBreakdown } from "@/lib/swing/analyser";
 import { SA_COURSES, PROVINCES } from "@/lib/courses/data";
@@ -14,6 +14,8 @@ import {
   type CourseStrategy,
   type HoleStrategy,
 } from "@/lib/strategy/engine";
+import { courseHcp as calcCourseHcp } from "@/lib/scoring/engine";
+import { getHandicapTier } from "@/lib/strategy/tiers";
 import type { Course, BagClub, SwingSession, TeeColour, WindDirection, WindStrength } from "@/types";
 
 const PROVINCE_TABS = ["All", ...PROVINCES];
@@ -33,13 +35,12 @@ const STRENGTHS: WindStrength[] = ["calm", "light", "moderate", "strong"];
 function SetupStep({
   onGenerate,
 }: {
-  onGenerate: (course: Course, tee: TeeColour, handicap: number, windDir: WindDirection, windStr: WindStrength) => void;
+  onGenerate: (course: Course, tee: TeeColour, windDir: WindDirection, windStr: WindStrength) => void;
 }) {
   const [search, setSearch] = useState("");
   const [province, setProvince] = useState("All");
   const [selected, setSelected] = useState<Course | null>(null);
   const [tee, setTee] = useState<TeeColour>("white");
-  const [handicap, setHandicap] = useState(18);
   const [windDir, setWindDir] = useState<WindDirection>("N");
   const [windStr, setWindStr] = useState<WindStrength>("calm");
 
@@ -166,24 +167,6 @@ function SetupStep({
               </div>
             </div>
 
-            {/* Handicap */}
-            <div className="rounded-2xl bg-[#1e1e1e] p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#888888]">
-                Handicap
-              </p>
-              <input
-                type="number"
-                inputMode="numeric"
-                min={0}
-                max={54}
-                value={handicap}
-                onChange={(e) =>
-                  setHandicap(Math.min(54, Math.max(0, Number(e.target.value))))
-                }
-                className="w-20 rounded-xl border border-white/10 bg-[#0a0a0a] px-3 py-2 text-center text-lg font-bold text-white outline-none focus:border-[#c9a84c]/50"
-              />
-            </div>
-
             {/* Wind */}
             <div className="rounded-2xl bg-[#1e1e1e] p-4">
               <label className="text-xs font-bold uppercase tracking-widest text-[#888888]">
@@ -232,13 +215,15 @@ function SetupStep({
 
       {/* Generate button */}
       <div className="fixed bottom-0 left-0 right-0 z-20 bg-[#0a0a0a]/90 backdrop-blur px-4 pb-4 pt-2">
-        <button
-          disabled={!selected}
-          onClick={() => selected && onGenerate(selected, tee, handicap, windDir, windStr)}
-          className="w-full rounded-2xl py-4 text-sm font-black shadow-lg transition-all disabled:opacity-40 bg-[#c9a84c] text-[#0a0a0a]"
-        >
-          Generate Strategy
-        </button>
+        <div className="mx-auto max-w-lg">
+          <button
+            disabled={!selected}
+            onClick={() => selected && onGenerate(selected, tee, windDir, windStr)}
+            className="w-full rounded-2xl py-4 text-sm font-black shadow-lg transition-all disabled:opacity-40 bg-[#c9a84c] text-[#0a0a0a]"
+          >
+            Generate Strategy
+          </button>
+        </div>
       </div>
     </>
   );
@@ -341,9 +326,11 @@ function HoleCard({ hole }: { hole: HoleStrategy }) {
 
 function StrategyView({
   strategy,
+  handicapIndex,
   onBack,
 }: {
   strategy: CourseStrategy;
+  handicapIndex: number;
   onBack: () => void;
 }) {
   return (
@@ -359,7 +346,9 @@ function StrategyView({
           {strategy.courseName}
         </h1>
         <p className="mt-1 text-sm text-[#888888]">
-          Playing off {strategy.courseHcp} · {strategy.tee} tees
+          HCP Index {handicapIndex} · Course HCP {strategy.courseHcp} ·{" "}
+          <span className="font-bold text-[#c9a84c]">{strategy.tier}</span> strategy ·{" "}
+          {strategy.tee} tees
         </p>
       </div>
 
@@ -380,6 +369,7 @@ export default function StrategyPage() {
   const [clubs, setClubs] = useState<BagClub[]>([]);
   const [sessions, setSessions] = useState<SwingSession[]>([]);
   const [strategy, setStrategy] = useState<CourseStrategy | null>(null);
+  const [handicap, setHandicap] = useState(18);
 
   useEffect(() => {
     if (!loading && !user) router.push("/login");
@@ -387,18 +377,20 @@ export default function StrategyPage() {
 
   useEffect(() => {
     if (!user) return;
-    Promise.all([getBag(user.uid), getSwingSessions(user.uid)]).then(
-      ([bag, sess]) => {
-        if (bag && bag.length > 0) setClubs(bag);
-        setSessions(sess);
-      }
-    );
+    Promise.all([
+      getBag(user.uid),
+      getSwingSessions(user.uid),
+      getUserProfile(user.uid),
+    ]).then(([bag, sess, profile]) => {
+      if (bag && bag.length > 0) setClubs(bag);
+      setSessions(sess);
+      if (profile?.handicap != null) setHandicap(profile.handicap);
+    });
   }, [user]);
 
   const handleGenerate = (
     course: Course,
     tee: TeeColour,
-    handicap: number,
     windDir: WindDirection,
     windStr: WindStrength
   ) => {
@@ -439,6 +431,7 @@ export default function StrategyPage() {
         {strategy ? (
           <StrategyView
             strategy={strategy}
+            handicapIndex={handicap}
             onBack={() => setStrategy(null)}
           />
         ) : (

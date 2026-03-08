@@ -39,6 +39,9 @@ export default function BagPage() {
   const [editIdx, setEditIdx] = useState<number | null>(null);
   const [editVal, setEditVal] = useState("");
   const [saving, setSaving] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [newDist, setNewDist] = useState("");
   const [pinDist, setPinDist] = useState("");
   const [rec, setRec] = useState<Recommendation | null>(null);
 
@@ -83,6 +86,24 @@ export default function BagPage() {
     );
     setClubs(updated);
     setEditIdx(null);
+    persistBag(updated);
+  };
+
+  const addClub = () => {
+    const name = newName.trim();
+    const dist = parseInt(newDist, 10);
+    if (!name || isNaN(dist) || dist <= 0) return;
+    const updated = [...clubs, { name, distance: dist }];
+    setClubs(updated);
+    setAdding(false);
+    setNewName("");
+    setNewDist("");
+    persistBag(updated);
+  };
+
+  const deleteClub = (idx: number) => {
+    const updated = clubs.filter((_, i) => i !== idx);
+    setClubs(updated);
     persistBag(updated);
   };
 
@@ -250,7 +271,7 @@ export default function BagPage() {
 
               return (
                 <div
-                  key={club.name}
+                  key={`${club.name}-${idx}`}
                   className="flex items-center justify-between rounded-2xl bg-[#1e1e1e] px-4 py-3"
                 >
                   <span className="text-sm font-bold text-white">{club.name}</span>
@@ -299,11 +320,68 @@ export default function BagPage() {
                         {club.distance}m
                       </button>
                     )}
+
+                    {/* Delete button */}
+                    <button
+                      onClick={() => deleteClub(idx)}
+                      className="flex h-7 w-7 items-center justify-center rounded-full text-red-400/60 transition-colors hover:bg-red-400/10 hover:text-red-400"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               );
             })}
           </div>
+        )}
+
+        {/* Add Club */}
+        {adding ? (
+          <div className="mt-3 rounded-2xl bg-[#1e1e1e] p-4">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Club name"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                autoFocus
+                className="flex-1 rounded-xl border border-white/10 bg-[#0a0a0a] px-3 py-2 text-sm font-bold text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
+              />
+              <input
+                type="number"
+                inputMode="numeric"
+                placeholder="Dist (m)"
+                value={newDist}
+                onChange={(e) => setNewDist(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") addClub(); }}
+                className="w-24 rounded-xl border border-white/10 bg-[#0a0a0a] px-3 py-2 text-sm font-bold text-white placeholder-white/30 outline-none focus:border-[#c9a84c]/50"
+              />
+            </div>
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={addClub}
+                className="flex-1 rounded-xl bg-[#c9a84c] py-2 text-sm font-black text-[#0a0a0a] transition-all hover:brightness-110 active:scale-[0.98]"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => { setAdding(false); setNewName(""); setNewDist(""); }}
+                className="flex-1 rounded-xl border border-white/10 py-2 text-sm font-bold text-white transition-all hover:bg-white/5"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setAdding(true)}
+            className="mt-3 w-full rounded-2xl border-2 border-dashed border-[#c9a84c]/30 py-3 text-sm font-bold text-[#c9a84c] transition-all hover:border-[#c9a84c]/60 hover:bg-[#c9a84c]/5"
+          >
+            + Add Club
+          </button>
         )}
       </div>
 

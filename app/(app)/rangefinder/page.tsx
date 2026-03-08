@@ -11,6 +11,7 @@ import {
   enrichBagWithSwingData,
   type Recommendation,
 } from "@/lib/golf/distance";
+import { loadGoogleMaps } from "@/lib/maps/loader";
 import type { BagClub, WindDirection, WindStrength } from "@/types";
 import { SA_COURSES } from "@/lib/courses/data";
 
@@ -32,42 +33,6 @@ function computeBearing(
   const x =
     Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
   return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
-}
-
-// ── Google Maps Loader ──────────────────────────────────────────────
-
-let mapsPromise: Promise<void> | null = null;
-
-function loadGoogleMaps(): Promise<void> {
-  if (mapsPromise) return mapsPromise;
-
-  mapsPromise = new Promise<void>((resolve, reject) => {
-    if (typeof google !== "undefined" && google.maps) {
-      resolve();
-      return;
-    }
-
-    const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-    if (!key) {
-      reject(new Error("Google Maps API key not configured"));
-      return;
-    }
-
-    const callbackName = "__initGoogleMaps";
-    (window as unknown as Record<string, unknown>)[callbackName] = () => {
-      resolve();
-      delete (window as unknown as Record<string, unknown>)[callbackName];
-    };
-
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=${callbackName}`;
-    script.async = true;
-    script.defer = true;
-    script.onerror = () => reject(new Error("Failed to load Google Maps"));
-    document.head.appendChild(script);
-  });
-
-  return mapsPromise;
 }
 
 // ── Component ───────────────────────────────────────────────────────

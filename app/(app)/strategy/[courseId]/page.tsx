@@ -3,14 +3,18 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-import { getBag, getSwingSessions } from "@/lib/firebase/firestore";
+import { getBag, getSwingSessions, getUserProfile } from "@/lib/firebase/firestore";
 import { getCourseById } from "@/lib/courses/data";
 import { getHoleCoordinates } from "@/lib/courses/holes";
 import {
   buildVisualHolePlan,
+  haversine,
   type VisualHolePlan,
 } from "@/lib/strategy/shotplan";
 import { buildStrategy, type CourseStrategy } from "@/lib/strategy/engine";
+import { getHandicapTier } from "@/lib/strategy/tiers";
+import { courseHcp as calcCourseHcp } from "@/lib/scoring/engine";
+import { loadGoogleMaps } from "@/lib/maps/loader";
 import type {
   BagClub,
   SwingSession,
@@ -20,37 +24,6 @@ import type {
   WindStrength,
   TeeColour,
 } from "@/types";
-
-// ── Google Maps Loader ──────────────────────────────────────────────
-
-let mapsPromise: Promise<void> | null = null;
-
-function loadGoogleMaps(): Promise<void> {
-  if (mapsPromise) return mapsPromise;
-  mapsPromise = new Promise<void>((resolve, reject) => {
-    if (typeof google !== "undefined" && google.maps) {
-      resolve();
-      return;
-    }
-    const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-    if (!key) {
-      reject(new Error("Google Maps API key not configured"));
-      return;
-    }
-    const callbackName = "__initGoogleMapsStrategy";
-    (window as unknown as Record<string, unknown>)[callbackName] = () => {
-      resolve();
-      delete (window as unknown as Record<string, unknown>)[callbackName];
-    };
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=${callbackName}`;
-    script.async = true;
-    script.defer = true;
-    script.onerror = () => reject(new Error("Failed to load Google Maps"));
-    document.head.appendChild(script);
-  });
-  return mapsPromise;
-}
 
 // ── Hole Map Component ──────────────────────────────────────────────
 
@@ -145,99 +118,148 @@ function HoleMap({
       })
     );
 
-    // Green marker — gold circle
+    // Green marker — green flag SVG pin
     markersRef.current.push(
       new google.maps.Marker({
         position: plan.green,
         map,
         icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 9,
-          fillColor: "#c9a84c",
-          fillOpacity: 1,
-          strokeColor: "#ffffff",
-          strokeWeight: 2,
+          url: "data:image/svg+xml," + encodeURIComponent(
+            `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">` +
+            `<line x1="8" y1="4" x2="8" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
+            `<path d="M8 4 L24 10 L8 16 Z" fill="#1a5c2a" stroke="#ffffff" stroke-width="1"/>` +
+            `<circle cx="8" cy="34" r="3" fill="#1a5c2a" stroke="#ffffff" stroke-width="1.5"/>` +
+            `</svg>`
+          ),
+          scaledSize: new google.maps.Size(28, 36),
+          anchor: new google.maps.Point(8, 34),
         },
         title: "Green",
       })
     );
 
-    // Shot dots and lines
-    let prevPoint = plan.tee;
-    for (const dot of plan.dots) {
-      const pos = { lat: dot.lat, lng: dot.lng };
-
-      // Line from previous point
+    // Route polyline — follows dogleg path via routePoints
+    for (let i = 0; i < plan.routePoints.length - 1; i++) {
+      const from = plan.routePoints[i];
+      const to = plan.routePoints[i + 1];
+      const isLastSegment = i === plan.routePoints.length - 2;
       const line = new google.maps.Polyline({
-        path: [prevPoint, pos],
+        path: [from, to],
         strokeColor: "#ffffff",
         strokeWeight: 2,
-        strokeOpacity: 0.8,
+        strokeOpacity: plan.dots.length > 0 && isLastSegment ? 0.4 : 0.8,
         geodesic: true,
         map,
       });
       linesRef.current.push(line);
-
-      // Gold landing dot
-      const marker = new google.maps.Marker({
-        position: pos,
-        map,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 6,
-          fillColor: "#c9a84c",
-          fillOpacity: 1,
-          strokeColor: "#0a0a0a",
-          strokeWeight: 1.5,
-        },
-      });
-      markersRef.current.push(marker);
-
-      // Club label pill
-      const label = new google.maps.Marker({
-        position: pos,
-        map,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 0,
-          labelOrigin: new google.maps.Point(0, -18),
-        },
-        label: {
-          text: `${dot.club} · ${dot.distance}m`,
-          color: "#ffffff",
-          fontSize: "11px",
-          fontWeight: "700",
-          className: "shot-pill",
-        },
-      });
-      markersRef.current.push(label);
-
-      prevPoint = pos;
     }
 
-    // Line from last dot to green (if dots exist)
-    if (plan.dots.length > 0) {
-      const lastDot = plan.dots[plan.dots.length - 1];
-      const line = new google.maps.Polyline({
-        path: [{ lat: lastDot.lat, lng: lastDot.lng }, plan.green],
-        strokeColor: "#ffffff",
-        strokeWeight: 2,
-        strokeOpacity: 0.4,
-        geodesic: true,
-        map,
+    // Shot landing dots — proportional placement along route.
+    // Cap at 85% so no dot overlaps the green flag.
+    const hasDogleg = !!plan.dogleg && plan.routePoints.length > 2;
+    const totalShots = plan.dots.length;
+
+    if (hasDogleg) {
+      const waypoint = plan.routePoints[1];
+      const green = plan.routePoints[plan.routePoints.length - 1];
+
+      plan.dots.forEach((dot, i) => {
+        let pos: { lat: number; lng: number };
+        if (i === 0) {
+          pos = waypoint;
+        } else {
+          const frac = Math.min(i / (totalShots - 1), 0.85);
+          pos = {
+            lat: waypoint.lat + (green.lat - waypoint.lat) * frac,
+            lng: waypoint.lng + (green.lng - waypoint.lng) * frac,
+          };
+        }
+
+        markersRef.current.push(
+          new google.maps.Marker({
+            position: pos,
+            map,
+            zIndex: 5,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 6,
+              fillColor: "#c9a84c",
+              fillOpacity: 1,
+              strokeColor: "#0a0a0a",
+              strokeWeight: 1.5,
+            },
+          })
+        );
+
+        // Club label pill
+        markersRef.current.push(
+          new google.maps.Marker({
+            position: pos,
+            map,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 0,
+              labelOrigin: new google.maps.Point(0, -18),
+            },
+            label: {
+              text: `${dot.club} · ${dot.distance}m`,
+              color: "#ffffff",
+              fontSize: "11px",
+              fontWeight: "700",
+              className: "shot-pill",
+            },
+          })
+        );
       });
-      linesRef.current.push(line);
     } else {
-      // No dots — draw line tee to green
-      const line = new google.maps.Polyline({
-        path: [plan.tee, plan.green],
-        strokeColor: "#ffffff",
-        strokeWeight: 2,
-        strokeOpacity: 0.6,
-        geodesic: true,
-        map,
+      const teePos = plan.routePoints[0];
+      const greenPos = plan.routePoints[plan.routePoints.length - 1];
+      let cumDist = 0;
+
+      plan.dots.forEach((dot) => {
+        cumDist += dot.distance;
+        const frac = Math.min(cumDist / plan.totalDistance, 0.85);
+        const pos = {
+          lat: teePos.lat + (greenPos.lat - teePos.lat) * frac,
+          lng: teePos.lng + (greenPos.lng - teePos.lng) * frac,
+        };
+
+        markersRef.current.push(
+          new google.maps.Marker({
+            position: pos,
+            map,
+            zIndex: 5,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 6,
+              fillColor: "#c9a84c",
+              fillOpacity: 1,
+              strokeColor: "#0a0a0a",
+              strokeWeight: 1.5,
+            },
+          })
+        );
+
+        // Club label pill
+        markersRef.current.push(
+          new google.maps.Marker({
+            position: pos,
+            map,
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              scale: 0,
+              labelOrigin: new google.maps.Point(0, -18),
+            },
+            label: {
+              text: `${dot.club} · ${dot.distance}m`,
+              color: "#ffffff",
+              fontSize: "11px",
+              fontWeight: "700",
+              className: "shot-pill",
+            },
+          })
+        );
       });
-      linesRef.current.push(line);
     }
   }, [plan, clearOverlays]);
 
@@ -278,6 +300,16 @@ function HoleMap({
           className="h-[55vh] w-full bg-[#1e1e1e]"
         />
         <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        {plan.dots.length > 0 && (
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 pointer-events-none z-10">
+            {[...plan.dots].reverse().map((dot, i) => (
+              <div key={i} className="bg-black/70 rounded-lg px-3 py-1.5">
+                <p className="text-lg font-bold text-white leading-tight">{dot.distance}m</p>
+                <p className="text-xs text-[#c9a84c]">{dot.club}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Shot breakdown below map */}
@@ -286,18 +318,18 @@ function HoleMap({
           {plan.dots.map((dot, i) => (
             <div
               key={i}
-              className="flex items-center justify-between rounded-xl bg-[#1e1e1e] px-4 py-2.5"
+              className="flex items-center justify-between rounded-xl bg-[#1e1e1e] p-4"
             >
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#888888]">
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#888888]">
                   {dot.label}
                 </p>
-                <p className="text-sm font-bold text-[#c9a84c]">{dot.club}</p>
+                <p className="text-lg font-bold text-[#c9a84c]">{dot.club}</p>
               </div>
               <div className="text-right">
-                <p className="text-sm font-black text-white">{dot.distance}m</p>
+                <p className="text-xl font-bold text-white">{dot.distance}m</p>
                 {dot.missWarning && (
-                  <p className="text-[10px] text-[#e63946]">
+                  <p className="text-xs text-[#e63946]">
                     &#x26A0; {dot.missWarning}
                   </p>
                 )}
@@ -338,16 +370,20 @@ function HoleMap({
 function TextStrategyView({
   strategy,
   courseName,
+  handicapIndex,
 }: {
   strategy: CourseStrategy;
   courseName: string;
+  handicapIndex: number;
 }) {
   return (
     <>
       <div className="px-5 pb-2 pt-6">
         <h1 className="text-2xl font-black text-white">{courseName}</h1>
         <p className="mt-1 text-sm text-[#888888]">
-          Playing off {strategy.courseHcp} · {strategy.tee} tees
+          HCP Index {handicapIndex} · Course HCP {strategy.courseHcp} ·{" "}
+          <span className="font-bold text-[#c9a84c]">{strategy.tier}</span> strategy ·{" "}
+          {strategy.tee} tees
         </p>
         <div className="mt-3 rounded-xl border border-[#c9a84c]/20 bg-[#c9a84c]/5 px-4 py-3">
           <p className="text-xs text-[#c9a84c]">
@@ -447,6 +483,7 @@ export default function VisualStrategyPage() {
   const [mapsReady, setMapsReady] = useState(false);
   const [holeIndex, setHoleIndex] = useState(0);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [handicap, setHandicap] = useState(18);
 
   const course = getCourseById(courseId);
   const holeCoords = getHoleCoordinates(courseId);
@@ -457,13 +494,16 @@ export default function VisualStrategyPage() {
 
   useEffect(() => {
     if (!user) return;
-    Promise.all([getBag(user.uid), getSwingSessions(user.uid)]).then(
-      ([bag, sess]) => {
-        if (bag && bag.length > 0) setClubs(bag);
-        setSessions(sess);
-        setDataLoaded(true);
-      }
-    );
+    Promise.all([
+      getBag(user.uid),
+      getSwingSessions(user.uid),
+      getUserProfile(user.uid),
+    ]).then(([bag, sess, profile]) => {
+      if (bag && bag.length > 0) setClubs(bag);
+      setSessions(sess);
+      if (profile?.handicap != null) setHandicap(profile.handicap);
+      setDataLoaded(true);
+    });
   }, [user]);
 
   useEffect(() => {
@@ -523,7 +563,7 @@ export default function VisualStrategyPage() {
     ? buildStrategy({
         course,
         tee: "white" as TeeColour,
-        handicap: 18,
+        handicap,
         clubs,
         sessions,
         windDir: "N" as WindDirection,
@@ -555,7 +595,7 @@ export default function VisualStrategyPage() {
             </button>
           </div>
           {strategy ? (
-            <TextStrategyView strategy={strategy} courseName={course.name} />
+            <TextStrategyView strategy={strategy} courseName={course.name} handicapIndex={handicap} />
           ) : (
             <div className="flex justify-center py-20">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#c9a84c] border-t-transparent" />
@@ -588,6 +628,8 @@ export default function VisualStrategyPage() {
           sessions,
           windDir: "N",
           windStr: "calm",
+          tee: "white",
+          handicap,
         })
       : null;
 
@@ -612,7 +654,7 @@ export default function VisualStrategyPage() {
       <div className="fixed inset-0 bg-black/75 pointer-events-none" />
 
       <div className="relative z-10 px-4 pt-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-2">
           <button
             onClick={() => router.push("/strategy")}
             className="text-xs font-semibold text-white/40 hover:text-white/70"
@@ -623,6 +665,15 @@ export default function VisualStrategyPage() {
             {course.name}
           </p>
         </div>
+
+        {/* Handicap + tier info */}
+        {course && dataLoaded && (
+          <p className="text-center text-xs text-[#888888] mb-3">
+            HCP Index {handicap} · Course HCP{" "}
+            {calcCourseHcp(handicap, course.tees?.find((t) => t.colour === "white")?.slope ?? course.slope, course.tees?.find((t) => t.colour === "white")?.cr ?? course.rating, course.par)}{" "}
+            · <span className="font-bold text-[#c9a84c]">{getHandicapTier(handicap)}</span> strategy · white tees
+          </p>
+        )}
 
         {/* Hole dots navigation — all 18 */}
         <div className="flex justify-center gap-1.5 mb-4 flex-wrap">

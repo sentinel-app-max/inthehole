@@ -79,6 +79,26 @@ export async function getUserProfile(
   }
 }
 
+export async function saveMantra(uid: string, mantra: string): Promise<void> {
+  try {
+    await setDoc(doc(db, "users", uid), { mantra }, { merge: true });
+  } catch (error) {
+    console.error("saveMantra failed:", error);
+    throw error;
+  }
+}
+
+export async function getMantra(uid: string): Promise<string | null> {
+  try {
+    const snap = await getDoc(doc(db, "users", uid));
+    if (!snap.exists()) return null;
+    return (snap.data() as UserProfile).mantra ?? null;
+  } catch (error) {
+    console.error("getMantra failed:", error);
+    return null;
+  }
+}
+
 export async function saveBag(uid: string, clubs: BagClub[]): Promise<void> {
   try {
     await setDoc(doc(db, "users", uid, "bag", "clubs"), { clubs });
