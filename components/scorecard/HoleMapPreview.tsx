@@ -57,9 +57,9 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         zIndex: 1,
         icon: plan.hole === 1
           ? {
-              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><line x1="12" y1="14" x2="12" y2="33" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="33" x2="16" y2="33" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="9" r="8" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="9" cy="7" r="1.3" fill="#ffffff" opacity="0.7"/><circle cx="13" cy="6" r="1.3" fill="#ffffff" opacity="0.7"/><circle cx="15" cy="10" r="1.3" fill="#ffffff" opacity="0.7"/><circle cx="10" cy="12" r="1.3" fill="#ffffff" opacity="0.7"/><circle cx="12" cy="9" r="1.3" fill="#ffffff" opacity="0.7"/></svg>`),
+              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><circle cx="12" cy="13" r="7" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="10" cy="11" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="14" cy="10" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="15" cy="14" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="10" cy="15" r="1.2" fill="#ffffff" opacity="0.7"/><line x1="12" y1="20" x2="12" y2="32" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="32" x2="16" y2="32" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/></svg>`),
               scaledSize: new google.maps.Size(24, 36),
-              anchor: new google.maps.Point(12, 33),
+              anchor: new google.maps.Point(12, 32),
             }
           : {
               url:
