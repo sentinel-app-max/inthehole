@@ -55,24 +55,11 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         position: plan.tee,
         map,
         zIndex: 1,
-        icon: plan.hole === 1
-          ? {
-              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><circle cx="12" cy="13" r="7" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="10" cy="11" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="14" cy="10" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="15" cy="14" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="10" cy="15" r="1.2" fill="#ffffff" opacity="0.7"/><line x1="12" y1="20" x2="12" y2="32" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="32" x2="16" y2="32" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/></svg>`),
-              scaledSize: new google.maps.Size(24, 36),
-              anchor: new google.maps.Point(12, 32),
-            }
-          : {
-              url:
-                "data:image/svg+xml," +
-                encodeURIComponent(
-                  `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 20 28">` +
-                    `<line x1="10" y1="6" x2="10" y2="26" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
-                    `<circle cx="10" cy="6" r="4" fill="#ffffff" stroke="#c9a84c" stroke-width="1.5"/>` +
-                    `</svg>`
-                ),
-              scaledSize: new google.maps.Size(20, 28),
-              anchor: new google.maps.Point(10, 26),
-            },
+        icon: {
+          url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="36" viewBox="0 0 24 36"><circle cx="12" cy="13" r="7" fill="none" stroke="#ffffff" stroke-width="2"/><circle cx="10" cy="11" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="14" cy="10" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="15" cy="14" r="1.2" fill="#ffffff" opacity="0.7"/><circle cx="10" cy="15" r="1.2" fill="#ffffff" opacity="0.7"/><line x1="12" y1="20" x2="12" y2="32" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="32" x2="16" y2="32" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/></svg>`),
+          scaledSize: new google.maps.Size(24, 36),
+          anchor: new google.maps.Point(12, 32),
+        },
         title: "Tee",
       })
     );
@@ -83,25 +70,11 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         position: plan.green,
         map,
         zIndex: 1,
-        icon: plan.hole === 1
-          ? {
-              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><line x1="7" y1="2" x2="7" y2="34" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M7 3 L24 9 L7 16 Z" fill="#ffffff" stroke="none"/><circle cx="7" cy="34" r="2.5" fill="#ffffff"/></svg>`),
-              scaledSize: new google.maps.Size(28, 36),
-              anchor: new google.maps.Point(7, 34),
-            }
-          : {
-              url:
-                "data:image/svg+xml," +
-                encodeURIComponent(
-                  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36">` +
-                    `<line x1="8" y1="4" x2="8" y2="34" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>` +
-                    `<path d="M8 4 L24 10 L8 16 Z" fill="#1a5c2a" stroke="#ffffff" stroke-width="1"/>` +
-                    `<circle cx="8" cy="34" r="3" fill="#1a5c2a" stroke="#ffffff" stroke-width="1.5"/>` +
-                    `</svg>`
-                ),
-              scaledSize: new google.maps.Size(28, 36),
-              anchor: new google.maps.Point(8, 34),
-            },
+        icon: {
+          url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><line x1="7" y1="2" x2="7" y2="34" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M7 3 L24 9 L7 16 Z" fill="#ffffff" stroke="none"/><circle cx="7" cy="34" r="2.5" fill="#ffffff"/></svg>`),
+          scaledSize: new google.maps.Size(28, 36),
+          anchor: new google.maps.Point(7, 34),
+        },
         title: "Green",
       })
     );
