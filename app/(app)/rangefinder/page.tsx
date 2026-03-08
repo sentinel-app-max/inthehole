@@ -138,7 +138,7 @@ export default function RangefinderPage() {
     const mainId = navigator.geolocation.watchPosition(
       onSuccess,
       onError,
-      { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
+      { enableHighAccuracy: true, maximumAge: 0, timeout: 10000 }
     );
     watchIds.push(mainId);
 
