@@ -85,7 +85,7 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
         zIndex: 1,
         icon: plan.hole === 1
           ? {
-              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><line x1="7" y1="2" x2="7" y2="34" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M7 3 L24 9 L7 16 Z" fill="#c9a84c" stroke="none"/><circle cx="7" cy="34" r="2.5" fill="#ffffff"/></svg>`),
+              url: "data:image/svg+xml," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><line x1="7" y1="2" x2="7" y2="34" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M7 3 L24 9 L7 16 Z" fill="#ffffff" stroke="none"/><circle cx="7" cy="34" r="2.5" fill="#ffffff"/></svg>`),
               scaledSize: new google.maps.Size(28, 36),
               anchor: new google.maps.Point(7, 34),
             }
