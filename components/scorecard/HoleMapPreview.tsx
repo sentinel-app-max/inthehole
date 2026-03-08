@@ -186,11 +186,11 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
             ))}
           </div>
         )}
-        {plan.dots.length === 0 && plan.shots && plan.shots.length > 0 && (
+        {plan.dots.length === 0 && plan.par === 3 && plan.totalDistance > 0 && (
           <div className="absolute left-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 pointer-events-none">
             <div className="bg-black/70 rounded-lg px-3 py-1.5">
-              <p className="text-lg font-bold text-white leading-tight">{plan.shots[0].distance}m</p>
-              <p className="text-xs text-[#c9a84c]">{plan.shots[0].club}</p>
+              <p className="text-lg font-bold text-white leading-tight">{plan.totalDistance}m</p>
+              <p className="text-xs text-[#c9a84c]">Par 3</p>
             </div>
           </div>
         )}
@@ -210,12 +210,12 @@ export default function HoleMapPreview({ plan }: HoleMapPreviewProps) {
           ))}
         </div>
       )}
-      {plan.dots.length === 0 && plan.shots && plan.shots.length > 0 && (
+      {plan.dots.length === 0 && plan.par === 3 && plan.totalDistance > 0 && (
         <div className="mt-3 flex rounded-xl bg-[#1e1e1e]">
           <div className="flex-1 px-4 py-2 text-center">
             <p className="text-xs uppercase text-[#888] tracking-wider">Approach</p>
-            <p className="text-sm font-bold text-[#c9a84c]">{plan.shots[0].club}</p>
-            <p className="text-sm font-bold text-white">{plan.shots[0].distance}m</p>
+            <p className="text-sm font-bold text-[#c9a84c]">Par 3</p>
+            <p className="text-sm font-bold text-white">{plan.totalDistance}m</p>
           </div>
         </div>
       )}
