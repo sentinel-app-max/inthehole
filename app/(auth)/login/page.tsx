@@ -102,12 +102,46 @@ export default function LoginPage() {
 
         {/* Phone mockup */}
         <div className="flex justify-center">
-          <img
-            src="/images/Phone_App_5.png"
-            alt="App preview"
-            className="h-[340px] w-auto animate-[fadeIn_0.8s_ease-out]"
-            style={{ filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.5))" }}
-          />
+          <div style={{
+            position: 'relative',
+            width: '220px',
+            height: '440px',
+            background: '#1a1a1a',
+            borderRadius: '36px',
+            border: '6px solid #3a3a3a',
+            boxShadow: '0 0 0 2px #555, 0 24px 48px rgba(0,0,0,0.7), inset 0 0 0 2px #222',
+            overflow: 'hidden',
+          }} className="animate-[fadeIn_0.8s_ease-out]">
+            {/* Notch */}
+            <div style={{
+              position: 'absolute',
+              top: '10px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '80px',
+              height: '20px',
+              background: '#1a1a1a',
+              borderRadius: '10px',
+              zIndex: 10,
+            }}/>
+            {/* Screen */}
+            <img
+              src="/images/Phone_App_5.png"
+              alt="App preview"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                display: 'block',
+              }}
+            />
+            {/* Side buttons */}
+            <div style={{ position: 'absolute', top: '80px', right: '-8px', width: '4px', height: '40px', background: '#3a3a3a', borderRadius: '2px' }}/>
+            <div style={{ position: 'absolute', top: '70px', left: '-8px', width: '4px', height: '30px', background: '#3a3a3a', borderRadius: '2px' }}/>
+            <div style={{ position: 'absolute', top: '110px', left: '-8px', width: '4px', height: '30px', background: '#3a3a3a', borderRadius: '2px' }}/>
+            <div style={{ position: 'absolute', top: '150px', left: '-8px', width: '4px', height: '30px', background: '#3a3a3a', borderRadius: '2px' }}/>
+          </div>
         </div>
 
         {/* Error */}
