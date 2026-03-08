@@ -1,342 +1,456 @@
-"use client";
+'use client'
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
-import {
-  getUserProfile,
-  getBag,
-  getSwingSessions,
-} from "@/lib/firebase/firestore";
-import { analyseSwings, getClubBreakdown } from "@/lib/swing/analyser";
-import { buildCoachContext } from "@/lib/coach/context";
+import { useState, useRef, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+import { useAuth } from '@/hooks/useAuth'
+import { db } from '@/lib/firebase/client'
+import { doc, getDoc, collection, getDocs, setDoc, serverTimestamp } from 'firebase/firestore'
+import { buildCoachContext } from '@/lib/coach/context'
+import { analyseSwings, getClubBreakdown } from '@/lib/swing/analyser'
+import MantraOverlay from '@/components/scorecard/MantraOverlay'
 
-interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
+// ─── types ────────────────────────────────────────────────────────────────────
+
+interface Message {
+  role: 'user' | 'assistant'
+  content: string
 }
-
-const WELCOME =
-  "Ready to work on your game. Ask me anything, or I\u2019ll start with what your data is telling me.";
 
 const QUICK_PROMPTS = [
-  "What should I work on?",
-  "Analyse my 7 iron",
-  "Give me a range plan",
-  "Why am I slicing?",
-];
+  "Why am I hitting it thin?",
+  "How do I stop slicing?",
+  "What should I work on first?",
+  "Help me fix my chipping",
+]
 
-function renderMarkdown(text: string): string {
-  return text
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/^- (.+)$/gm, "<li>$1</li>")
-    .replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`)
-    .replace(/\n/g, "<br />");
-}
+// ─── component ────────────────────────────────────────────────────────────────
 
 export default function CoachPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
+  const { user, loading } = useAuth()
+  const router = useRouter()
 
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [input, setInput] = useState("");
-  const [streaming, setStreaming] = useState(false);
-  const [context, setContext] = useState<string | null>(null);
-  const [loadingData, setLoadingData] = useState(true);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState('')
+  const [isStreaming, setIsStreaming] = useState(false)
+  const [context, setContext] = useState('')
+  const [swingContext, setSwingContext] = useState<{
+    swingAnalysis: object | null
+    clubBreakdown: object[]
+  }>({ swingAnalysis: null, clubBreakdown: [] })
 
+  // After-response prompt
+  const [showAfterPrompt, setShowAfterPrompt] = useState(false)
+
+  // Mantra state
+  const [pendingMantra, setPendingMantra] = useState<string | null>(null)
+  const [showMantraOverlay, setShowMantraOverlay] = useState(false)
+  const [isSavingMantra, setIsSavingMantra] = useState(false)
+  const [activeMantra, setActiveMantra] = useState<string | null>(null)
+  const [isLoadingMantra, setIsLoadingMantra] = useState(false)
+  const [totalShots, setTotalShots] = useState(0)
+  const [dataLoaded, setDataLoaded] = useState(false)
+  const [coachBlockDismissed, setCoachBlockDismissed] = useState(false)
+
+  const bottomRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+
+  // ── redirect if not authed ──
   useEffect(() => {
-    if (!loading && !user) router.push("/login");
-  }, [user, loading, router]);
+    if (!loading && !user) router.push('/login')
+  }, [user, loading, router])
 
-  // Fetch user data and build context
+  // ── load player context ──
   useEffect(() => {
-    if (!user) return;
+    if (!user) return
+    ;(async () => {
+      try {
+        const [profileSnap, bagSnap, sessionsSnap] = await Promise.all([
+          getDoc(doc(db, 'users', user.uid)),
+          getDoc(doc(db, 'users', user.uid, 'bag', 'clubs')),
+          getDocs(collection(db, 'users', user.uid, 'swingSessions')),
+        ])
 
-    async function loadData() {
-      const [profile, bag, sessions] = await Promise.all([
-        getUserProfile(user!.uid),
-        getBag(user!.uid),
-        getSwingSessions(user!.uid, 50),
-      ]);
+        const profile = profileSnap.data()
+        const bagData = bagSnap.data()
+        const sessions = sessionsSnap.docs.map((d) => d.data() as any)
 
-      const analysis = analyseSwings(sessions);
-      const breakdown = getClubBreakdown(sessions);
-      const recentShots = sessions.slice(0, 10);
+        const analysis = analyseSwings(sessions)
+        const breakdown = getClubBreakdown(sessions)
 
-      const ctx = buildCoachContext({
-        handicap: profile?.handicap ?? 18,
-        clubs: bag ?? [],
-        swingAnalysis: analysis,
-        clubBreakdown: breakdown,
-        recentShots,
-      });
+        setSwingContext({ swingAnalysis: analysis, clubBreakdown: breakdown })
+        setTotalShots(sessions.length)
+        setDataLoaded(true)
 
-      setContext(ctx);
-      setLoadingData(false);
-    }
+        const ctx = buildCoachContext({
+          handicap: profile?.handicap ?? 18,
+          clubs: bagData?.clubs ?? [],
+          swingAnalysis: analysis,
+          clubBreakdown: breakdown,
+          recentShots: sessions.slice(-10),
+        })
+        setContext(ctx)
 
-    loadData();
-  }, [user]);
-
-  const scrollToBottom = useCallback(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, scrollToBottom]);
-
-  async function sendMessage(text: string) {
-    if (!text.trim() || !context || streaming) return;
-
-    const userMsg: ChatMessage = { role: "user", content: text.trim() };
-    const updatedMessages = [...messages, userMsg];
-    setMessages(updatedMessages);
-    setInput("");
-    setStreaming(true);
-
-    // Add placeholder for coach reply
-    const assistantMsg: ChatMessage = { role: "assistant", content: "" };
-    setMessages([...updatedMessages, assistantMsg]);
-
-    try {
-      const res = await fetch("/api/coach", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: updatedMessages.map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-          context,
-        }),
-      });
-
-      if (!res.ok) {
-        let errorMsg = "Something went wrong. Try again.";
-        try {
-          const err = await res.json();
-          if (err.error) errorMsg = err.error;
-        } catch {
-          // Response wasn't JSON
+        if (profile?.mantra) {
+          setActiveMantra(profile.mantra)
         }
-        setMessages((prev) => {
-          const updated = [...prev];
-          updated[updated.length - 1] = {
-            role: "assistant",
-            content: errorMsg,
-          };
-          return updated;
-        });
-        setStreaming(false);
-        return;
+      } catch (err) {
+        console.error('Coach context load error:', err)
       }
+    })()
+  }, [user])
 
-      const reader = res.body?.getReader();
-      if (!reader) {
-        setStreaming(false);
-        return;
-      }
+  // ── auto-scroll ──
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, isStreaming, showAfterPrompt])
 
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let fullText = "";
+  // ── send message ──
+  const sendMessage = useCallback(
+    async (userText: string) => {
+      if (!userText.trim() || isStreaming) return
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      setShowAfterPrompt(false)
 
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() ?? "";
+      const newMessages: Message[] = [
+        ...messages,
+        { role: 'user', content: userText.trim() },
+      ]
+      setMessages(newMessages)
+      setInput('')
+      setIsStreaming(true)
 
-        for (const rawLine of lines) {
-          const line = rawLine.replace(/\r$/, "");
-          if (!line.startsWith("data: ")) continue;
-          const data = line.slice(6);
-          if (data === "[DONE]") continue;
+      // Placeholder for streaming assistant reply
+      setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
 
-          try {
-            const parsed = JSON.parse(data);
-            console.log("[coach] SSE event:", parsed.type);
-            if (
-              parsed.type === "content_block_delta" &&
-              parsed.delta?.type === "text_delta"
-            ) {
-              fullText += parsed.delta.text ?? "";
-              setMessages((prev) => {
-                const updated = [...prev];
-                updated[updated.length - 1] = {
-                  role: "assistant",
-                  content: fullText,
-                };
-                return updated;
-              });
+      try {
+        const res = await fetch('/api/coach', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: newMessages.map((m) => ({
+              role: m.role,
+              content: m.content,
+            })),
+            context,
+          }),
+        })
+
+        if (!res.body) throw new Error('No response body')
+
+        const reader = res.body.getReader()
+        const decoder = new TextDecoder()
+        let accumulated = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          const chunk = decoder.decode(value, { stream: true })
+          const lines = chunk.split('\n')
+
+          for (const line of lines) {
+            const trimmed = line.replace(/\r$/, '').trim()
+            if (!trimmed.startsWith('data:')) continue
+
+            const data = trimmed.slice(5).trim()
+            if (data === '[DONE]') continue
+
+            try {
+              const parsed = JSON.parse(data)
+
+              if (parsed.type === 'content_block_delta') {
+                const token = parsed.delta?.text || ''
+                accumulated += token
+
+                setMessages((prev) => {
+                  const updated = [...prev]
+                  updated[updated.length - 1] = {
+                    role: 'assistant',
+                    content: accumulated,
+                  }
+                  return updated
+                })
+              }
+            } catch {
+              // Malformed SSE line — skip silently
             }
-          } catch (e) {
-            console.log("[coach] Parse skip:", data.slice(0, 80), e);
           }
         }
+
+        // Finalise message
+        setMessages((prev) => {
+          const updated = [...prev]
+          updated[updated.length - 1] = { role: 'assistant', content: accumulated }
+          return updated
+        })
+
+        // Show after-response prompt
+        if (accumulated.trim()) {
+          setShowAfterPrompt(true)
+        }
+      } catch (err) {
+        console.error('Streaming error:', err)
+        setMessages((prev) => {
+          const updated = [...prev]
+          updated[updated.length - 1] = {
+            role: 'assistant',
+            content: "Something went wrong. Give me a second and try again.",
+          }
+          return updated
+        })
+      } finally {
+        setIsStreaming(false)
       }
-    } catch {
-      setMessages((prev) => {
-        const updated = [...prev];
-        updated[updated.length - 1] = {
-          role: "assistant",
-          content: "Connection lost. Check your signal and try again.",
-        };
-        return updated;
-      });
+    },
+    [messages, context, isStreaming]
+  )
+
+  // ── get mantra ──
+  async function handleGetMantra() {
+    setShowAfterPrompt(false)
+    setIsLoadingMantra(true)
+    try {
+      const res = await fetch('/api/coach/mantra', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(swingContext),
+      })
+      const data = await res.json()
+      if (data.mantra) {
+        setPendingMantra(data.mantra)
+        setShowMantraOverlay(true)
+      }
+    } catch (err) {
+      console.error('Get mantra error:', err)
     } finally {
-      setStreaming(false);
+      setIsLoadingMantra(false)
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    sendMessage(input);
+  // ── mantra actions ──
+  async function handleUseMantra(mantra: string) {
+    if (!user) return
+    setIsSavingMantra(true)
+    try {
+      await setDoc(
+        doc(db, 'users', user.uid),
+        { mantra, updatedAt: serverTimestamp() },
+        { merge: true }
+      )
+      setActiveMantra(mantra)
+      setShowMantraOverlay(false)
+    } catch (err) {
+      console.error('Save mantra error:', err)
+    } finally {
+      setIsSavingMantra(false)
+    }
   }
 
-  if (loading || !user) {
-    return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#c9a84c] border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  if (loadingData) {
-    return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center gap-3">
-        <div className="w-8 h-8 border-2 border-[#c9a84c] border-t-transparent rounded-full animate-spin" />
-        <p className="text-sm text-white/50">Loading your swing data...</p>
-      </div>
-    );
-  }
-
-  const showQuickPrompts = messages.length === 0;
+  if (loading) return null
 
   return (
-    <div className="h-screen -mt-16">
-      <video autoPlay loop muted playsInline className="fixed inset-0 w-full h-full object-cover">
-        <source src="/videos/Coach_8.mp4" type="video/mp4" />
-      </video>
-      <div className="fixed inset-0 bg-black/75" />
-      <div className="relative z-10 flex flex-col h-full pt-16">
-      {/* Header */}
-      <div className="flex-shrink-0 px-4 pt-5 pb-3 border-b border-white/5">
-        <h1 className="text-xl font-black text-[#c9a84c]">Coach</h1>
-        <p className="text-[11px] text-[#888888]">Powered by Clean Harry</p>
-      </div>
+    <>
+      {/* Video background */}
+      <video
+        className="fixed inset-0 w-full h-full object-cover -z-10 pointer-events-none"
+        src="/videos/Coach_8.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      <div className="fixed inset-0 bg-black/75 -z-10 pointer-events-none" />
 
-      {/* Chat area */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-        {/* Welcome message */}
-        <div className="flex justify-start">
-          <div className="max-w-[85%] bg-[#1e1e1e] rounded-2xl rounded-tl-sm px-4 py-3">
-            <p className="text-sm text-white">{WELCOME}</p>
+      <div className="relative z-10 flex flex-col h-screen pt-16 pb-0">
+        {/* Header */}
+        <div className="px-4 pt-4 pb-3 border-b border-white/10">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-xl font-bold text-[#c9a84c] uppercase tracking-widest">
+                Coach
+              </h1>
+              <p className="text-xs text-white/40 uppercase tracking-widest">
+                Powered by Clean Harry
+              </p>
+            </div>
+
+            {/* Active mantra pill */}
+            {activeMantra && (
+              <button
+                onClick={() => {
+                  setPendingMantra(activeMantra)
+                  setShowMantraOverlay(true)
+                }}
+                className="flex items-center gap-2 border border-[#c9a84c]/40 rounded-full px-3 py-1"
+              >
+                <span className="text-[#c9a84c]" style={{ fontSize: 12 }}>◎</span>
+                <span className="text-[10px] text-[#c9a84c]/80 uppercase tracking-widest font-thin">
+                  {activeMantra}
+                </span>
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Quick prompts */}
-        {showQuickPrompts && (
-          <div className="flex flex-wrap gap-2 pl-1">
-            {QUICK_PROMPTS.map((prompt) => (
-              <button
-                key={prompt}
-                onClick={() => sendMessage(prompt)}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full border border-[#c9a84c]/30 text-[#c9a84c] bg-[#c9a84c]/5 active:bg-[#c9a84c]/15 transition-colors"
-              >
-                {prompt}
-              </button>
-            ))}
-          </div>
-        )}
-
         {/* Messages */}
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-          >
-            <div
-              className={`max-w-[85%] px-4 py-3 text-sm ${
-                msg.role === "user"
-                  ? "bg-[#c9a84c] text-black rounded-2xl rounded-tr-sm"
-                  : "bg-[#1e1e1e] text-white rounded-2xl rounded-tl-sm"
-              }`}
-            >
-              {msg.role === "assistant" ? (
-                <div
-                  className="prose-coach"
-                  dangerouslySetInnerHTML={{
-                    __html: renderMarkdown(msg.content || ""),
-                  }}
-                />
-              ) : (
-                <p>{msg.content}</p>
-              )}
-            </div>
-          </div>
-        ))}
-
-        {/* Typing indicator */}
-        {streaming &&
-          messages.length > 0 &&
-          messages[messages.length - 1].content === "" && (
-            <div className="flex justify-start">
-              <div className="bg-[#1e1e1e] rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1.5">
-                <span className="w-2 h-2 bg-[#c9a84c] rounded-full animate-pulse" />
-                <span
-                  className="w-2 h-2 bg-[#c9a84c] rounded-full animate-pulse"
-                  style={{ animationDelay: "0.15s" }}
-                />
-                <span
-                  className="w-2 h-2 bg-[#c9a84c] rounded-full animate-pulse"
-                  style={{ animationDelay: "0.3s" }}
-                />
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+          {messages.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full gap-6 text-center px-4">
+              <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+                Tell me what's going wrong with your game. I'll tell you exactly what to fix.
+              </p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {QUICK_PROMPTS.map((p) => (
+                  <button
+                    key={p}
+                    onClick={() => sendMessage(p)}
+                    className="px-3 py-1.5 rounded-full border border-white/20 text-white/60 text-xs uppercase tracking-wider hover:border-[#c9a84c]/60 hover:text-[#c9a84c] transition-colors"
+                  >
+                    {p}
+                  </button>
+                ))}
               </div>
             </div>
           )}
 
-        <div ref={chatEndRef} />
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div
+                className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                  msg.role === 'user'
+                    ? 'bg-[#c9a84c] text-black font-medium'
+                    : 'bg-white/10 text-white prose-coach'
+                }`}
+              >
+                {msg.role === 'assistant' ? (
+                  <ReactMarkdown>{msg.content || '…'}</ReactMarkdown>
+                ) : (
+                  msg.content
+                )}
+
+                {/* Typing indicator */}
+                {msg.role === 'assistant' &&
+                  !msg.content &&
+                  isStreaming &&
+                  i === messages.length - 1 && (
+                    <span className="flex gap-1 py-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce [animation-delay:150ms]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-bounce [animation-delay:300ms]" />
+                    </span>
+                  )}
+              </div>
+            </div>
+          ))}
+
+          {/* After-response prompt */}
+          {showAfterPrompt && !isStreaming && (
+            <div className="flex justify-start">
+              <div className="flex flex-col gap-2 items-start">
+                <p className="text-white/40 text-xs uppercase tracking-widest font-thin pl-1">
+                  Is there anything else?
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setShowAfterPrompt(false)}
+                    className="px-3 py-1.5 rounded-full border border-white/20 text-white/50 text-xs uppercase tracking-wider hover:border-white/40 hover:text-white/70 transition-colors"
+                  >
+                    Yes, another question
+                  </button>
+                  <button
+                    onClick={handleGetMantra}
+                    disabled={isLoadingMantra}
+                    className="px-3 py-1.5 rounded-full border border-[#c9a84c]/40 text-[#c9a84c] text-xs uppercase tracking-wider hover:border-[#c9a84c]/70 hover:text-[#c9a84c] transition-colors disabled:opacity-50"
+                  >
+                    {isLoadingMantra ? 'Loading…' : 'Get my mantra'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div ref={bottomRef} />
+        </div>
+
+        {/* Input */}
+        <div className="px-4 py-4 border-t border-white/10 bg-black/40">
+          <div className="flex gap-3 items-end">
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  sendMessage(input)
+                }
+              }}
+              placeholder="Ask your coach…"
+              rows={1}
+              disabled={isStreaming}
+              className="flex-1 bg-white/10 text-white placeholder-white/30 rounded-xl px-4 py-3 text-sm resize-none focus:outline-none focus:ring-1 focus:ring-[#c9a84c]/50 disabled:opacity-50"
+              style={{ maxHeight: 100 }}
+            />
+            <button
+              onClick={() => sendMessage(input)}
+              disabled={isStreaming || !input.trim()}
+              className="w-10 h-10 rounded-full bg-[#c9a84c] text-black flex items-center justify-center text-lg disabled:opacity-40 active:scale-95 transition-transform flex-shrink-0"
+            >
+              ↑
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* Input area */}
-      <div className="flex-shrink-0 border-t border-white/5 px-4 py-3 pb-4 bg-[#0a0a0a]">
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask your coach..."
-            disabled={streaming}
-            className="flex-1 bg-[#1e1e1e] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/30 disabled:opacity-50"
-          />
-          <button
-            type="submit"
-            disabled={!input.trim() || streaming}
-            className="bg-[#c9a84c] text-black font-bold px-4 rounded-xl transition-colors active:bg-[#b8973b] disabled:opacity-30"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-          </button>
-        </form>
-      </div>
-      </div>
-    </div>
-  );
+      {/* Minimum shots blocker */}
+      {dataLoaded && totalShots < 5 && !coachBlockDismissed && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+          <div className="relative max-w-xs border border-[#c9a84c]/40 bg-[#141414] rounded-2xl p-6">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c] to-transparent" />
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 rounded-full border border-[#c9a84c]/60 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full border-2 border-[#c9a84c] flex items-center justify-center">
+                  <span className="text-[#c9a84c] text-xs font-bold">5</span>
+                </div>
+              </div>
+              <h2 className="text-base font-bold uppercase tracking-wider text-center text-white">
+                YOUR COACH NEEDS DATA
+              </h2>
+              <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-4" />
+              <p className="text-white/60 text-sm text-center leading-relaxed">
+                Log at least <span className="text-[#c9a84c] font-bold">5 shots</span> in the Swing Analyser before your first session. The Coach uses your real swing patterns to give personalised advice, not generic tips.
+              </p>
+              <Link
+                href="/swing/log"
+                className="w-full bg-[#c9a84c] text-black font-bold uppercase tracking-wider py-3 rounded-xl text-center text-sm"
+              >
+                Go Log Shots
+              </Link>
+              <button
+                onClick={() => setCoachBlockDismissed(true)}
+                className="w-full border border-white/20 text-white/50 uppercase tracking-wider py-3 rounded-xl text-sm"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mantra overlay */}
+      {showMantraOverlay && pendingMantra && (
+        <MantraOverlay
+          mantra={pendingMantra}
+          onUse={handleUseMantra}
+          onDismiss={() => setShowMantraOverlay(false)}
+          isSaving={isSavingMantra}
+        />
+      )}
+    </>
+  )
 }

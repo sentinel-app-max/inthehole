@@ -114,6 +114,23 @@ export default function SwingDashboardPage() {
           <h1 className="text-2xl font-black">Swing Analyser</h1>
         </div>
 
+        <div className="px-4 mb-4">
+          <div className="border border-[#c9a84c] bg-[#0a0a0a] rounded-xl px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-1 h-10 bg-[#c9a84c] rounded-full flex-shrink-0" />
+              <p className="text-white/60 text-xs leading-relaxed">
+                Log at least <span className="text-[#c9a84c] font-bold">5 shots</span> to unlock personalised coaching from the AI Coach. The more you log, the smarter your Coach gets.
+              </p>
+            </div>
+            <Link
+              href="/swing/log"
+              className="bg-[#c9a84c] text-black text-xs font-bold uppercase tracking-wider px-3 py-2 rounded-lg whitespace-nowrap ml-3"
+            >
+              Log a Shot →
+            </Link>
+          </div>
+        </div>
+
         {sessions.length > 0 && (
           <div className="px-4 mb-6 grid grid-cols-2 gap-3">
             <div className="bg-[#1e1e1e] rounded-xl p-4 border border-white/5">
