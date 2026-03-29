@@ -18,8 +18,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "inthehole – SA Golf Tracker",
-  description: "Track your golf rounds, stableford points, and improve your game.",
+  title: "inthehole. | Score. Strategise & Plan. Get Coached.",
+  description:
+    "The free golf app built for South African golfers. Score Stableford & Stroke Play, get GPS distances, plan your round hole-by-hole, and get coached by AI — all in one place.",
   icons: {
     apple: "/images/logo6.png",
   },
@@ -27,6 +28,22 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "inthehole",
+  },
+  openGraph: {
+    title: "inthehole. | Score. Strategise & Plan. Get Coached.",
+    description:
+      "The free golf app built for South African golfers. Score Stableford & Stroke Play, get GPS distances, plan your round hole-by-hole, and get coached by AI — all in one place.",
+    url: "https://inthehole.cleanharry.world",
+    siteName: "inthehole.",
+    images: [
+      {
+        url: "https://inthehole.cleanharry.world/images/og-share.png",
+        width: 1200,
+        height: 630,
+        alt: "inthehole. SA Golf Scorecard App",
+      },
+    ],
+    type: "website",
   },
 };
 
