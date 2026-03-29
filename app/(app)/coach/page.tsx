@@ -124,10 +124,14 @@ export default function CoachPage() {
       // Placeholder for streaming assistant reply
       setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
 
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 30000)
+
       try {
         const res = await fetch('/api/coach', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal,
           body: JSON.stringify({
             messages: newMessages.map((m) => ({
               role: m.role,
@@ -142,13 +146,15 @@ export default function CoachPage() {
         const reader = res.body.getReader()
         const decoder = new TextDecoder()
         let accumulated = ''
+        let buffer = ''
 
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
 
-          const chunk = decoder.decode(value, { stream: true })
-          const lines = chunk.split('\n')
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          buffer = lines.pop() ?? ''
 
           for (const line of lines) {
             const trimmed = line.replace(/\r$/, '').trim()
@@ -174,7 +180,7 @@ export default function CoachPage() {
                 })
               }
             } catch {
-              // Malformed SSE line — skip silently
+              // skip malformed line
             }
           }
         }
@@ -201,6 +207,7 @@ export default function CoachPage() {
           return updated
         })
       } finally {
+        clearTimeout(timeout)
         setIsStreaming(false)
       }
     },
