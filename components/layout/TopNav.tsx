@@ -74,8 +74,9 @@ export default function TopNav() {
 
           {/* Hamburger - mobile only */}
           <button
+            onMouseDown={(e) => e.stopPropagation()}
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+            className="relative z-50 md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
           >
             <span
               className={`block w-6 h-0.5 bg-[#c9a84c] transition-transform ${
