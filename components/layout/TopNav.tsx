@@ -44,7 +44,7 @@ export default function TopNav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] border-b border-[#c9a84c]/30">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] border-b border-[#c9a84c]/30" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="flex items-center justify-between h-16 px-5">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 ml-4">
