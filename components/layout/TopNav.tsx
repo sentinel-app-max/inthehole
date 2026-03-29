@@ -101,7 +101,8 @@ export default function TopNav() {
       {menuOpen && (
         <div
           ref={menuRef}
-          className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col items-center justify-center gap-8 md:hidden"
+          className="fixed inset-0 z-[45] bg-[#0a0a0a] flex flex-col items-center justify-center gap-8 md:hidden"
+          style={{ paddingTop: 'calc(env(safe-area-inset-top) + 4rem)' }}
         >
           {links.map((link) => (
             <Link
