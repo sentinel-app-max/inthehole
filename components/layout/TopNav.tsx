@@ -77,21 +77,9 @@ export default function TopNav() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="relative z-50 md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
           >
-            <span
-              className={`block w-6 h-0.5 bg-[#c9a84c] transition-transform ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-[#c9a84c] transition-opacity ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-[#c9a84c] transition-transform ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
+            <span className="block w-6 h-0.5 bg-[#c9a84c]" />
+            <span className="block w-6 h-0.5 bg-[#c9a84c]" />
+            <span className="block w-6 h-0.5 bg-[#c9a84c]" />
           </button>
         </div>
       </nav>
