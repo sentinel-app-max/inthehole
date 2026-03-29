@@ -74,7 +74,6 @@ export default function TopNav() {
 
           {/* Hamburger - mobile only */}
           <button
-            onMouseDown={(e) => e.stopPropagation()}
             onClick={() => setMenuOpen(!menuOpen)}
             className="relative z-50 md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
           >
@@ -117,6 +116,14 @@ export default function TopNav() {
               {link.label}
             </Link>
           ))}
+
+          {/* Close button */}
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="fixed bottom-10 right-6 w-14 h-14 flex items-center justify-center text-[#c9a84c] text-4xl font-light"
+          >
+            ×
+          </button>
         </div>
       )}
     </>
